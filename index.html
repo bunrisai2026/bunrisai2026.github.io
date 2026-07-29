@@ -15,6 +15,7 @@
   ・タグ(< >で囲まれた部分)は消さずに、日本語の文章部分だけ直してください。
   ・カードや行を増やしたいときは、同じブロックをコピーして貼り付け、
     中の文字を変えるだけでOKです。
+  ・"reveal" というclassはスクロールで現れる演出用なので、消さないでください。
 ================================================================= -->
 
 <header class="site-header">
@@ -35,13 +36,14 @@
 
 <main>
 
-  <!-- ヒーローセクション ▼ここを編集 -->
-  <section class="hero" id="top">
+  <!-- ヒーロー ▼ここを編集 -->
+  <section class="sheet-hero" id="top">
+    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="container hero-inner">
-      <p class="hero-eyebrow">〇〇高等学校・大学</p>
+      <p class="hero-eyebrow">西武学園文理高等学校</p>
       <h1 class="hero-title">文理祭 2026</h1>
-      <p class="hero-date">開催日：2026年9月5日(土)・6日(日) <span class="tbd">※日程は確定次第更新します</span></p>
-      <p class="hero-theme">今年のテーマ：「テーマ名（決まり次第更新）」</p>
+      <p class="hero-date">開催日：2026年10月3日(土)・4日(日)</p>
+      <p class="hero-theme">今年のテーマ：「<span class="theme-highlight">青春バースト</span>」</p>
       <div class="hero-actions">
         <a href="#exhibits" class="btn btn-primary">出し物をチェック</a>
         <a href="#access" class="btn btn-outline">アクセス</a>
@@ -51,24 +53,27 @@
   <!-- ここまで編集 -->
 
   <!-- 文理祭とは ▼ここを編集 -->
-  <section class="section" id="about">
+  <section class="sheet-about" id="about">
     <div class="container">
-      <h2 class="section-title">文理祭とは</h2>
-      <p class="section-lead">
-        文理祭は、生徒が主体となって企画・運営する本校最大の学校行事です。
+      <span class="section-kicker reveal">About</span>
+      <h2 class="section-title reveal">文理祭とは</h2>
+      <p class="about-lead reveal">
+        生徒が主体となって企画・運営する、本校最大の学校行事。
         各クラス・部活動による出し物、ステージ発表、模擬店などが2日間にわたって行われます。
-        文理祭実行委員会が中心となり、来場されるすべての方に楽しんでいただけるよう準備を進めています。
       </p>
       <div class="about-grid">
-        <div class="about-card">
+        <div class="about-card reveal">
+          <div class="tick"></div>
           <h3>クラス企画</h3>
           <p>お化け屋敷・脱出ゲーム・カジノなど、各クラスが趣向を凝らした企画を実施します。</p>
         </div>
-        <div class="about-card">
+        <div class="about-card reveal">
+          <div class="tick"></div>
           <h3>ステージ発表</h3>
           <p>有志やクラスによるステージパフォーマンスを予定しています。</p>
         </div>
-        <div class="about-card">
+        <div class="about-card reveal">
+          <div class="tick"></div>
           <h3>模擬店・部活動企画</h3>
           <p>飲食を含む模擬店や、部活動による企画展示も行われます。</p>
         </div>
@@ -78,35 +83,45 @@
   <!-- ここまで編集 -->
 
   <!-- 出し物 ▼ここを編集：カード全体をコピーして増やせます -->
-  <section class="section section-alt" id="exhibits">
+  <section class="sheet-exhibits" id="exhibits">
     <div class="container">
-      <h2 class="section-title">出し物</h2>
-      <p class="section-lead">出し物の詳細は準備が整い次第、随時追加していきます。</p>
+      <span class="section-kicker reveal">Exhibits</span>
+      <h2 class="section-title reveal">出し物</h2>
+      <p class="section-lead reveal">出し物の詳細は準備が整い次第、随時追加していきます。</p>
 
       <div class="card-grid">
 
         <!-- カード1 -->
-        <div class="exhibit-card">
-          <span class="exhibit-tag">クラス企画</span>
-          <h3>出し物名（例：お化け屋敷）</h3>
-          <p>担当：1年A組</p>
-          <p class="exhibit-desc">出し物の説明文をここに書きます。</p>
+        <div class="exhibit-card reveal">
+          <div class="exhibit-media"></div>
+          <div class="exhibit-body">
+            <span class="exhibit-tag">クラス企画</span>
+            <h3>出し物名（例：お化け屋敷）</h3>
+            <p>担当：1年A組</p>
+            <p class="exhibit-desc">出し物の説明文をここに書きます。</p>
+          </div>
         </div>
 
         <!-- カード2 -->
-        <div class="exhibit-card">
-          <span class="exhibit-tag">部活動企画</span>
-          <h3>出し物名（例：カフェ）</h3>
-          <p>担当：〇〇部</p>
-          <p class="exhibit-desc">出し物の説明文をここに書きます。</p>
+        <div class="exhibit-card reveal">
+          <div class="exhibit-media"></div>
+          <div class="exhibit-body">
+            <span class="exhibit-tag">部活動企画</span>
+            <h3>出し物名（例：カフェ）</h3>
+            <p>担当：〇〇部</p>
+            <p class="exhibit-desc">出し物の説明文をここに書きます。</p>
+          </div>
         </div>
 
         <!-- カード3 -->
-        <div class="exhibit-card">
-          <span class="exhibit-tag">ステージ</span>
-          <h3>出し物名（例：有志ライブ）</h3>
-          <p>担当：有志団体</p>
-          <p class="exhibit-desc">出し物の説明文をここに書きます。</p>
+        <div class="exhibit-card reveal">
+          <div class="exhibit-media"></div>
+          <div class="exhibit-body">
+            <span class="exhibit-tag">ステージ</span>
+            <h3>出し物名（例：有志ライブ）</h3>
+            <p>担当：有志団体</p>
+            <p class="exhibit-desc">出し物の説明文をここに書きます。</p>
+          </div>
         </div>
 
         <!-- カードを増やす場合はこの下に貼り付け -->
@@ -116,66 +131,78 @@
   </section>
   <!-- ここまで編集 -->
 
-  <!-- タイムスケジュール ▼ここを編集：行(tr)をコピーして増やせます -->
-  <section class="section" id="schedule">
-    <div class="container">
-      <h2 class="section-title">タイムスケジュール</h2>
+  <div class="info-region">
 
-      <h3 class="day-title">1日目（9月5日・土）</h3>
-      <table class="schedule-table">
-        <thead><tr><th>時間</th><th>内容</th></tr></thead>
-        <tbody>
-          <tr><td>9:00</td><td>開場</td></tr>
-          <tr><td>9:20</td><td>オープニングセレモニー</td></tr>
-          <tr><td>10:00〜15:00</td><td>クラス企画・模擬店・展示</td></tr>
-          <tr><td>15:30</td><td>ステージ発表</td></tr>
-          <tr><td>16:30</td><td>1日目終了</td></tr>
-        </tbody>
-      </table>
+    <!-- タイムスケジュール ▼ここを編集：行(tr)をコピーして増やせます -->
+    <section class="info-section" id="schedule">
+      <div class="container">
+        <span class="section-kicker reveal">Schedule</span>
+        <h2 class="section-title reveal">タイムスケジュール</h2>
 
-      <h3 class="day-title">2日目（9月6日・日）</h3>
-      <table class="schedule-table">
-        <thead><tr><th>時間</th><th>内容</th></tr></thead>
-        <tbody>
-          <tr><td>9:00</td><td>開場</td></tr>
-          <tr><td>10:00〜15:00</td><td>クラス企画・模擬店・展示</td></tr>
-          <tr><td>15:00</td><td>後夜祭・クロージング</td></tr>
-          <tr><td>16:00</td><td>2日目終了</td></tr>
-        </tbody>
-      </table>
-      <p class="tbd">※時間は予定です。確定次第このページを更新します。</p>
-    </div>
-  </section>
-  <!-- ここまで編集 -->
+        <h3 class="day-title reveal">1日目（10月3日・土）</h3>
+        <div class="schedule-table-wrap reveal">
+          <table class="schedule-table">
+            <thead><tr><th>時間</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><td>9:00</td><td>開場</td></tr>
+              <tr><td>9:20</td><td>オープニングセレモニー</td></tr>
+              <tr><td>10:00〜15:00</td><td>クラス企画・模擬店・展示</td></tr>
+              <tr><td>15:30</td><td>ステージ発表</td></tr>
+              <tr><td>16:30</td><td>1日目終了</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-  <!-- アクセス ▼ここを編集 -->
-  <section class="section section-alt" id="access">
-    <div class="container access-grid">
-      <div>
-        <h2 class="section-title">アクセス</h2>
-        <p>〒000-0000　〇〇県〇〇市〇〇1-2-3</p>
-        <p>最寄駅：〇〇線「〇〇駅」から徒歩〇分</p>
-        <p class="tbd">来場者用の受付場所・持ち物・注意事項はお知らせ欄で随時更新します。</p>
-        <a class="btn btn-outline" href="https://www.google.com/maps" target="_blank" rel="noopener">地図で見る</a>
+        <h3 class="day-title reveal">2日目（10月4日・日）</h3>
+        <div class="schedule-table-wrap reveal">
+          <table class="schedule-table">
+            <thead><tr><th>時間</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><td>9:00</td><td>開場</td></tr>
+              <tr><td>10:00〜15:00</td><td>クラス企画・模擬店・展示</td></tr>
+              <tr><td>15:00</td><td>後夜祭・クロージング</td></tr>
+              <tr><td>16:00</td><td>2日目終了</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tbd">※時間は予定です。確定次第このページを更新します。</p>
       </div>
-      <div class="map-placeholder">地図をここに埋め込みます</div>
-    </div>
-  </section>
-  <!-- ここまで編集 -->
+    </section>
+    <!-- ここまで編集 -->
 
-  <!-- お知らせ ▼ここを編集：li要素をコピーして増やせます -->
-  <section class="section" id="news">
-    <div class="container">
-      <h2 class="section-title">お知らせ</h2>
-      <ul class="news-list">
-        <li><span class="news-date">2026.07.29</span> 文理祭2026 公式サイトを公開しました。</li>
-        <!-- お知らせを増やす場合はこの下に貼り付け
-        <li><span class="news-date">YYYY.MM.DD</span> お知らせ内容</li>
-        -->
-      </ul>
-    </div>
-  </section>
-  <!-- ここまで編集 -->
+    <!-- アクセス ▼ここを編集 -->
+    <section class="info-section" id="access">
+      <div class="container access-grid">
+        <div class="reveal">
+          <span class="section-kicker">Access</span>
+          <h2 class="section-title">アクセス</h2>
+          <p>〒350-1336　埼玉県狭山市柏原新田311-1</p>
+          <p>西武新宿線「新狭山駅」北口よりスクールバス約10分<br>
+             （川越駅・東飯能駅・稲荷山公園駅・鶴ヶ島駅からもスクールバスあり／路線バスも利用可）</p>
+          <p class="tbd">当日の運行時刻・臨時ダイヤはお知らせ欄で随時更新します。</p>
+          <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E6%AD%A6%E5%AD%A6%E5%9C%92%E6%96%87%E7%90%86%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1" target="_blank" rel="noopener">地図で見る</a>
+        </div>
+        <div class="map-placeholder reveal">地図をここに埋め込みます</div>
+      </div>
+    </section>
+    <!-- ここまで編集 -->
+
+    <!-- お知らせ ▼ここを編集：li要素をコピーして増やせます -->
+    <section class="info-section" id="news">
+      <div class="container">
+        <span class="section-kicker reveal">News</span>
+        <h2 class="section-title reveal">お知らせ</h2>
+        <ul class="news-list reveal">
+          <li><span class="news-date">2026.07.29</span> 文理祭2026 公式サイトを公開しました。</li>
+          <!-- お知らせを増やす場合はこの下に貼り付け
+          <li><span class="news-date">YYYY.MM.DD</span> お知らせ内容</li>
+          -->
+        </ul>
+      </div>
+    </section>
+    <!-- ここまで編集 -->
+
+  </div>
 
 </main>
 

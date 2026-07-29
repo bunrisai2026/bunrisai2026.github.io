@@ -1,30 +1,52 @@
 /* ================================================================
   配色や余白などの基本設定はここでまとめて管理しています。
   色を変えたいときは下の :root { ... } の中の値だけ書き換えればOKです。
+
+  デザインの方向性（v4・Appleのプロダクトページを参照）：
+  ・ヒーローだけを position: sticky で固定し、続く「文理祭とは」が
+    普通にスクロールして下から覆いかぶさる（Apple の製品ページで
+    よく使われる、固定するのは1つだけの安定した組み方）
+  ・スケジュール以降は普通に流れるシンプルな情報セクションに戻す
+    （実用情報まで演出過多にしない）
+  ・要素が画面に入るタイミングでふわっと現れる(reveal)演出をJS側で追加
 ================================================================= */
 :root {
-  --color-primary: #4b2e83;      /* メインカラー（紫） */
-  --color-primary-dark: #33205c;
-  --color-accent: #f2a33c;       /* アクセントカラー（ゴールド） */
-  --color-bg: #ffffff;
-  --color-bg-alt: #f6f4fb;
-  --color-text: #26202f;
-  --color-text-muted: #6b6577;
-  --color-border: #e4dff0;
+  --bg: #06070f;
+  --bg-panel: #0e1330;
+  --bg-panel-alt: #131a3f;
+  --text: #eef0fb;
+  --text-muted: #838ab3;
+  --border: rgba(255, 255, 255, 0.12);
+  --burst-1: #ff7a45;
+  --burst-2: #ff3d7f;
   --max-width: 1080px;
-  --radius: 14px;
+  --header-h: 64px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --font-base: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; } /* スクロールはJSでイージングをかけるためnative smoothは切る */
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+html, body {
+  /* スマホで横方向にドラッグできてしまう(斜めに動く)不具合の対策として、
+     横方向のスクロール自体をページ全体で禁止しています。 */
+  overflow-x: hidden;
+  max-width: 100%;
+}
 
 body {
   margin: 0;
   font-family: var(--font-base);
-  color: var(--color-text);
-  background: var(--color-bg);
+  color: var(--text);
+  background: var(--bg);
   line-height: 1.7;
+  touch-action: pan-y;
 }
 
 img { max-width: 100%; display: block; }
@@ -32,45 +54,67 @@ img { max-width: 100%; display: block; }
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
-/* ---------- Header / Nav ---------- */
+/* ---------- Header ---------- */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--color-border);
+  z-index: 50;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  background: rgba(6, 7, 15, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
 }
 
 .header-inner {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--color-primary);
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--text);
   text-decoration: none;
+  letter-spacing: -0.01em;
 }
-.logo span { color: var(--color-accent); }
+.logo span {
+  background: linear-gradient(90deg, var(--burst-1), var(--burst-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
-.site-nav {
-  display: flex;
-  gap: 28px;
-}
+.site-nav { display: flex; gap: 30px; }
 .site-nav a {
-  color: var(--color-text);
+  position: relative;
+  color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-bottom: 4px;
+  transition: color 0.25s var(--ease);
 }
-.site-nav a:hover { color: var(--color-primary); }
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--burst-1), var(--burst-2));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s var(--ease);
+}
+.site-nav a:hover { color: var(--text); }
+.site-nav a:hover::after { transform: scaleX(1); }
 
 .nav-toggle {
   display: none;
@@ -81,233 +125,283 @@ img { max-width: 100%; display: block; }
   cursor: pointer;
   padding: 8px;
 }
-.nav-toggle span {
-  width: 24px;
-  height: 2px;
-  background: var(--color-text);
-  display: block;
-}
+.nav-toggle span { width: 22px; height: 2px; background: var(--text); display: block; }
 
-@media (max-width: 720px) {
+@media (max-width: 780px) {
   .nav-toggle { display: flex; }
   .site-nav {
-    position: absolute;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: var(--color-bg);
+    position: fixed;
+    top: var(--header-h);
+    left: 0; right: 0;
+    background: var(--bg);
     flex-direction: column;
     gap: 0;
     max-height: 0;
     overflow: hidden;
-    border-bottom: 1px solid var(--color-border);
-    transition: max-height 0.25s ease;
+    border-bottom: 1px solid var(--border);
+    transition: max-height 0.3s var(--ease);
   }
   .site-nav.open { max-height: 320px; }
-  .site-nav a {
-    padding: 14px 20px;
-    border-top: 1px solid var(--color-border);
-  }
+  .site-nav a { padding: 16px 24px; border-top: 1px solid var(--border); }
+  .site-nav a::after { display: none; }
+}
+
+/* ---------- Pinned hero + sliding card ----------
+  ヒーローだけを sticky で固定し、そのあとの「文理祭とは」が
+  通常のスクロールで下からせり上がって覆いかぶさる、という
+  Apple の製品ページでよく見る構成です。
+
+  以前のバージョンでは3つのセクション全部を sticky にしていましたが、
+  同じ位置に固定された要素同士がスクロール中にお互いを取り合って
+  ちらつく／重なって見える不具合が出たため、固定するのはヒーロー
+  ひとつだけにし、残りは普通に流れるようにして安定させています。 */
+.sheet-hero {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 1;
+  min-height: calc(100vh - var(--header-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 64px 0;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 122, 69, 0.32), rgba(255, 61, 127, 0.12) 40%, transparent 65%),
+    var(--bg);
+}
+.sheet-about {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-panel);
+  border-radius: 32px 32px 0 0;
+  padding: 120px 0;
+}
+.sheet-exhibits {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-panel-alt);
+  border-radius: 32px 32px 0 0;
+  padding: 120px 0;
 }
 
 /* ---------- Hero ---------- */
-.hero {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: #fff;
-  padding: 96px 0 72px;
-  text-align: center;
-}
+.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.hero-inner { position: relative; z-index: 1; }
 .hero-eyebrow {
-  letter-spacing: 0.08em;
-  font-size: 0.9rem;
-  opacity: 0.85;
-  margin: 0 0 8px;
-}
-.hero-title {
-  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  color: var(--text-muted);
   margin: 0 0 16px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
-.hero-date, .hero-theme {
+.hero-eyebrow::before { content: "[ "; }
+.hero-eyebrow::after { content: " ]"; }
+.hero-title {
+  font-size: clamp(2.8rem, 8vw, 5.2rem);
+  margin: 0 0 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  text-shadow: 0 0 70px rgba(255, 90, 100, 0.35);
+}
+.hero-date {
   margin: 6px 0;
   font-size: 1.05rem;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
 }
-.tbd {
-  color: var(--color-accent);
-  font-size: 0.85em;
+.hero-theme { margin: 16px 0 0; font-size: 1.25rem; font-weight: 700; }
+.theme-highlight {
+  background: linear-gradient(90deg, var(--burst-1), var(--burst-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
-.hero-theme { opacity: 0.9; }
+.tbd { color: var(--burst-1); font-size: 0.85em; }
 
-.hero-actions {
-  margin-top: 32px;
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+.hero-actions { margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
+/* ---------- Buttons ---------- */
 .btn {
+  --cut: 10px;
   display: inline-block;
-  padding: 12px 28px;
-  border-radius: 999px;
+  padding: 14px 32px;
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
   text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  font-weight: 700;
+  font-size: 0.92rem;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 .btn:hover { transform: translateY(-2px); }
-.btn-primary {
-  background: var(--color-accent);
-  color: #2b1a00;
-}
-.btn-outline {
-  background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.7);
-}
-.section .btn-outline {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-}
+.btn:active { transform: scale(0.97); }
+.btn:focus-visible { outline: 2px solid var(--burst-1); outline-offset: 3px; }
+.btn-primary { background: linear-gradient(90deg, var(--burst-1), var(--burst-2)); color: #180a08; }
+.btn-primary:hover { box-shadow: 0 10px 32px rgba(255, 61, 127, 0.38); }
+.btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn-outline:hover { border-color: var(--burst-1); color: #fff; }
 
-/* ---------- Sections ---------- */
-.section { padding: 72px 0; }
-.section-alt { background: var(--color-bg-alt); }
-
+/* ---------- Section chrome (shared) ---------- */
+.section-kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--burst-1);
+  margin-bottom: 12px;
+  text-align: center;
+}
 .section-title {
-  font-size: 1.7rem;
-  margin: 0 0 12px;
-  color: var(--color-primary);
-}
-.section-lead {
-  color: var(--color-text-muted);
-  max-width: 640px;
-  margin: 0 0 32px;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin: 0 0 20px;
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-align: center;
 }
 
+/* ---------- About sheet ---------- */
+.about-lead {
+  max-width: 700px;
+  margin: 0 auto 56px;
+  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text);
+  text-align: center;
+  text-wrap: balance;
+}
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
 }
-.about-card {
-  padding: 24px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  background: #fff;
+.about-grid > * { min-width: 0; }
+.about-card { text-align: center; }
+.about-card .tick {
+  width: 28px; height: 3px;
+  margin: 0 auto 16px;
+  background: linear-gradient(90deg, var(--burst-1), var(--burst-2));
 }
-.about-card h3 {
-  margin: 0 0 8px;
-  color: var(--color-primary);
-  font-size: 1.05rem;
-}
-.about-card p { margin: 0; color: var(--color-text-muted); font-size: 0.95rem; }
+.about-card h3 { margin: 0 0 8px; color: var(--text); font-size: 1.05rem; }
+.about-card p { margin: 0; color: var(--text-muted); font-size: 0.94rem; }
 
-/* ---------- Exhibit cards ---------- */
+/* ---------- Exhibits sheet ---------- */
+.section-lead {
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
+.card-grid > * { min-width: 0; }
 .exhibit-card {
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
 }
+.exhibit-media {
+  aspect-ratio: 4 / 3;
+  background:
+    linear-gradient(155deg, rgba(255, 122, 69, 0.35), rgba(255, 61, 127, 0.18) 60%, transparent),
+    var(--bg-panel);
+}
+.exhibit-body { padding: 20px 22px 22px; }
 .exhibit-tag {
   display: inline-block;
-  background: var(--color-bg-alt);
-  color: var(--color-primary);
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--burst-1);
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 999px;
-  margin-bottom: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border: 1px solid rgba(255, 122, 69, 0.4);
+  border-radius: 3px;
+  margin-bottom: 12px;
 }
-.exhibit-card h3 { margin: 0 0 6px; font-size: 1.1rem; }
-.exhibit-desc { color: var(--color-text-muted); font-size: 0.92rem; }
+.exhibit-card h3 { margin: 0 0 6px; font-size: 1.1rem; color: var(--text); }
+.exhibit-desc { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
 
-/* ---------- Schedule ---------- */
-.day-title {
-  margin: 32px 0 12px;
-  color: var(--color-primary);
-  font-size: 1.1rem;
-}
+/* ---------- Info region (schedule / access / news) ----------
+  積み重ね演出を終えたあとの、普通に流れる実用情報エリア。 */
+.info-region { background: var(--bg-panel-alt); }
+.info-section { padding: 88px 0; }
+.info-section + .info-section { border-top: 1px solid var(--border); }
+.info-section .section-kicker,
+.info-section .section-title { text-align: left; }
+
+.day-title { margin: 32px 0 12px; color: var(--text); font-size: 1.1rem; font-weight: 700; }
 .day-title:first-of-type { margin-top: 0; }
 
+.schedule-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 6px; }
 .schedule-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
+  width: 100%; min-width: 320px; border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.02);
+  font-variant-numeric: tabular-nums;
 }
-.schedule-table th, .schedule-table td {
-  text-align: left;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--color-border);
-}
+.schedule-table th, .schedule-table td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--border); }
+.schedule-table tr:last-child td { border-bottom: none; }
 .schedule-table th {
-  background: var(--color-bg-alt);
-  color: var(--color-primary);
-  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
 }
+.schedule-table td:first-child { font-family: var(--font-mono); color: var(--burst-1); white-space: nowrap; }
+.schedule-table tr:hover td { background: rgba(255, 255, 255, 0.03); }
 
-/* ---------- Access ---------- */
-.access-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 40px;
-  align-items: start;
-}
-@media (max-width: 720px) {
-  .access-grid { grid-template-columns: 1fr; }
-}
+.access-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: start; }
+.access-grid > * { min-width: 0; } /* grid/flexアイテムは中身の分だけ横に広がろうとすることがあるための保険 */
+@media (max-width: 720px) { .access-grid { grid-template-columns: 1fr; } }
 .map-placeholder {
-  background: var(--color-bg-alt);
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
   min-height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-muted);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
 }
 
-/* ---------- News ---------- */
 .news-list { list-style: none; margin: 0; padding: 0; }
-.news-list li {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--color-border);
-}
-.news-date {
-  display: inline-block;
-  min-width: 110px;
-  color: var(--color-text-muted);
-  font-size: 0.9rem;
-}
+.news-list li { padding: 16px 0; border-bottom: 1px solid var(--border); }
+.news-list li:last-child { border-bottom: none; }
+.news-date { display: inline-block; min-width: 130px; color: var(--burst-1); font-family: var(--font-mono); font-size: 0.85rem; }
+.news-date::before { content: "[ "; }
+.news-date::after { content: " ]"; }
 
 /* ---------- Footer ---------- */
-.site-footer {
-  background: var(--color-primary-dark);
-  color: #fff;
-  padding: 40px 0;
-}
+.site-footer { background: var(--bg-panel-alt); color: var(--text-muted); padding: 44px 0; border-top: 1px solid var(--border); }
 .footer-inner { text-align: center; }
 .footer-inner p { margin: 4px 0; }
-.footer-sub { color: rgba(255,255,255,0.75); font-size: 0.9rem; }
-.footer-copy { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 16px; }
+.footer-inner p:first-child { color: var(--text); font-weight: 700; }
+.footer-sub { font-size: 0.9rem; }
+.footer-copy { font-family: var(--font-mono); font-size: 0.75rem; margin-top: 18px; opacity: 0.7; }
 
-/* ---------- Dark mode ---------- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #1c1620;
-    --color-bg-alt: #241c2b;
-    --color-text: #f0eef4;
-    --color-text-muted: #b6aec4;
-    --color-border: #382e44;
-  }
-  .site-header { background: rgba(28, 22, 32, 0.9); }
-  .about-card, .exhibit-card, .schedule-table { background: #241c2b; }
-  .site-nav { background: var(--color-bg); }
-}
+/* ---------- Scroll reveal ----------
+  画面に入ったタイミングでふわっと現れる演出。
+  重要：.reveal 要素は「デフォルトで表示」にしてあります。JS(main.js)が
+  正常に動いたときだけ <html> に .js-reveal が付き、そのときだけ
+  最初に透明にしてからフェードインさせます。
+  こうすることで、万一JSが動かない/途中でエラーになっても、
+  コンテンツが消えたまま戻らない、という事故を防いでいます。 */
+.reveal { transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.js-reveal .reveal { opacity: 0; transform: translateY(28px); }
+.js-reveal .reveal.is-visible { opacity: 1; transform: none; }

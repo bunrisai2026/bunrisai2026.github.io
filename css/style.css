@@ -1,0 +1,313 @@
+/* ================================================================
+  配色や余白などの基本設定はここでまとめて管理しています。
+  色を変えたいときは下の :root { ... } の中の値だけ書き換えればOKです。
+================================================================= */
+:root {
+  --color-primary: #4b2e83;      /* メインカラー（紫） */
+  --color-primary-dark: #33205c;
+  --color-accent: #f2a33c;       /* アクセントカラー（ゴールド） */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f6f4fb;
+  --color-text: #26202f;
+  --color-text-muted: #6b6577;
+  --color-border: #e4dff0;
+  --max-width: 1080px;
+  --radius: 14px;
+  --font-base: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.7;
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.logo span { color: var(--color-accent); }
+
+.site-nav {
+  display: flex;
+  gap: 28px;
+}
+.site-nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.site-nav a:hover { color: var(--color-primary); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .nav-toggle { display: flex; }
+  .site-nav {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--color-bg);
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border);
+    transition: max-height 0.25s ease;
+  }
+  .site-nav.open { max-height: 320px; }
+  .site-nav a {
+    padding: 14px 20px;
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: #fff;
+  padding: 96px 0 72px;
+  text-align: center;
+}
+.hero-eyebrow {
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin: 0 0 8px;
+}
+.hero-title {
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  margin: 0 0 16px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.hero-date, .hero-theme {
+  margin: 6px 0;
+  font-size: 1.05rem;
+}
+.tbd {
+  color: var(--color-accent);
+  font-size: 0.85em;
+}
+.hero-theme { opacity: 0.9; }
+
+.hero-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: var(--color-accent);
+  color: #2b1a00;
+}
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.7);
+}
+.section .btn-outline {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ---------- Sections ---------- */
+.section { padding: 72px 0; }
+.section-alt { background: var(--color-bg-alt); }
+
+.section-title {
+  font-size: 1.7rem;
+  margin: 0 0 12px;
+  color: var(--color-primary);
+}
+.section-lead {
+  color: var(--color-text-muted);
+  max-width: 640px;
+  margin: 0 0 32px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.about-card {
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: #fff;
+}
+.about-card h3 {
+  margin: 0 0 8px;
+  color: var(--color-primary);
+  font-size: 1.05rem;
+}
+.about-card p { margin: 0; color: var(--color-text-muted); font-size: 0.95rem; }
+
+/* ---------- Exhibit cards ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.exhibit-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.exhibit-tag {
+  display: inline-block;
+  background: var(--color-bg-alt);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.exhibit-card h3 { margin: 0 0 6px; font-size: 1.1rem; }
+.exhibit-desc { color: var(--color-text-muted); font-size: 0.92rem; }
+
+/* ---------- Schedule ---------- */
+.day-title {
+  margin: 32px 0 12px;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+.day-title:first-of-type { margin-top: 0; }
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+.schedule-table th, .schedule-table td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+.schedule-table th {
+  background: var(--color-bg-alt);
+  color: var(--color-primary);
+  font-size: 0.9rem;
+}
+
+/* ---------- Access ---------- */
+.access-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .access-grid { grid-template-columns: 1fr; }
+}
+.map-placeholder {
+  background: var(--color-bg-alt);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+/* ---------- News ---------- */
+.news-list { list-style: none; margin: 0; padding: 0; }
+.news-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.news-date {
+  display: inline-block;
+  min-width: 110px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--color-primary-dark);
+  color: #fff;
+  padding: 40px 0;
+}
+.footer-inner { text-align: center; }
+.footer-inner p { margin: 4px 0; }
+.footer-sub { color: rgba(255,255,255,0.75); font-size: 0.9rem; }
+.footer-copy { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 16px; }
+
+/* ---------- Dark mode ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1c1620;
+    --color-bg-alt: #241c2b;
+    --color-text: #f0eef4;
+    --color-text-muted: #b6aec4;
+    --color-border: #382e44;
+  }
+  .site-header { background: rgba(28, 22, 32, 0.9); }
+  .about-card, .exhibit-card, .schedule-table { background: #241c2b; }
+  .site-nav { background: var(--color-bg); }
+}

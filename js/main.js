@@ -15,7 +15,36 @@ document.addEventListener("DOMContentLoaded", () => {
   try { initScrollReveal(); } catch (e) { console.error(e); }
   try { initEasedAnchorScroll(); } catch (e) { console.error(e); }
   try { initBackToTop(); } catch (e) { console.error(e); }
+  try { initCountdown(); } catch (e) { console.error(e); }
 });
+
+/* ---------- 文化祭までのカウントダウン ----------
+   当日(2026/10/3)になった瞬間、この要素ごと非表示にする。
+   HTML側で最初から hidden にしてあるので、何か失敗しても
+   カウントダウンが出ないだけで、消えたコンテンツにはならない。 */
+function initCountdown() {
+  const el = document.getElementById("countdown");
+  const numberEl = document.getElementById("countdownNumber");
+  if (!el || !numberEl) return;
+
+  const FESTIVAL_DATE = new Date(2026, 9, 3); // 2026年10月3日(土) 0:00
+
+  function update() {
+    const now = new Date();
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const daysLeft = Math.round((FESTIVAL_DATE - todayStart) / 86400000);
+
+    if (daysLeft <= 0) {
+      el.hidden = true;
+      return;
+    }
+    numberEl.textContent = daysLeft;
+    el.hidden = false;
+  }
+
+  update();
+  setInterval(update, 60000); // 日付が変わるタイミングを1分以内に拾えれば十分
+}
 
 function initBackToTop() {
   const btn = document.getElementById("backToTop");

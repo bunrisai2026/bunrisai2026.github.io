@@ -1,0 +1,29 @@
+// Firebaseコンソール → Firestore Database → 「ルール」タブに、この内容をそのまま貼り付けてください。
+//
+// このアプリはFirebase Authを使わない簡易構成のため、booths コレクションは
+// 「誰でも読める・誰でも書ける」状態になります（書き込みはstaff.html内の合言葉で
+// ゆるく制限していますが、それはブラウザ側のガードであり、これ自体はサーバー側の
+// 本格的な認証ではありません）。下のルールは、せめて送られてくるデータの形が
+// おかしくならないよう最低限のチェックだけを行います。
+// 文理祭のような短期間・低リスクなイベント用途としては十分ですが、
+// より厳密に守りたい場合はFirebase Authの導入を検討してください。
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /booths/{boothId} {
+      allow read: if true;
+
+      allow create: if request.resource.data.keys().hasOnly(
+                        ['name', 'location', 'waitMinutes', 'closed', 'order', 'updatedAt']
+                      )
+                      && request.resource.data.name is string
+                      && request.resource.data.name.size() > 0
+                      && request.resource.data.waitMinutes is int;
+
+      allow update: if request.resource.data.diff(resource.data).affectedKeys()
+                      .hasOnly(['waitMinutes', 'closed', 'updatedAt', 'name', 'location', 'order']);
+
+      allow delete: if true;
+    }
+  }
+}

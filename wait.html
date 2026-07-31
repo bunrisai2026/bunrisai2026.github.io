@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>待ち時間 | 文理祭 2026</title>
+<meta name="description" content="文理祭2026 各出し物の現在の待ち時間をリアルタイムで確認できます。">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/wait.css">
+</head>
+<body class="wait-body">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">文理祭<span>2026</span></a>
+    <a class="btn btn-outline btn-small" href="index.html">トップに戻る</a>
+  </div>
+</header>
+
+<main class="wait-main">
+  <div class="container">
+    <span class="section-kicker">Wait Time</span>
+    <h1 class="section-title">待ち時間</h1>
+    <p class="wait-lead">各出し物の現在の待ち時間です。数字は目安であり、30秒ごとに自動で更新されます。</p>
+
+    <p id="loadError" class="wait-error" hidden>読み込みに失敗しました。電波の良い場所で再読み込みしてください。</p>
+    <p id="emptyState" class="wait-empty" hidden>まだ待ち時間の登録がありません。</p>
+    <ul id="boothList" class="wait-list"></ul>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>文理祭実行委員会</p>
+    <p class="footer-copy">&copy; <span id="year"></span> 文理祭実行委員会</p>
+  </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script type="module" src="js/wait-public.js"></script>
+</body>
+</html>

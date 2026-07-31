@@ -1,9 +1,10 @@
-// このファイルは以下の4つだけを行う最小限のスクリプトです。
+// このファイルは以下だけを行う最小限のスクリプトです。
 // 通常はここを編集する必要はありません。
 // 1) スマホ用メニューの開閉
 // 2) フッターの年表示
 // 3) ヒーローの粒子演出
 // 4) スクロールで要素がふわっと現れる演出 / ナビのイージング付きスクロール
+// 5) トップに戻るボタン
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -23,16 +24,18 @@ document.addEventListener("DOMContentLoaded", () => {
   try { initHeroParticles(); } catch (e) { console.error(e); }
   try { initScrollReveal(); } catch (e) { console.error(e); }
   try { initEasedAnchorScroll(); } catch (e) { console.error(e); }
+  try { initBackToTop(); } catch (e) { console.error(e); }
+  try { initHeaderAutoHide(); } catch (e) { console.error(e); }
 });
 
 /* ---------- 1. ヒーローの粒子演出 ---------- */
 function initHeroParticles() {
   const canvas = document.getElementById("heroCanvas");
-  const hero = canvas && canvas.closest(".sheet-hero");
+  const hero = canvas && canvas.closest(".hero");
   if (!canvas || !hero) return;
 
   const ctx = canvas.getContext("2d");
-  const colors = ["255,122,69", "255,61,127"];
+  const colors = ["255,229,96", "255,255,255"];
   let width, height, dpr, particles = [];
 
   function resize() {
@@ -167,5 +170,63 @@ function initEasedAnchorScroll() {
       scrollToTarget(target);
       history.pushState(null, "", `#${id}`);
     });
+  });
+}
+
+/* ---------- 4b. 下スクロールでヘッダーを隠し、少し上に戻すだけで再表示 ----------
+   ページの途中や下の方にいても、指を軽く上にスワイプするだけで
+   メニューバー(ヘッダー)がすぐ戻ってくるようにする。 */
+function initHeaderAutoHide() {
+  const header = document.querySelector(".site-header");
+  const siteNav = document.getElementById("siteNav");
+  if (!header) return;
+
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  function update() {
+    const currentY = Math.max(window.scrollY, 0);
+    const menuOpen = siteNav && siteNav.classList.contains("open");
+    const scrollingDown = currentY > lastY + 4;
+    const scrollingUp = currentY < lastY - 4;
+    const pastHeader = currentY > header.offsetHeight;
+
+    if (!menuOpen) {
+      if (scrollingDown && pastHeader) {
+        header.classList.add("is-hidden");
+      } else if (scrollingUp || currentY <= header.offsetHeight) {
+        header.classList.remove("is-hidden");
+      }
+    }
+
+    lastY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+}
+
+/* ---------- 4. トップに戻るボタン ---------- */
+function initBackToTop() {
+  const btn = document.getElementById("backToTop");
+  if (!btn) return;
+
+  const toggle = () => {
+    btn.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.6);
+  };
+  window.addEventListener("scroll", toggle, { passive: true });
+  toggle();
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
   });
 }

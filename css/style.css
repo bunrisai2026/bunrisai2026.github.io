@@ -330,6 +330,15 @@ img { max-width: 100%; display: block; }
   max-width: var(--max-width);
   margin: 0 auto;
 }
+/* 最初は7件目以降を隠しておき、ボタンを押すと.show-allが付いて全部見えるようにする */
+.card-grid .exhibit-card:nth-child(n+7) { display: none; }
+.card-grid.show-all .exhibit-card:nth-child(n+7) { display: block; }
+
+.exhibits-show-more {
+  display: block;
+  width: fit-content;
+  margin: 32px auto 0;
+}
 .card-grid > * { min-width: 0; }
 .exhibit-card {
   background: rgba(43, 22, 12, 0.035);

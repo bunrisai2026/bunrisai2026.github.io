@@ -16,7 +16,30 @@ document.addEventListener("DOMContentLoaded", () => {
   try { initEasedAnchorScroll(); } catch (e) { console.error(e); }
   try { initBackToTop(); } catch (e) { console.error(e); }
   try { initCountdown(); } catch (e) { console.error(e); }
+  try { initExhibitsShowMore(); } catch (e) { console.error(e); }
 });
+
+/* ---------- 出し物：最初は一部だけ表示し、ボタンで全部見せる ---------- */
+function initExhibitsShowMore() {
+  const grid = document.querySelector(".card-grid");
+  const btn = document.getElementById("exhibitsShowMore");
+  if (!grid || !btn) return;
+
+  const total = grid.querySelectorAll(".exhibit-card").length;
+  const visibleByDefault = 6;
+  const remaining = total - visibleByDefault;
+
+  if (remaining <= 0) {
+    btn.hidden = true;
+    return;
+  }
+
+  btn.textContent = `すべて表示（残り${remaining}件）`;
+  btn.addEventListener("click", () => {
+    grid.classList.add("show-all");
+    btn.hidden = true;
+  });
+}
 
 /* ---------- 文化祭までのカウントダウン ----------
    当日(2026/10/3 0:00)になった瞬間、この要素ごと非表示にする。

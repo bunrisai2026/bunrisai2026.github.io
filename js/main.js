@@ -19,31 +19,41 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ---------- 文化祭までのカウントダウン ----------
-   当日(2026/10/3)になった瞬間、この要素ごと非表示にする。
+   当日(2026/10/3 0:00)になった瞬間、この要素ごと非表示にする。
    HTML側で最初から hidden にしてあるので、何か失敗しても
    カウントダウンが出ないだけで、消えたコンテンツにはならない。 */
 function initCountdown() {
   const el = document.getElementById("countdown");
-  const numberEl = document.getElementById("countdownNumber");
-  if (!el || !numberEl) return;
+  const daysEl = document.getElementById("cdDays");
+  const hoursEl = document.getElementById("cdHours");
+  const minutesEl = document.getElementById("cdMinutes");
+  const secondsEl = document.getElementById("cdSeconds");
+  if (!el || !daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
-  const FESTIVAL_DATE = new Date(2026, 9, 3); // 2026年10月3日(土) 0:00
+  const FESTIVAL_START = new Date(2026, 9, 3, 0, 0, 0); // 2026年10月3日(土) 0:00
+
+  function pad(n) {
+    return String(n).padStart(2, "0");
+  }
 
   function update() {
-    const now = new Date();
-    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const daysLeft = Math.round((FESTIVAL_DATE - todayStart) / 86400000);
+    const diff = FESTIVAL_START - new Date();
 
-    if (daysLeft <= 0) {
+    if (diff <= 0) {
       el.hidden = true;
       return;
     }
-    numberEl.textContent = daysLeft;
+
+    const totalSeconds = Math.floor(diff / 1000);
+    daysEl.textContent = Math.floor(totalSeconds / 86400);
+    hoursEl.textContent = pad(Math.floor((totalSeconds % 86400) / 3600));
+    minutesEl.textContent = pad(Math.floor((totalSeconds % 3600) / 60));
+    secondsEl.textContent = pad(totalSeconds % 60);
     el.hidden = false;
   }
 
   update();
-  setInterval(update, 60000); // 日付が変わるタイミングを1分以内に拾えれば十分
+  setInterval(update, 1000);
 }
 
 function initBackToTop() {

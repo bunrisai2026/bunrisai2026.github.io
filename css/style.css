@@ -156,10 +156,14 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   padding: 64px 0;
   text-align: center;
+  /* ▼画像を差し替えても同じファイル名だとブラウザが古い画像を
+     キャッシュしたまま表示し続けることがあるため、末尾に ?v=2 という
+     印を付けています。次に写真を差し替えるときは、この数字を
+     (?v=3, ?v=4 …と)1つ増やすと、古い画像が残らず確実に切り替わります。 */
   background:
     linear-gradient(180deg, rgba(20, 10, 8, 0.3) 0%, rgba(20, 10, 8, 0.4) 55%, rgba(20, 10, 8, 0.7) 100%),
     radial-gradient(circle at 50% 30%, rgba(232, 67, 43, 0.2), rgba(255, 182, 39, 0.16) 40%, transparent 65%),
-    url("images/hero-stage.jpg") center 30% / cover no-repeat;
+    url("images/hero-stage.jpg?v=2") center 30% / cover no-repeat;
 }
 .sheet-about {
   position: relative;
@@ -214,27 +218,31 @@ img { max-width: 100%; display: block; }
 
 /* ---------- カウントダウン ----------
    当日(2026/10/3)を迎えた瞬間、JS側(initCountdown)がこの要素ごと
-   hidden にして消す。 */
-.countdown {
-  margin-top: 28px;
+   hidden にして消す。1秒ごとに更新される。 */
+.countdown { margin-top: 28px; }
+.countdown-label { margin: 0 0 10px; font-size: 1rem; font-weight: 700; opacity: 0.92; text-align: center; }
+.countdown-row {
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: center;
-  gap: 10px;
+  gap: clamp(10px, 3vw, 28px);
 }
-.countdown-label { font-size: 1rem; font-weight: 700; opacity: 0.92; }
+.countdown-item { display: flex; flex-direction: column; align-items: center; }
 .countdown-number {
   font-family: var(--font-mono);
-  font-size: clamp(3.2rem, 11vw, 6rem);
+  font-size: clamp(2rem, 7vw, 3.6rem);
   font-weight: 800;
   line-height: 1;
   font-variant-numeric: tabular-nums;
+  min-width: 1.6em;
+  text-align: center;
   background: linear-gradient(90deg, var(--burst-1), var(--burst-2));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   text-shadow: 0 2px 30px rgba(232, 67, 43, 0.35);
 }
+.countdown-unit { margin-top: 6px; font-size: 0.78rem; font-weight: 700; opacity: 0.85; }
 
 .hero-actions { margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 

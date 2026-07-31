@@ -156,14 +156,14 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   padding: 64px 0;
   text-align: center;
-  /* ▼画像を差し替えても同じファイル名だとブラウザが古い画像を
-     キャッシュしたまま表示し続けることがあるため、末尾に ?v=2 という
-     印を付けています。次に写真を差し替えるときは、この数字を
-     (?v=3, ?v=4 …と)1つ増やすと、古い画像が残らず確実に切り替わります。 */
+  /* ▼写真を差し替えるときは、同じファイル名を上書きするのではなく
+     新しいファイル名にして、この行のファイル名も一緒に書き換えてください。
+     （同じファイル名のままだとブラウザ/CDN側のキャッシュが原因で
+     　古い画像が表示され続けることがあるため） */
   background:
     linear-gradient(180deg, rgba(20, 10, 8, 0.3) 0%, rgba(20, 10, 8, 0.4) 55%, rgba(20, 10, 8, 0.7) 100%),
     radial-gradient(circle at 50% 30%, rgba(232, 67, 43, 0.2), rgba(255, 182, 39, 0.16) 40%, transparent 65%),
-    url("images/hero-stage.jpg?v=2") center 30% / cover no-repeat;
+    url("images/hero-courtyard.jpg") center 30% / cover no-repeat;
 }
 .sheet-about {
   position: relative;

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   try { initExhibitsShowMore(); } catch (e) { console.error(e); }
 });
 
-/* ---------- 出し物：最初は一部だけ表示し、ボタンで全部見せる ---------- */
+/* ---------- 出し物：最初は一部だけ表示し、ボタンで全部見せる（もう一度押すとたたむ） ---------- */
 function initExhibitsShowMore() {
   const grid = document.querySelector(".card-grid");
   const btn = document.getElementById("exhibitsShowMore");
@@ -34,10 +34,16 @@ function initExhibitsShowMore() {
     return;
   }
 
-  btn.textContent = `すべて表示（残り${remaining}件）`;
+  const showLabel = `すべて表示（残り${remaining}件）`;
+  const hideLabel = "たたむ";
+  btn.textContent = showLabel;
+
   btn.addEventListener("click", () => {
-    grid.classList.add("show-all");
-    btn.hidden = true;
+    const expanded = grid.classList.toggle("show-all");
+    btn.textContent = expanded ? hideLabel : showLabel;
+    if (!expanded) {
+      grid.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    }
   });
 }
 

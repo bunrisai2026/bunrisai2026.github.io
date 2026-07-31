@@ -22,7 +22,7 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="logo" href="#top">文理祭2026</a>
+    <a class="logo" href="#top">文理祭<span>2026</span></a>
     <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
       <span></span><span></span><span></span>
     </button>
@@ -39,84 +39,57 @@
 
 <main>
 
-  <!-- ヒーロー ▼ここを編集 -->
-  <section class="hero" id="top">
+  <section class="sheet-hero" id="top">
     <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="container hero-inner">
       <p class="hero-eyebrow">西武学園文理高等学校</p>
       <h1 class="hero-title">文理祭 2026</h1>
       <p class="hero-date">開催日：2026年10月3日(土)・4日(日)</p>
-      <p class="hero-theme">今年のテーマ：「青春バースト」</p>
+      <p class="hero-theme">今年のテーマ：「<span class="theme-highlight">青春バースト</span>」</p>
       <div class="hero-actions">
         <a href="#exhibits" class="btn btn-primary">出し物をチェック</a>
         <a href="#access" class="btn btn-outline">アクセス</a>
       </div>
     </div>
-    <svg class="hero-wave" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,40 C150,90 300,0 450,30 C600,60 750,10 900,35 C1000,50 1100,20 1200,45 L1200,90 L0,90 Z" fill="#fbf8f4"></path>
-    </svg>
   </section>
-  <!-- ここまで編集 -->
 
-  <!-- 文理祭とは ▼ここを編集 -->
-  <section class="about" id="about">
+  <section class="sheet-about" id="about">
     <div class="container">
-
-      <div class="about-top">
-        <p class="about-lead reveal">
-          生徒が主体となって企画・運営する、本校最大の学校行事。<br>
-          各クラス・部活動による出し物、ステージ発表、模擬店などが2日間にわたって行われます。
-        </p>
-        <figure class="about-figure reveal">
-          <img src="images/about-campus.jpg" alt="西武学園文理高等学校 キャンパス">
-          <figcaption>西武学園文理高等学校 キャンパス</figcaption>
-        </figure>
-      </div>
-
-      <div class="statement-block reveal">
-        <span class="section-kicker">About</span>
-        <h2 class="section-title">文理祭で大切にしていること</h2>
-        <div class="deco-dots"><span></span><span></span><span></span><span></span></div>
-        <p class="statement">
-          同じ時間を、<br><em>青春バースト</em>で<br>分かち合おう
-        </p>
-        <p class="statement-body">
-          二日間限りの高揚感を、クラスや部活、有志の垣根を越えてみんなで作り上げる。
-          それぞれの出し物の裏側には、準備に費やした時間と仲間との物語があります。
-        </p>
-      </div>
-
-      <div class="feature-grid">
-        <div class="feature-card reveal">
-          <span class="num">01</span>
-          <div class="feature-dot"></div>
+      <span class="section-kicker reveal">About</span>
+      <h2 class="section-title reveal">文理祭とは</h2>
+      <figure class="about-figure reveal">
+        <img src="images/about-campus.jpg" alt="西武学園文理高等学校 キャンパス">
+        <figcaption>西武学園文理高等学校 キャンパス</figcaption>
+      </figure>
+      <p class="about-lead reveal">
+        生徒が主体となって企画・運営する、本校最大の学校行事。
+        各クラス・部活動による出し物、ステージ発表、模擬店などが2日間にわたって行われます。
+      </p>
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <div class="tick"></div>
           <h3>クラス企画</h3>
           <p>お化け屋敷・脱出ゲーム・カジノなど、各クラスが趣向を凝らした企画を実施します。</p>
         </div>
-        <div class="feature-card reveal">
-          <span class="num">02</span>
-          <div class="feature-dot"></div>
+        <div class="about-card reveal">
+          <div class="tick"></div>
           <h3>ステージ発表</h3>
           <p>有志団体や部活動によるステージパフォーマンスを予定しています。</p>
         </div>
-        <div class="feature-card reveal">
-          <span class="num">03</span>
-          <div class="feature-dot"></div>
+        <div class="about-card reveal">
+          <div class="tick"></div>
           <h3>模擬店・部活動企画</h3>
           <p>飲食を含む模擬店や、部活動による企画展示も行われます。</p>
         </div>
       </div>
-
     </div>
   </section>
-  <!-- ここまで編集 -->
 
-  <!-- 出し物 ▼ここを編集：カード全体をコピーして増やせます -->
-  <section class="exhibits" id="exhibits">
+  <section class="sheet-exhibits" id="exhibits">
     <div class="container">
       <span class="section-kicker reveal">Exhibits</span>
       <h2 class="section-title reveal">出し物</h2>
-      <p class="section-lead reveal">出し物の詳細は準備が整い次第、随時追加していきます。</p>
+      <p class="section-lead reveal">クラス企画（承認済み21件）を掲載しています。部活動・有志団体分は準備が整い次第、追加していきます。</p>
 
       <div class="card-grid">
         <div class="exhibit-card reveal">
@@ -127,7 +100,6 @@
             <p>担当：1年AC1</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -136,7 +108,6 @@
             <p>担当：1年AM1</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -145,7 +116,6 @@
             <p>担当：1年AM2</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -154,7 +124,6 @@
             <p>担当：1年AM3</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -163,7 +132,6 @@
             <p>担当：1年AM4</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -172,7 +140,6 @@
             <p>担当：1年C1</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -181,7 +148,6 @@
             <p>担当：1年D1</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -190,7 +156,6 @@
             <p>担当：1年D3</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -199,7 +164,6 @@
             <p>担当：1年D4</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -208,7 +172,6 @@
             <p>担当：1年D6</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -217,7 +180,6 @@
             <p>担当：2年AC1</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -226,7 +188,6 @@
             <p>担当：2年AM3</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -235,7 +196,6 @@
             <p>担当：2年AM5</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -244,7 +204,6 @@
             <p>担当：2年AR1</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -253,7 +212,6 @@
             <p>担当：2年C1</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -262,7 +220,6 @@
             <p>担当：2年D1</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -271,7 +228,6 @@
             <p>担当：2年D5</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -280,7 +236,6 @@
             <p>担当：2年D6</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -289,7 +244,6 @@
             <p>担当：2年D7</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -298,7 +252,6 @@
             <p>担当：2年S1</p>
           </div>
         </div>
-
         <div class="exhibit-card reveal">
           <div class="exhibit-media"></div>
           <div class="exhibit-body">
@@ -307,17 +260,12 @@
             <p>担当：2年SP2</p>
           </div>
         </div>
-
-        <!-- カードを増やす場合はこの下に貼り付け -->
-
       </div>
     </div>
   </section>
-  <!-- ここまで編集 -->
 
   <div class="info-region">
 
-    <!-- タイムスケジュール ▼ここを編集：行(tr)をコピーして増やせます -->
     <section class="info-section" id="schedule">
       <div class="container">
         <span class="section-kicker reveal">Schedule</span>
@@ -352,9 +300,7 @@
         <p class="tbd">※時間は予定です。確定次第このページを更新します。</p>
       </div>
     </section>
-    <!-- ここまで編集 -->
 
-    <!-- アクセス ▼ここを編集 -->
     <section class="info-section" id="access">
       <div class="container access-grid">
         <div class="reveal">
@@ -364,49 +310,41 @@
           <p>西武新宿線「新狭山駅」北口よりスクールバス約10分<br>
              （川越駅・東飯能駅・稲荷山公園駅・鶴ヶ島駅からもスクールバスあり／路線バスも利用可）</p>
           <p class="tbd">
-            通常期のスクールバス時刻表はこちら（<a href="files/school-bus-timetable.pdf" target="_blank" rel="noopener">PDF</a>）。
+            通常期のスクールバス時刻表はこちら（<a id="busPdfLink" href="files/school-bus-timetable.pdf" target="_blank" rel="noopener">PDF</a>）。
             ただし通常ダイヤは日曜・祭日運休のため、文理祭2日目（10/4・日）を含む当日の運行時刻・臨時ダイヤはお知らせ欄で別途お知らせします。
           </p>
-          <a class="btn btn-outline -dark" href="https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E6%AD%A6%E5%AD%A6%E5%9C%92%E6%96%87%E7%90%86%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1" target="_blank" rel="noopener">地図で見る</a>
+          <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E6%AD%A6%E5%AD%A6%E5%9C%92%E6%96%87%E7%90%86%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1" target="_blank" rel="noopener">地図で見る</a>
         </div>
         <figure class="access-photo reveal">
           <img src="images/access-gate.jpg" alt="正門">
         </figure>
       </div>
     </section>
-    <!-- ここまで編集 -->
 
-    <!-- お知らせ ▼ここを編集：li要素をコピーして増やせます -->
     <section class="info-section" id="news">
       <div class="container">
         <span class="section-kicker reveal">News</span>
         <h2 class="section-title reveal">お知らせ</h2>
         <ul class="news-list reveal">
-          <li><span class="news-date">2026.07.29</span><span>文理祭2026 公式サイトを公開しました。</span></li>
-          <!-- お知らせを増やす場合はこの下に貼り付け
-          <li><span class="news-date">YYYY.MM.DD</span><span>お知らせ内容</span></li>
-          -->
+          <li><span class="news-date">2026.07.29</span> 文理祭2026 公式サイトを公開しました。</li>
         </ul>
       </div>
     </section>
-    <!-- ここまで編集 -->
 
   </div>
 
 </main>
 
-<!-- フッター ▼ここを編集 -->
+<button id="backToTop" class="back-to-top" aria-label="トップに戻る">↑</button>
+
 <footer class="site-footer">
   <div class="container footer-inner">
-    <img class="footer-mascot" src="images/mascot-bunris.png" alt="BUNRI'S">
+    <div class="footer-mascot-wrap"><img class="footer-mascot" src="images/mascot-bunris.png" alt="BUNRI'S"></div>
     <p>文理祭実行委員会</p>
     <p class="footer-sub">お問い合わせ：担当教員またはSNSアカウントまで</p>
     <p class="footer-copy">&copy; <span id="year"></span> 文理祭実行委員会</p>
   </div>
 </footer>
-<!-- ここまで編集 -->
-
-<button id="backToTop" class="back-to-top" aria-label="トップに戻る">↑</button>
 
 <script src="js/main.js"></script>
 </body>

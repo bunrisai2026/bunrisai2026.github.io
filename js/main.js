@@ -1,11 +1,3 @@
-// このファイルは以下だけを行う最小限のスクリプトです。
-// 通常はここを編集する必要はありません。
-// 1) スマホ用メニューの開閉
-// 2) フッターの年表示
-// 3) ヒーローの粒子演出
-// 4) スクロールで要素がふわっと現れる演出 / ナビのイージング付きスクロール
-// 5) トップに戻るボタン
-
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,22 +11,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // それぞれ独立して実行し、どれか1つが失敗しても他が止まらないようにする
-  // （特にinitScrollRevealが動かないとコンテンツが消えたままになるため重要）
   try { initHeroParticles(); } catch (e) { console.error(e); }
   try { initScrollReveal(); } catch (e) { console.error(e); }
   try { initEasedAnchorScroll(); } catch (e) { console.error(e); }
   try { initBackToTop(); } catch (e) { console.error(e); }
 });
 
-/* ---------- 1. ヒーローの粒子演出 ---------- */
+function initBackToTop() {
+  const btn = document.getElementById("backToTop");
+  if (!btn) return;
+  const toggle = () => {
+    btn.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.6);
+  };
+  window.addEventListener("scroll", toggle, { passive: true });
+  toggle();
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+  });
+}
+
 function initHeroParticles() {
   const canvas = document.getElementById("heroCanvas");
-  const hero = canvas && canvas.closest(".hero");
+  const hero = canvas && canvas.closest(".sheet-hero");
   if (!canvas || !hero) return;
 
   const ctx = canvas.getContext("2d");
-  const colors = ["255,229,96", "255,255,255"];
+  const colors = ["232,67,43", "255,182,39"];
   let width, height, dpr, particles = [];
 
   function resize() {
@@ -86,22 +88,18 @@ function initHeroParticles() {
   window.addEventListener("resize", resize);
 }
 
-/* ---------- 2. スクロールで現れる演出 ----------
-   .js-reveal を付けるのはここで観測を開始できると確認できたときだけ。
-   途中で例外が出た場合も、catch 節で必ず解除して「表示されたまま」に戻す。 */
 function initScrollReveal() {
   const targets = document.querySelectorAll(".reveal");
   if (targets.length === 0) return;
 
   if (reduceMotion || !("IntersectionObserver" in window)) {
-    return; // .js-reveal を付けないので、CSSの初期状態(表示)のまま
+    return;
   }
 
   const root = document.documentElement;
   try {
     root.classList.add("js-reveal");
 
-    // 同じセクション内で並んでいる要素は少しずつ遅れて現れるようにする
     const groups = new Map();
     targets.forEach((el) => {
       const parent = el.parentElement;
@@ -129,7 +127,6 @@ function initScrollReveal() {
   }
 }
 
-/* ---------- 3. ナビ・ボタンのイージング付きスクロール ---------- */
 function initEasedAnchorScroll() {
   const header = document.querySelector(".site-header");
   const headerH = header ? header.offsetHeight : 0;
@@ -169,21 +166,5 @@ function initEasedAnchorScroll() {
       scrollToTarget(target);
       history.pushState(null, "", `#${id}`);
     });
-  });
-}
-
-/* ---------- 4. トップに戻るボタン ---------- */
-function initBackToTop() {
-  const btn = document.getElementById("backToTop");
-  if (!btn) return;
-
-  const toggle = () => {
-    btn.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.6);
-  };
-  window.addEventListener("scroll", toggle, { passive: true });
-  toggle();
-
-  btn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
   });
 }

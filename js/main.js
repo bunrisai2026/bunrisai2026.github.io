@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
   try { initScrollReveal(); } catch (e) { console.error(e); }
   try { initEasedAnchorScroll(); } catch (e) { console.error(e); }
   try { initBackToTop(); } catch (e) { console.error(e); }
-  try { initHeaderAutoHide(); } catch (e) { console.error(e); }
 });
 
 /* ---------- 1. ヒーローの粒子演出 ---------- */
@@ -171,48 +170,6 @@ function initEasedAnchorScroll() {
       history.pushState(null, "", `#${id}`);
     });
   });
-}
-
-/* ---------- 4b. 下スクロールでヘッダーを隠し、少し上に戻すだけで再表示 ----------
-   ページの途中や下の方にいても、指を軽く上にスワイプするだけで
-   メニューバー(ヘッダー)がすぐ戻ってくるようにする。 */
-function initHeaderAutoHide() {
-  const header = document.querySelector(".site-header");
-  const siteNav = document.getElementById("siteNav");
-  if (!header) return;
-
-  let lastY = window.scrollY;
-  let ticking = false;
-
-  function update() {
-    const currentY = Math.max(window.scrollY, 0);
-    const menuOpen = siteNav && siteNav.classList.contains("open");
-    const scrollingDown = currentY > lastY + 4;
-    const scrollingUp = currentY < lastY - 4;
-    const pastHeader = currentY > header.offsetHeight;
-
-    if (!menuOpen) {
-      if (scrollingDown && pastHeader) {
-        header.classList.add("is-hidden");
-      } else if (scrollingUp || currentY <= header.offsetHeight) {
-        header.classList.remove("is-hidden");
-      }
-    }
-
-    lastY = currentY;
-    ticking = false;
-  }
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!ticking) {
-        requestAnimationFrame(update);
-        ticking = true;
-      }
-    },
-    { passive: true }
-  );
 }
 
 /* ---------- 4. トップに戻るボタン ---------- */

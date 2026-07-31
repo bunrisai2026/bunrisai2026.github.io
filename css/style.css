@@ -73,11 +73,7 @@ img { max-width: 100%; display: block; }
   background: rgba(251, 248, 244, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
-  /* 下にスクロールすると隠れ、少しでも上にスクロールすると
-     すぐ戻ってくる（js/main.jsのinitHeaderAutoHideが .is-hidden を付け外しする） */
-  transition: transform 0.3s var(--ease);
 }
-.site-header.is-hidden { transform: translateY(-100%); }
 
 .header-inner {
   width: 100%;

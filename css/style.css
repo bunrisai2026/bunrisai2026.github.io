@@ -1,12 +1,13 @@
 :root {
-  --bg: #fff6e8;
-  --bg-panel: #ffecd1;
-  --bg-panel-alt: #ffe0b8;
-  --text: #2b160c;
-  --text-muted: #6b4a33;
-  --border: rgba(43, 22, 12, 0.14);
-  --burst-1: #e8432b;
-  --burst-2: #ffb627;
+  --bg: #f6f8ff;
+  --bg-panel: #eef4ff;
+  --bg-panel-alt: #f8fbff;
+  --text: #12213d;
+  --text-muted: #5a6784;
+  --border: rgba(17, 34, 73, 0.12);
+  --burst-1: #ff6b35;
+  --burst-2: #ffd447;
+  --navy: #102349;
   --max-width: 1080px;
   --header-h: 64px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -50,9 +51,9 @@ img { max-width: 100%; display: block; }
   height: var(--header-h);
   display: flex;
   align-items: center;
-  background: rgba(255, 246, 232, 0.78);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
+  background: rgba(16, 35, 73, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .header-inner {
@@ -63,9 +64,9 @@ img { max-width: 100%; display: block; }
 }
 
 .logo {
-  font-weight: 800;
+  font-weight: 900;
   font-size: 1.1rem;
-  color: var(--text);
+  color: #fff;
   text-decoration: none;
   letter-spacing: -0.01em;
 }
@@ -76,10 +77,10 @@ img { max-width: 100%; display: block; }
   color: transparent;
 }
 
-.site-nav { display: flex; gap: 30px; }
+.site-nav { display: flex; gap: 24px; }
 .site-nav a {
   position: relative;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -98,7 +99,7 @@ img { max-width: 100%; display: block; }
   transform-origin: center;
   transition: transform 0.35s var(--ease);
 }
-.site-nav a:hover { color: var(--text); }
+.site-nav a:hover { color: #fff; }
 .site-nav a:hover::after { transform: scaleX(1); }
 
 .site-nav a.nav-cta {
@@ -156,12 +157,11 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   padding: 64px 0;
   text-align: center;
-  background-color: #3a2418; /* 画像の読み込み中/失敗時の下地色 */
+  background:
+   radial-gradient(circle at 82% 12%, rgba(255, 212, 71, 0.28), transparent 24%),
+   radial-gradient(circle at 15% 80%, rgba(255, 107, 53, 0.18), transparent 24%),
+   linear-gradient(135deg, #102349 0%, #2e58a6 65%, #4f72dd 100%);
 }
-/* ▼写真は CSS の background-image ではなく実際の <img> タグで表示している。
-   （CSSのbackground-imageで指定すると、環境によっては画像が読み込まれても
-   　描画されないことがあったため、確実に表示される<img>タグに変更した）
-   写真を差し替えるときは、index.html内の .hero-photo の src を書き換えてください。 */
 .hero-photo {
   position: absolute;
   inset: 0;
@@ -170,32 +170,34 @@ img { max-width: 100%; display: block; }
   object-fit: cover;
   object-position: center 30%;
   z-index: -2;
+  opacity: 0.16;
+  mix-blend-mode: screen;
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(20, 10, 8, 0.3) 0%, rgba(20, 10, 8, 0.4) 55%, rgba(20, 10, 8, 0.7) 100%),
-    radial-gradient(circle at 50% 30%, rgba(232, 67, 43, 0.2), rgba(255, 182, 39, 0.16) 40%, transparent 65%);
+   linear-gradient(180deg, rgba(16, 35, 73, 0.15) 0%, rgba(16, 35, 73, 0.25) 55%, rgba(16, 35, 73, 0.55) 100%),
+   radial-gradient(circle at 50% 30%, rgba(255, 212, 71, 0.18), transparent 34%);
 }
 .sheet-about {
   position: relative;
   z-index: 2;
-  background: var(--bg-panel);
+  background: linear-gradient(180deg, #f5f8ff 0%, #eef4ff 100%);
   border-radius: 32px 32px 0 0;
   padding: 120px 0;
 }
 .sheet-exhibits {
   position: relative;
   z-index: 2;
-  background: var(--bg-panel-alt);
+  background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
   border-radius: 32px 32px 0 0;
   padding: 120px 0;
 }
 
 .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
-.hero-inner { position: relative; z-index: 1; color: #fff; }
+.hero-inner { position: relative; z-index: 1; color: #fff; max-width: 950px; }
 .hero-eyebrow {
   font-family: var(--font-mono);
   letter-spacing: 0.14em;
@@ -209,17 +211,17 @@ img { max-width: 100%; display: block; }
 .hero-title {
   font-size: clamp(2.8rem, 8vw, 5.2rem);
   margin: 0 0 20px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.02em;
   text-wrap: balance;
-  text-shadow: 0 2px 26px rgba(232, 67, 43, 0.22);
+  text-shadow: 0 2px 26px rgba(255, 212, 71, 0.2);
 }
 .hero-date {
   margin: 6px 0;
   font-size: 1.05rem;
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 .hero-theme { margin: 16px 0 0; font-size: 1.25rem; font-weight: 700; }
 .theme-highlight {
@@ -294,8 +296,8 @@ img { max-width: 100%; display: block; }
 .section-title {
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   margin: 0 0 20px;
-  color: var(--text);
-  font-weight: 800;
+  color: var(--navy);
+  font-weight: 900;
   letter-spacing: -0.01em;
   text-align: center;
 }
@@ -344,7 +346,6 @@ img { max-width: 100%; display: block; }
   max-width: var(--max-width);
   margin: 0 auto;
 }
-/* 最初は7件目以降を隠しておき、ボタンを押すと.show-allが付いて全部見えるようにする */
 .card-grid .exhibit-card:nth-child(n+7) { display: none; }
 .card-grid.show-all .exhibit-card:nth-child(n+7) { display: block; }
 
@@ -355,18 +356,30 @@ img { max-width: 100%; display: block; }
 }
 .card-grid > * { min-width: 0; }
 .exhibit-card {
-  background: rgba(43, 22, 12, 0.035);
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(17, 34, 73, 0.1);
+  border-radius: 18px;
   overflow: hidden;
+  box-shadow: 0 14px 40px rgba(16, 35, 73, 0.08);
 }
 .exhibit-media {
-  aspect-ratio: 4 / 3;
+  /* 実写真がまだない間は、4:3の大きなブロックではなく細い帯にして
+     カード1枚あたりの縦の高さを抑えている（写真ができたら
+     aspect-ratio:4/3 に戻すと、ここに写真が収まる） */
+  height: 6px;
   background:
-    linear-gradient(155deg, rgba(232, 67, 43, 0.3), rgba(255, 182, 39, 0.28) 60%, transparent),
-    var(--bg-panel);
+    linear-gradient(90deg, rgba(255, 107, 53, 0.85), rgba(255, 212, 71, 0.85));
 }
-.exhibit-body { padding: 20px 22px 22px; }
+.exhibit-body { padding: 16px 20px 18px; }
+.exhibit-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--burst-1, #ff6b35);
+  text-decoration: none;
+}
+.exhibit-link:hover { text-decoration: underline; }
 .exhibit-tag {
   display: inline-block;
   font-family: var(--font-mono);
@@ -376,11 +389,11 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 4px 9px;
-  border: 1px solid rgba(232, 67, 43, 0.4);
-  border-radius: 3px;
+  border: 1px solid rgba(255, 107, 53, 0.35);
+  border-radius: 999px;
   margin-bottom: 12px;
 }
-.exhibit-card h3 { margin: 0 0 6px; font-size: 1.1rem; color: var(--text); }
+.exhibit-card h3 { margin: 0 0 6px; font-size: 1.1rem; color: var(--navy); }
 .exhibit-desc { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
 
 .info-region { background: var(--bg-panel-alt); }

@@ -41,6 +41,7 @@ function initExhibitsShowMore() {
   btn.addEventListener("click", () => {
     const expanded = grid.classList.toggle("show-all");
     btn.textContent = expanded ? hideLabel : showLabel;
+    btn.setAttribute("aria-expanded", String(expanded));
     if (!expanded) {
       grid.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
     }

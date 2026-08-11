@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  try { initHeroParticles(); } catch (e) { console.error(e); }
   try { initScrollReveal(); } catch (e) { console.error(e); }
   try { initEasedAnchorScroll(); } catch (e) { console.error(e); }
   try { initBackToTop(); } catch (e) { console.error(e); }
@@ -97,64 +96,6 @@ function initBackToTop() {
   btn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
   });
-}
-
-function initHeroParticles() {
-  const canvas = document.getElementById("heroCanvas");
-  const hero = canvas && canvas.closest(".sheet-hero");
-  if (!canvas || !hero) return;
-
-  const ctx = canvas.getContext("2d");
-  const colors = ["232,67,43", "255,182,39"];
-  let width, height, dpr, particles = [];
-
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = hero.clientWidth;
-    height = hero.clientHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + "px";
-    canvas.style.height = height + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-
-  function makeParticle() {
-    return {
-      x: Math.random() * width,
-      y: height + Math.random() * 60,
-      r: 1 + Math.random() * 2.4,
-      speed: 0.25 + Math.random() * 0.6,
-      drift: (Math.random() - 0.5) * 0.4,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      alpha: 0.15 + Math.random() * 0.5,
-    };
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-    particles.forEach((p) => {
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-    });
-  }
-
-  function tick() {
-    particles.forEach((p) => {
-      p.y -= p.speed;
-      p.x += p.drift;
-      if (p.y < -10) Object.assign(p, makeParticle(), { y: height + 10 });
-    });
-    draw();
-    requestAnimationFrame(tick);
-  }
-
-  resize();
-  particles = Array.from({ length: Math.min(Math.round((width * height) / 18000), 70) }, makeParticle);
-  reduceMotion ? draw() : requestAnimationFrame(tick);
-  window.addEventListener("resize", resize);
 }
 
 function initScrollReveal() {

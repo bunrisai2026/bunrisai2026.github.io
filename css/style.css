@@ -136,14 +136,17 @@ img { max-width: 100%; display: block; }
     transition: max-height 0.3s var(--ease);
   }
   .site-nav.open { max-height: 360px; }
-  .site-nav a { padding: 16px 24px; border-top: 1px solid var(--border); }
+  .site-nav a { padding: 16px 24px; border-top: 1px solid var(--border); color: var(--text); }
   .site-nav a::after { display: none; }
+  .site-nav a:hover { color: var(--burst-1); }
   .site-nav a.nav-cta {
     display: inline-block;
     margin: 14px 24px;
     padding: 10px 20px;
     border-top: none;
+    color: #fff;
   }
+  .site-nav a.nav-cta:hover { color: #fff; }
 }
 
 .sheet-hero {

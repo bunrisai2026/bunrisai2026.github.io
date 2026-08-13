@@ -13,7 +13,7 @@
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --font-base: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
-  --font-display: "Dela Gothic One", var(--font-base);
+  --font-display: "Yusei Magic", var(--font-base);
 }
 
 * { box-sizing: border-box; }

@@ -210,7 +210,6 @@ img { max-width: 100%; display: block; }
   margin: 0 0 20px;
   letter-spacing: 0;
   text-wrap: balance;
-  text-shadow: 0 2px 26px rgba(255, 212, 71, 0.2);
 }
 .hero-date {
   margin: 6px 0;
@@ -252,7 +251,6 @@ img { max-width: 100%; display: block; }
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 2px 30px rgba(232, 67, 43, 0.35);
 }
 .countdown-unit { margin-top: 6px; font-size: 0.78rem; font-weight: 700; opacity: 0.85; }
 

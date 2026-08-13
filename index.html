@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>文理祭 2026 | 文理祭実行委員会</title>
 <meta name="description" content="文理祭2026 公式サイト。開催日程・出し物・アクセス情報をご案内します。">
+<link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Zen+Old+Mincho:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="css/style.css?v=7">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
 
@@ -16,22 +17,21 @@
   編集ガイド
   ・「▼ここを編集」とあるブロックの中の文字だけ書き換えれば更新できます。
   ・タグ(< >で囲まれた部分)は消さずに、日本語の文章部分だけ直してください。
-  ・カードや行を増やしたいときは、同じブロックをコピーして貼り付け、
-    中の文字を変えるだけでOKです。
-  ・"reveal" というclassはスクロールで現れる演出用なので、消さないでください。
+  ・"reveal" というclassはスクロールで現れる演出用、"reveal-mask" は写真が
+    開くように現れる演出用なので、消さないでください。
   ・写真を差し替えたいときは images/ フォルダに新しい画像を置いて、
     src="images/○○.jpg" の部分をそのファイル名に書き換えてください。
 ================================================================= -->
 
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a class="logo" href="#top">文理祭<span>2026</span></a>
-    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="siteNav">
       <span></span><span></span><span></span>
     </button>
-    <nav class="site-nav" id="siteNav">
+    <nav class="site-nav" id="siteNav" role="navigation" aria-label="メインメニュー">
       <a href="#about">文理祭とは</a>
-      <a href="#exhibits">出し物</a>
+      <a href="#find">出し物</a>
       <a href="#schedule">タイムスケジュール</a>
       <a href="#access">アクセス</a>
       <a href="#news">お知らせ</a>
@@ -43,345 +43,167 @@
 <main>
 
   <section class="sheet-hero" id="top">
-    <img class="hero-photo" src="images/hero-courtyard.jpg" alt="">
+    <img class="hero-photo" id="heroPhoto" src="images/hero-courtyard.jpg" alt="">
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="container hero-inner">
-      <p class="hero-eyebrow">西武学園文理高等学校</p>
-      <h1 class="hero-title">文理祭 2026</h1>
-      <p class="hero-date">開催日：2026年10月3日(土)・4日(日)</p>
-      <p class="hero-theme">今年のテーマ：「<span class="theme-highlight">青春バースト</span>」</p>
+      <div class="hero-content">
+        <p class="hero-eyebrow">西武学園文理高等学校</p>
+        <h1 class="hero-title">文理祭2026</h1>
+        <p class="hero-meta">2026年10月3日(土)・4日(日)　｜　テーマ：<span class="theme-highlight">青春バースト</span></p>
 
-      <div id="countdown" class="countdown" hidden>
-        <p class="countdown-label">文化祭まで</p>
-        <div class="countdown-row">
-          <div class="countdown-item">
-            <span class="countdown-number" id="cdDays">--</span>
-            <span class="countdown-unit">日</span>
-          </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="cdHours">--</span>
-            <span class="countdown-unit">時間</span>
-          </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="cdMinutes">--</span>
-            <span class="countdown-unit">分</span>
-          </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="cdSeconds">--</span>
-            <span class="countdown-unit">秒</span>
+        <div id="countdown" class="countdown" hidden>
+          <p class="countdown-label">文化祭まで</p>
+          <div class="countdown-row">
+            <div class="countdown-item">
+              <span class="countdown-number" id="cdDays">--</span>
+              <span class="countdown-unit">日</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="cdHours">--</span>
+              <span class="countdown-unit">時間</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="cdMinutes">--</span>
+              <span class="countdown-unit">分</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="cdSeconds">--</span>
+              <span class="countdown-unit">秒</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="hero-actions">
-        <a href="#exhibits" class="btn btn-primary">出し物をチェック</a>
-        <a href="#access" class="btn btn-outline">アクセス</a>
+        <div class="hero-actions">
+          <a href="#find" class="btn btn-primary">出し物を探す</a>
+          <a href="#access" class="btn btn-outline">アクセス</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="sheet-about" id="about">
-    <div class="container">
-      <span class="section-kicker reveal">About</span>
-      <h2 class="section-title reveal">文理祭とは</h2>
-      <figure class="about-figure reveal">
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div class="about-text">
+        <h2 class="section-title reveal">文理祭とは</h2>
+        <p class="section-lead reveal">
+          生徒が主体となって企画・運営する、本校最大の学校行事。
+          各クラス・部活動による出し物、ステージ発表、模擬店などが2日間にわたって行われます。
+        </p>
+        <div class="pillars">
+          <div class="pillar reveal">
+            <span class="pillar-index">01</span>
+            <h3>クラス企画</h3>
+            <p>お化け屋敷・脱出ゲーム・カジノなど、各クラスが趣向を凝らした企画を実施します。</p>
+          </div>
+          <div class="pillar reveal">
+            <span class="pillar-index">02</span>
+            <h3>ステージ発表</h3>
+            <p>有志団体や部活動によるステージパフォーマンスを予定しています。</p>
+          </div>
+          <div class="pillar reveal">
+            <span class="pillar-index">03</span>
+            <h3>模擬店・部活動企画</h3>
+            <p>飲食を含む模擬店や、部活動による企画展示も行われます。</p>
+          </div>
+        </div>
+      </div>
+      <figure class="about-photo reveal-mask">
         <img src="images/about-campus.jpg" alt="西武学園文理高等学校 キャンパス">
-        <figcaption>西武学園文理高等学校 キャンパス</figcaption>
       </figure>
-      <p class="about-lead reveal">
-        生徒が主体となって企画・運営する、本校最大の学校行事。
-        各クラス・部活動による出し物、ステージ発表、模擬店などが2日間にわたって行われます。
-      </p>
-      <div class="about-grid">
-        <div class="about-card reveal">
-          <div class="tick"></div>
-          <h3>クラス企画</h3>
-          <p>お化け屋敷・脱出ゲーム・カジノなど、各クラスが趣向を凝らした企画を実施します。</p>
-        </div>
-        <div class="about-card reveal">
-          <div class="tick"></div>
-          <h3>ステージ発表</h3>
-          <p>有志団体や部活動によるステージパフォーマンスを予定しています。</p>
-        </div>
-        <div class="about-card reveal">
-          <div class="tick"></div>
-          <h3>模擬店・部活動企画</h3>
-          <p>飲食を含む模擬店や、部活動による企画展示も行われます。</p>
-        </div>
+    </div>
+  </section>
+
+  <section class="section" id="find">
+    <div class="container section-head">
+      <h2 class="section-title reveal">出し物を探す</h2>
+      <p class="section-lead reveal">カテゴリーごとにご案内します。詳しい一覧ページは準備が整い次第公開します。</p>
+    </div>
+    <div class="container categories">
+      <div class="category reveal">
+        <h3>クラス企画</h3>
+        <p class="category-count">承認済み21件</p>
+        <p>お化け屋敷・脱出ゲーム・カジノなど、各クラスによる企画です。</p>
+      </div>
+      <div class="category reveal">
+        <h3>ステージ発表</h3>
+        <p class="category-count">準備中</p>
+        <p>有志団体・部活動によるステージパフォーマンスです。準備が整い次第掲載します。</p>
+      </div>
+      <div class="category reveal">
+        <h3>模擬店・部活動企画</h3>
+        <p class="category-count">準備中</p>
+        <p>飲食を含む模擬店や、部活動による企画展示です。準備が整い次第掲載します。</p>
       </div>
     </div>
   </section>
 
-  <section class="sheet-exhibits" id="exhibits">
+  <section class="section" id="schedule">
     <div class="container">
-      <span class="section-kicker reveal">Exhibits</span>
-      <h2 class="section-title reveal">出し物</h2>
-      <p class="section-lead reveal">クラス企画（承認済み21件）を掲載しています。部活動・有志団体分は準備が整い次第、追加していきます。</p>
-
-      <div class="card-grid" id="exhibitsGrid">
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>ジェットコースター</h3>
-            <p>担当：1年AC1</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%82%B3%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC">待ち時間を見る →</a>
+      <div class="section-head">
+        <h2 class="section-title reveal">タイムスケジュール</h2>
+        <p class="section-lead reveal">時間は予定です。確定次第このページを更新します。</p>
+      </div>
+      <div class="schedule-cols">
+        <div class="schedule-col reveal">
+          <h3>1日目（10月3日・土）</h3>
+          <ul class="schedule-list">
+            <li><span class="time">9:00</span><span class="event">開場</span></li>
+            <li><span class="time">9:20</span><span class="event">オープニングセレモニー</span></li>
+            <li><span class="time">10:00〜15:00</span><span class="event">クラス企画・模擬店・展示</span></li>
+            <li><span class="time">15:30</span><span class="event">ステージ発表</span></li>
+            <li><span class="time">16:30</span><span class="event">1日目終了</span></li>
+          </ul>
         </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>トイマニ</h3>
-            <p>担当：1年AM1</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%83%88%E3%82%A4%E3%83%9E%E3%83%8B">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>フォトスポット</h3>
-            <p>担当：1年AM2</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%83%95%E3%82%A9%E3%83%88%E3%82%B9%E3%83%9D%E3%83%83%E3%83%88">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>お化け屋敷（コンセプトあり）</h3>
-            <p>担当：1年AM3</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%81%8A%E5%8C%96%E3%81%91%E5%B1%8B%E6%95%B7%EF%BC%88%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%97%E3%83%88%E3%81%82%E3%82%8A%EF%BC%89">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>お化け屋敷（コンセプトあり）</h3>
-            <p>担当：1年AM4</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%81%8A%E5%8C%96%E3%81%91%E5%B1%8B%E6%95%B7%EF%BC%88%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%97%E3%83%88%E3%81%82%E3%82%8A%EF%BC%89">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>占い</h3>
-            <p>担当：1年C1</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E5%8D%A0%E3%81%84">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>お化け屋敷（コンセプトあり）</h3>
-            <p>担当：1年D1</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%81%8A%E5%8C%96%E3%81%91%E5%B1%8B%E6%95%B7%EF%BC%88%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%97%E3%83%88%E3%81%82%E3%82%8A%EF%BC%89">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>お化け屋敷（コンセプトあり）</h3>
-            <p>担当：1年D3</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%81%8A%E5%8C%96%E3%81%91%E5%B1%8B%E6%95%B7%EF%BC%88%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%97%E3%83%88%E3%81%82%E3%82%8A%EF%BC%89">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>お化け屋敷（コンセプトあり）</h3>
-            <p>担当：1年D4</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%81%8A%E5%8C%96%E3%81%91%E5%B1%8B%E6%95%B7%EF%BC%88%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%97%E3%83%88%E3%81%82%E3%82%8A%EF%BC%89">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>トイマニ</h3>
-            <p>担当：1年D6</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%83%88%E3%82%A4%E3%83%9E%E3%83%8B">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>脱出ゲーム</h3>
-            <p>担当：2年AC1</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E8%84%B1%E5%87%BA%E3%82%B2%E3%83%BC%E3%83%A0">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>トロッコシューティング</h3>
-            <p>担当：2年AM3</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%83%88%E3%83%AD%E3%83%83%E3%82%B3%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>脱出ゲーム</h3>
-            <p>担当：2年AM5</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E8%84%B1%E5%87%BA%E3%82%B2%E3%83%BC%E3%83%A0">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>カジノ</h3>
-            <p>担当：2年AR1</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%82%AB%E3%82%B8%E3%83%8E">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>ラウンドワン</h3>
-            <p>担当：2年C1</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%89%E3%83%AF%E3%83%B3">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>ディズニーインスピレーション</h3>
-            <p>担当：2年D1</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%83%87%E3%82%A3%E3%82%BA%E3%83%8B%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%94%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>お化け屋敷</h3>
-            <p>担当：2年D5</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%81%8A%E5%8C%96%E3%81%91%E5%B1%8B%E6%95%B7">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>お化け屋敷</h3>
-            <p>担当：2年D6</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%81%8A%E5%8C%96%E3%81%91%E5%B1%8B%E6%95%B7">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>お化け屋敷</h3>
-            <p>担当：2年D7</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%81%8A%E5%8C%96%E3%81%91%E5%B1%8B%E6%95%B7">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>トロッコアトラクション</h3>
-            <p>担当：2年S1</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%83%88%E3%83%AD%E3%83%83%E3%82%B3%E3%82%A2%E3%83%88%E3%83%A9%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">待ち時間を見る →</a>
-        </div>
-        </div>
-        <div class="exhibit-card reveal">
-          <div class="exhibit-media"></div>
-          <div class="exhibit-body">
-            <span class="exhibit-tag">クラス企画</span>
-            <h3>カーレース</h3>
-            <p>担当：2年SP2</p>
-                    <a class="exhibit-link" href="https://bunrisai2026.github.io/wait/?q=%E3%82%AB%E3%83%BC%E3%83%AC%E3%83%BC%E3%82%B9">待ち時間を見る →</a>
-        </div>
+        <div class="schedule-col reveal">
+          <h3>2日目（10月4日・日）</h3>
+          <ul class="schedule-list">
+            <li><span class="time">9:00</span><span class="event">開場</span></li>
+            <li><span class="time">10:00〜15:00</span><span class="event">クラス企画・模擬店・展示</span></li>
+            <li><span class="time">15:00</span><span class="event">後夜祭・クロージング</span></li>
+            <li><span class="time">16:00</span><span class="event">2日目終了</span></li>
+          </ul>
         </div>
       </div>
-
-      <button type="button" id="exhibitsShowMore" class="btn btn-outline exhibits-show-more" aria-expanded="false" aria-controls="exhibitsGrid">すべて表示</button>
     </div>
   </section>
 
-  <div class="info-region">
-
-    <section class="info-section" id="schedule">
-      <div class="container">
-        <span class="section-kicker reveal">Schedule</span>
-        <h2 class="section-title reveal">タイムスケジュール</h2>
-
-        <h3 class="day-title reveal">1日目（10月3日・土）</h3>
-        <div class="schedule-table-wrap reveal">
-          <table class="schedule-table">
-            <thead><tr><th>時間</th><th>内容</th></tr></thead>
-            <tbody>
-              <tr><td>9:00</td><td>開場</td></tr>
-              <tr><td>9:20</td><td>オープニングセレモニー</td></tr>
-              <tr><td>10:00〜15:00</td><td>クラス企画・模擬店・展示</td></tr>
-              <tr><td>15:30</td><td>ステージ発表</td></tr>
-              <tr><td>16:30</td><td>1日目終了</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 class="day-title reveal">2日目（10月4日・日）</h3>
-        <div class="schedule-table-wrap reveal">
-          <table class="schedule-table">
-            <thead><tr><th>時間</th><th>内容</th></tr></thead>
-            <tbody>
-              <tr><td>9:00</td><td>開場</td></tr>
-              <tr><td>10:00〜15:00</td><td>クラス企画・模擬店・展示</td></tr>
-              <tr><td>15:00</td><td>後夜祭・クロージング</td></tr>
-              <tr><td>16:00</td><td>2日目終了</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="tbd">※時間は予定です。確定次第このページを更新します。</p>
+  <section class="section" id="access">
+    <div class="container access-grid">
+      <div class="reveal">
+        <h2 class="section-title">アクセス</h2>
+        <p>〒350-1336　埼玉県狭山市柏原新田311-1</p>
+        <p>西武新宿線「新狭山駅」北口よりスクールバス約10分<br>
+           （川越駅・東飯能駅・稲荷山公園駅・鶴ヶ島駅からもスクールバスあり／路線バスも利用可）</p>
+        <p class="tbd">
+          通常期のスクールバス時刻表はこちら（<a id="busPdfLink" href="files/school-bus-timetable.pdf" target="_blank" rel="noopener">PDF</a>）。
+          ただし通常ダイヤは日曜・祭日運休のため、文理祭2日目（10/4・日）を含む当日の運行時刻・臨時ダイヤはお知らせ欄で別途お知らせします。
+        </p>
+        <a class="btn btn-outline-navy" href="https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E6%AD%A6%E5%AD%A6%E5%9C%92%E6%96%87%E7%90%86%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1" target="_blank" rel="noopener">地図で見る</a>
       </div>
-    </section>
+      <figure class="access-photo reveal-mask">
+        <img src="images/access-gate.jpg" alt="正門">
+      </figure>
+    </div>
+  </section>
 
-    <section class="info-section" id="access">
-      <div class="container access-grid">
-        <div class="reveal">
-          <span class="section-kicker">Access</span>
-          <h2 class="section-title">アクセス</h2>
-          <p>〒350-1336　埼玉県狭山市柏原新田311-1</p>
-          <p>西武新宿線「新狭山駅」北口よりスクールバス約10分<br>
-             （川越駅・東飯能駅・稲荷山公園駅・鶴ヶ島駅からもスクールバスあり／路線バスも利用可）</p>
-          <p class="tbd">
-            通常期のスクールバス時刻表はこちら（<a id="busPdfLink" href="files/school-bus-timetable.pdf" target="_blank" rel="noopener">PDF</a>）。
-            ただし通常ダイヤは日曜・祭日運休のため、文理祭2日目（10/4・日）を含む当日の運行時刻・臨時ダイヤはお知らせ欄で別途お知らせします。
-          </p>
-          <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E6%AD%A6%E5%AD%A6%E5%9C%92%E6%96%87%E7%90%86%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1" target="_blank" rel="noopener">地図で見る</a>
-        </div>
-        <figure class="access-photo reveal">
-          <img src="images/access-gate.jpg" alt="正門">
-        </figure>
+  <section class="section wait-band" id="wait-cta">
+    <div class="container wait-band-inner">
+      <div class="wait-band-text">
+        <h2>今の混雑状況を見る</h2>
+        <p>各企画の待ち時間をリアルタイムで確認できます。</p>
       </div>
-    </section>
+      <a href="https://bunrisai2026.github.io/wait/" class="btn btn-invert">待ち時間サイトを見る</a>
+    </div>
+  </section>
 
-    <section class="info-section" id="news">
-      <div class="container">
-        <span class="section-kicker reveal">News</span>
-        <h2 class="section-title reveal">お知らせ</h2>
-        <ul class="news-list reveal">
-          <li><span class="news-date">2026.07.29</span> 文理祭2026 公式サイトを公開しました。</li>
-        </ul>
-      </div>
-    </section>
-
-  </div>
+  <section class="section" id="news">
+    <div class="container">
+      <h2 class="section-title reveal">お知らせ</h2>
+      <ul class="news-list reveal">
+        <li><span class="news-date">2026.07.29</span> 文理祭2026 公式サイトを公開しました。</li>
+      </ul>
+    </div>
+  </section>
 
 </main>
 
@@ -390,12 +212,12 @@
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-mascot-wrap"><img class="footer-mascot" src="images/mascot-bunris.png" alt="BUNRI'S"></div>
-    <p>文理祭実行委員会</p>
-    <p class="footer-sub">お問い合わせ：担当教員またはSNSアカウントまで</p>
+    <p class="footer-name">文理祭実行委員会</p>
+    <p class="footer-sub">お問い合わせ先は確定次第、このページに掲載します。</p>
     <p class="footer-copy">&copy; <span id="year"></span> 文理祭実行委員会</p>
   </div>
 </footer>
 
-<script src="js/main.js?v=4"></script>
+<script src="js/main.js?v=5"></script>
 </body>
 </html>

@@ -4,47 +4,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.getElementById("navToggle");
   const siteNav = document.getElementById("siteNav");
 
-  navToggle.addEventListener("click", () => siteNav.classList.toggle("open"));
+  navToggle.addEventListener("click", () => {
+    const open = siteNav.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(open));
+  });
   siteNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => siteNav.classList.remove("open"));
+    link.addEventListener("click", () => {
+      siteNav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  try { initHeaderScroll(); } catch (e) { console.error(e); }
   try { initScrollReveal(); } catch (e) { console.error(e); }
   try { initEasedAnchorScroll(); } catch (e) { console.error(e); }
   try { initBackToTop(); } catch (e) { console.error(e); }
   try { initCountdown(); } catch (e) { console.error(e); }
-  try { initExhibitsShowMore(); } catch (e) { console.error(e); }
+  try { initHeroParallax(); } catch (e) { console.error(e); }
 });
 
-/* ---------- 出し物：最初は一部だけ表示し、ボタンで全部見せる（もう一度押すとたたむ） ---------- */
-function initExhibitsShowMore() {
-  const grid = document.querySelector(".card-grid");
-  const btn = document.getElementById("exhibitsShowMore");
-  if (!grid || !btn) return;
-
-  const total = grid.querySelectorAll(".exhibit-card").length;
-  const visibleByDefault = 6;
-  const remaining = total - visibleByDefault;
-
-  if (remaining <= 0) {
-    btn.hidden = true;
-    return;
-  }
-
-  const showLabel = `すべて表示（残り${remaining}件）`;
-  const hideLabel = "たたむ";
-  btn.textContent = showLabel;
-
-  btn.addEventListener("click", () => {
-    const expanded = grid.classList.toggle("show-all");
-    btn.textContent = expanded ? hideLabel : showLabel;
-    btn.setAttribute("aria-expanded", String(expanded));
-    if (!expanded) {
-      grid.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-    }
-  });
+/* ---------- ヘッダー：ヒーロー上では透明、少しスクロールしたら不透明に ---------- */
+function initHeaderScroll() {
+  const header = document.getElementById("siteHeader");
+  if (!header) return;
+  const toggle = () => {
+    header.classList.toggle("is-scrolled", window.scrollY > 40);
+  };
+  window.addEventListener("scroll", toggle, { passive: true });
+  toggle();
 }
 
 /* ---------- 文化祭までのカウントダウン ----------
@@ -98,8 +87,12 @@ function initBackToTop() {
   });
 }
 
+/* ---------- スクロール演出 ----------
+   .reveal（文字など）と .reveal-mask（写真、about/accessの2箇所のみ）を
+   同じObserverで扱う。JSが失敗しても最初からコンテンツは見える
+   （js-reveal クラスがCSS側の非表示ルールの起点になっているため）。 */
 function initScrollReveal() {
-  const targets = document.querySelectorAll(".reveal");
+  const targets = document.querySelectorAll(".reveal, .reveal-mask");
   if (targets.length === 0) return;
 
   if (reduceMotion || !("IntersectionObserver" in window)) {
@@ -115,7 +108,7 @@ function initScrollReveal() {
       const parent = el.parentElement;
       const index = groups.has(parent) ? groups.get(parent) + 1 : 0;
       groups.set(parent, index);
-      el.style.transitionDelay = `${Math.min(index, 6) * 80}ms`;
+      el.style.transitionDelay = `${Math.min(index, 4) * 60}ms`;
     });
 
     const observer = new IntersectionObserver(
@@ -135,6 +128,37 @@ function initScrollReveal() {
     console.error(e);
     root.classList.remove("js-reveal");
   }
+}
+
+/* ---------- ヒーロー写真のごく控えめなパララックス ----------
+   PCのみ・合計移動量は最大20px・reduced-motion時は無効。
+   スマホ幅(900px以下)ではリスナー自体を付けない。 */
+function initHeroParallax() {
+  if (reduceMotion) return;
+  const photo = document.getElementById("heroPhoto");
+  const hero = document.getElementById("top");
+  if (!photo || !hero) return;
+
+  const MAX_SHIFT = 20;
+
+  function isDesktop() {
+    return window.innerWidth > 900;
+  }
+
+  function update() {
+    if (!isDesktop()) {
+      photo.style.transform = "";
+      return;
+    }
+    const rect = hero.getBoundingClientRect();
+    const progress = Math.min(Math.max(-rect.top / Math.max(rect.height, 1), 0), 1);
+    const shift = progress * MAX_SHIFT;
+    photo.style.transform = `translateY(${shift.toFixed(1)}px)`;
+  }
+
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
 }
 
 function initEasedAnchorScroll() {

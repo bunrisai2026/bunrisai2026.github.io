@@ -5,7 +5,7 @@
   --text-muted: #6b7280;
   --border: rgba(28, 43, 66, 0.12);
   --navy: #102349;
-  --accent: #d0602f;
+  --accent: #a83e1a;
   --max-width: 1080px;
   --header-h: 72px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -250,7 +250,7 @@ a { color: inherit; }
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .btn-primary { background: var(--accent); color: #fff; }
-.btn-primary:hover { background: #b64f26; }
+.btn-primary:hover { background: #8f3315; }
 
 .btn-outline { background: rgba(255, 255, 255, 0.08); color: #fff; border-color: rgba(255, 255, 255, 0.55); }
 .btn-outline:hover { background: rgba(255, 255, 255, 0.18); border-color: #fff; }

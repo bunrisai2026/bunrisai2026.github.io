@@ -266,6 +266,12 @@ a { color: inherit; }
 .section + .section { border-top: 1px solid var(--border); }
 .section-head { max-width: 640px; margin: 0 auto 48px; text-align: left; }
 
+/* 固定ヘッダー分、アンカー移動時の見出しが隠れないようにする
+   (exhibits.htmlのカテゴリー間リンクなど) */
+#class-entries, #stage-entries, #booth-entries {
+  scroll-margin-top: calc(var(--header-h) + 24px);
+}
+
 .section-title {
   font-family: var(--font-mincho);
   font-weight: 700;
@@ -278,6 +284,43 @@ a { color: inherit; }
   margin: 0;
   font-size: 1rem;
 }
+
+/* ---------- ヒーロー写真を持たないページの見出し(例: exhibits.html) ---------- */
+.page-head {
+  padding: calc(var(--header-h) + 56px) 0 0;
+  background: var(--bg-alt);
+}
+.page-head .section-head { margin-bottom: 40px; }
+.page-title {
+  font-family: var(--font-mincho);
+  font-weight: 700;
+  font-size: clamp(2rem, 4.4vw, 2.8rem);
+  margin: 0 0 16px;
+  color: var(--navy);
+}
+
+/* ---------- 出し物一覧 ---------- */
+.exhibit-list { list-style: none; margin: 0; padding: 0; }
+.exhibit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.exhibit-row:last-child { border-bottom: none; }
+.exhibit-row-main h3 { margin: 0 0 4px; font-size: 1rem; color: var(--text); }
+.exhibit-row-meta { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+.exhibit-link {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+.exhibit-link:hover { text-decoration: underline; }
 
 /* ---------- 文理祭とは ---------- */
 .about-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start; }
@@ -321,7 +364,8 @@ a { color: inherit; }
   font-weight: 700;
   color: var(--accent);
 }
-.category p:last-child { margin: 0; color: var(--text-muted); font-size: 0.9rem; }
+.category p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+.category .exhibit-link { display: inline-block; margin-top: 12px; }
 
 /* ---------- タイムスケジュール ---------- */
 .schedule-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }

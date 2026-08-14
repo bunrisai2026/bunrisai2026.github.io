@@ -33,10 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
   try { initHeroParallax(); } catch (e) { console.error(e); }
 });
 
-/* ---------- ヘッダー：ヒーロー上では透明、少しスクロールしたら不透明に ---------- */
+/* ---------- ヘッダー：ヒーロー上では透明、少しスクロールしたら不透明に ----------
+   写真ヒーローを持たないページ(出し物一覧など)では、最初から不透明表示に
+   固定する（透明ヘッダーの裏に写真がなく、文字が読めなくなるため）。 */
 function initHeaderScroll() {
   const header = document.getElementById("siteHeader");
   if (!header) return;
+  if (!document.querySelector(".hero-photo")) {
+    header.classList.add("is-scrolled");
+    return;
+  }
   const toggle = () => {
     header.classList.toggle("is-scrolled", window.scrollY > 40);
   };

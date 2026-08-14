@@ -79,6 +79,7 @@ a { color: inherit; }
   transition: color 0.4s var(--ease);
 }
 .logo span { color: var(--accent); }
+.site-header:not(.is-scrolled) .logo span { color: #fff; }
 .site-header.is-scrolled .logo { color: var(--navy); }
 
 .site-nav { display: flex; align-items: center; gap: 28px; }

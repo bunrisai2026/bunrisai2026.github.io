@@ -4,15 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.getElementById("navToggle");
   const siteNav = document.getElementById("siteNav");
 
-  navToggle.addEventListener("click", () => {
-    const open = siteNav.classList.toggle("open");
+  function setNavOpen(open) {
+    siteNav.classList.toggle("open", open);
     navToggle.setAttribute("aria-expanded", String(open));
+    navToggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+  }
+
+  navToggle.addEventListener("click", () => {
+    setNavOpen(!siteNav.classList.contains("open"));
   });
   siteNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      siteNav.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", () => setNavOpen(false));
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && siteNav.classList.contains("open")) {
+      setNavOpen(false);
+      navToggle.focus();
+    }
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -88,11 +96,11 @@ function initBackToTop() {
 }
 
 /* ---------- スクロール演出 ----------
-   .reveal（文字など）と .reveal-mask（写真、about/accessの2箇所のみ）を
-   同じObserverで扱う。JSが失敗しても最初からコンテンツは見える
-   （js-reveal クラスがCSS側の非表示ルールの起点になっているため）。 */
+   .reveal（文字など）が対象。JSが失敗しても最初からコンテンツは見える
+   （js-reveal クラスがCSS側の非表示ルールの起点になっているため）。
+   写真(about-photo・access-photo)は消えるリスクを避けるため対象外。 */
 function initScrollReveal() {
-  const targets = document.querySelectorAll(".reveal, .reveal-mask");
+  const targets = document.querySelectorAll(".reveal");
   if (targets.length === 0) return;
 
   if (reduceMotion || !("IntersectionObserver" in window)) {

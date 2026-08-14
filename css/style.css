@@ -387,15 +387,11 @@ a { color: inherit; }
 
 /* ---------- スクロール演出 ----------
    .reveal: 文字などがフェード＋わずかに浮き上がって現れる。
-   .reveal-mask: 写真だけ、枠の中から開くように現れる（使用箇所は
-   about-photo と access-photo の2箇所のみ）。 */
+   写真(about-photo・access-photo)は消えるリスクを避けるため、
+   演出を付けず常に静止表示にしている。 */
 .reveal { transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
 .js-reveal .reveal { opacity: 0; transform: translateY(16px); }
 .js-reveal .reveal.is-visible { opacity: 1; transform: none; }
-
-.reveal-mask { transition: clip-path 0.9s var(--ease), transform 0.9s var(--ease); }
-.js-reveal .reveal-mask { clip-path: inset(0 0 0 100%); }
-.js-reveal .reveal-mask.is-visible { clip-path: inset(0 0 0 0%); }
 
 /* ---------- 戻るボタン ---------- */
 .back-to-top {

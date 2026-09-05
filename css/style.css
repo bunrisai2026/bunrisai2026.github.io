@@ -120,16 +120,6 @@ a { color: inherit; }
 }
 .site-nav a:hover::after { transform: scaleX(1); }
 
-.site-nav a.nav-cta {
-  color: var(--navy);
-  background: #fff;
-  padding: 7px 16px;
-  border-radius: 3px;
-  font-weight: 700;
-}
-.site-header.is-scrolled .site-nav a.nav-cta { background: var(--accent); color: #fff; }
-.site-nav a.nav-cta::after { display: none; }
-
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -160,15 +150,6 @@ a { color: inherit; }
   .site-nav.open { max-height: 400px; }
   .site-nav a { padding: 16px 24px; border-top: 1px solid var(--border); color: var(--text); }
   .site-nav a:hover::after { transform: scaleX(0); }
-  .site-nav a.nav-cta {
-    display: block;
-    margin: 14px 24px;
-    padding: 12px 20px;
-    border-top: none;
-    text-align: center;
-    background: var(--accent);
-    color: #fff;
-  }
   .nav-toggle span { background: var(--text) !important; }
   .site-header:not(.is-scrolled) .site-nav.open { background: var(--bg); }
 }
@@ -274,9 +255,6 @@ a { color: inherit; }
 
 .btn-outline-navy { background: transparent; color: var(--navy); border-color: var(--border); }
 .btn-outline-navy:hover { border-color: var(--navy); }
-
-.btn-invert { background: #fff; color: var(--navy); }
-.btn-invert:hover { background: var(--bg-alt); }
 
 /* ---------- 共通セクション ---------- */
 .section { padding: 96px 0; }
@@ -418,18 +396,6 @@ a { color: inherit; }
   .access-photo { order: -1; margin: 0 0 28px; }
 }
 
-/* ---------- 待ち時間サイトへの導線 ---------- */
-.wait-band { background: var(--navy); color: #fff; padding: 64px 0; }
-.wait-band-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-.wait-band-text h2 { font-family: var(--font-mincho); font-weight: 700; margin: 0 0 8px; font-size: 1.4rem; }
-.wait-band-text p { margin: 0; opacity: 0.85; font-size: 0.95rem; }
-
 /* ---------- お知らせ ---------- */
 .news-list { list-style: none; margin: 0; padding: 0; }
 .news-list li { padding: 16px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
@@ -500,7 +466,5 @@ a { color: inherit; }
   .hero-content { max-width: 100%; }
   .countdown-row { gap: 14px; }
   .hero-actions .btn { flex: 1 1 auto; text-align: center; }
-  .wait-band-inner { flex-direction: column; align-items: flex-start; }
-  .wait-band .btn { width: 100%; text-align: center; }
   .back-to-top { right: 14px; bottom: 14px; width: 42px; height: 42px; }
 }

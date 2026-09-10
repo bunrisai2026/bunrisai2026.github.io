@@ -313,28 +313,41 @@ function initScheduleTabs() {
 /* ---------- 出し物一覧：検索・学年フィルタ・件数表示 ----------
    URLの ?q=文字列&grade=1 を初期値として読み、操作に合わせてURLも更新する。 */
 function initExhibitFilter() {
-  const list = document.getElementById("exhibitList");
   const search = document.getElementById("exhibitSearch");
   const countEl = document.getElementById("exhibitCount");
   const emptyEl = document.getElementById("exhibitEmpty");
-  const totalEl = document.getElementById("classTotal");
-  if (!list || !search) return;
+  if (!search) return;
 
-  const rows = Array.from(list.querySelectorAll(".exhibit-row"));
+  const rows = Array.from(document.querySelectorAll(".exhibit-list .exhibit-row"));
+  const sections = Array.from(document.querySelectorAll(".exhibit-list")).map((list) => ({
+    list, section: list.closest("section"), rows: Array.from(list.querySelectorAll(".exhibit-row")),
+  }));
   const radios = Array.from(document.querySelectorAll('input[name="grade"]'));
-  if (totalEl) totalEl.textContent = String(rows.length);
+  if (rows.length === 0) return;
 
   const normalize = (s) => String(s || "").normalize("NFKC").toLowerCase().replace(/\s+/g, "");
+  // 検索対象: 企画名・団体名・場所・紹介文
+  rows.forEach((row) => {
+    const place = row.querySelector(".exhibit-place");
+    const desc = row.querySelector(".exhibit-desc");
+    row._hay = normalize([row.dataset.name, row.dataset.group, place && place.textContent, desc && desc.textContent].join(" "));
+  });
+  // data-grade は "1" "2" "3" "club" のほか、合同企画では "2 1" のように空白区切り
+  const matchGrade = (row, grade) => !grade || row.dataset.grade.split(" ").includes(grade);
 
   function apply(updateUrl) {
     const q = normalize(search.value);
     const grade = (radios.find((r) => r.checked) || {}).value || "";
     let shown = 0;
-    rows.forEach((row) => {
-      const hay = normalize(row.dataset.name + " " + row.dataset.class);
-      const ok = (!q || hay.includes(q)) && (!grade || row.dataset.grade === grade);
-      row.hidden = !ok;
-      if (ok) shown += 1;
+    sections.forEach((sec) => {
+      let n = 0;
+      sec.rows.forEach((row) => {
+        const ok = (!q || row._hay.includes(q)) && matchGrade(row, grade);
+        row.hidden = !ok;
+        if (ok) n += 1;
+      });
+      if (sec.section) sec.section.hidden = n === 0;
+      shown += n;
     });
     if (countEl) countEl.innerHTML = `<strong>${shown}</strong> 件を表示（全${rows.length}件）`;
     if (emptyEl) emptyEl.hidden = shown !== 0;
@@ -362,19 +375,26 @@ function initExhibitFilter() {
    HTMLに書いてある件数は保険で、取得できたら上書きする。 */
 function initCategoryCounts() {
   const countEl = document.getElementById("countClass");
-  const subEl = document.getElementById("countClassSub");
   if (!countEl || !("fetch" in window)) return;
+
+  const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+  const hasGrade = (r, g) => String(r.dataset.grade || "").split(" ").includes(g);
 
   fetch("exhibits.html", { cache: "no-cache" })
     .then((res) => (res.ok ? res.text() : Promise.reject(new Error(res.status))))
     .then((html) => {
       const doc = new DOMParser().parseFromString(html, "text/html");
-      const rows = Array.from(doc.querySelectorAll("#class-entries .exhibit-row"));
-      if (rows.length === 0) return;
-      const g1 = rows.filter((r) => r.dataset.grade === "1").length;
-      const g2 = rows.filter((r) => r.dataset.grade === "2").length;
-      countEl.textContent = String(rows.length);
-      if (subEl) subEl.textContent = `承認済み　1年 ${g1}件・2年 ${g2}件`;
+      const pick = (id) => Array.from(doc.querySelectorAll(`#${id} .exhibit-row`));
+      const cls = pick("class-entries"), club = pick("club-entries"), stage = pick("stage-entries"), booth = pick("booth-entries");
+      const total = cls.length + club.length + stage.length + booth.length;
+      if (total === 0) return;
+      setText("countClass", String(cls.length));
+      setText("countClassSub", `1年 ${cls.filter((r) => hasGrade(r, "1")).length}件・2年 ${cls.filter((r) => hasGrade(r, "2")).length}件`);
+      setText("countClub", String(club.length));
+      setText("countStage", String(stage.length));
+      setText("countBooth", String(booth.length));
+      setText("countBoothSub", `3年 ${booth.filter((r) => hasGrade(r, "3")).length}件・部活動・団体 ${booth.filter((r) => hasGrade(r, "club")).length}件`);
+      setText("aboutTotal", String(total));
     })
     .catch(() => { /* 取得できない場合はHTMLに書かれた件数のまま */ });
 }

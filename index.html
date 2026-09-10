@@ -40,7 +40,7 @@
       "addressCountry": "JP"
     }
   },
-  "description": "生徒が主体となって企画・運営する、西武学園文理高等学校最大の学校行事。クラス企画・ステージ発表・模擬店などが2日間にわたって行われます。",
+  "description": "生徒が主体となって企画・運営する、西武学園文理高等学校最大の学校行事。クラス企画・部活動の展示・ステージ発表・模擬店が2日間にわたって行われます。",
   "organizer": {
     "@type": "Organization",
     "name": "文理祭実行委員会",
@@ -53,7 +53,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="css/style.css?v=12">
+<link rel="stylesheet" href="css/style.css?v=13">
 </head>
 <body>
 
@@ -101,7 +101,7 @@
           <span class="hero-date-num">10.4</span><span class="hero-date-dow">日</span>
         </p>
         <p class="hero-date-text">2026年10月3日（土）・4日（日）　両日 9:00 開場</p>
-        <p class="hero-theme-inline"><span class="hero-theme-label">今年のテーマ</span><strong>青春バースト</strong></p>
+        <p class="hero-theme-inline"><span class="hero-theme-label">今年のテーマ</span><strong><span class="theme-sei">青春</span><span class="theme-burst">バースト</span></strong></p>
 
         <div id="countdown" class="countdown" hidden>
           <p class="countdown-label" id="countdownLabel">文化祭まで</p>
@@ -132,7 +132,7 @@
         </div>
       </div>
     </div>
-    <p class="hero-theme-vertical"><span class="hero-theme-label">今年のテーマ</span><strong>青春バースト</strong></p>
+    <p class="hero-theme-vertical"><span class="hero-theme-label">今年のテーマ</span><strong><span class="theme-sei">青春</span><span class="theme-burst">バースト</span></strong></p>
   </section>
 
   <section class="info-strip" aria-label="開催概要">
@@ -172,9 +172,9 @@
     <div class="container about-grid">
       <div class="about-text">
         <span class="section-kicker reveal">文理祭とは</span>
-        <h2 class="section-title reveal">生徒が企画し、生徒が運営する、本校最大の学校行事です。</h2>
+        <h2 class="section-title reveal">1年に1度、文理がいちばん熱くなる2日間！</h2>
         <p class="section-lead reveal">
-          各クラス・部活動による出し物、ステージ発表、模擬店などが2日間にわたって行われます。
+          企画も準備も運営も、ぜんぶ生徒。お化け屋敷に脱出ゲーム、カジノ、ライド系アトラクション、部活の展示や体験、中庭ステージのライブ、そして3年生と部活動の模擬店。全<span id="aboutTotal">84</span>企画が、10月3日・4日に一斉にバーストします。友だちと、家族と、はじめての人も、思いっきり楽しんでいってください！
         </p>
       </div>
       <figure class="about-photo">
@@ -187,17 +187,17 @@
         <div class="pillar reveal">
           <span class="pillar-index" aria-hidden="true">一</span>
           <h3>クラス企画</h3>
-          <p>お化け屋敷・脱出ゲーム・カジノなど、各クラスが趣向を凝らした企画を実施します。</p>
+          <p>1・2年生の全クラスが本気で作り込んだ、お化け屋敷・脱出ゲーム・カジノ・ライド系アトラクション。教室がまるごと別世界に変わります。</p>
         </div>
         <div class="pillar reveal">
           <span class="pillar-index" aria-hidden="true">二</span>
           <h3>ステージ発表</h3>
-          <p>有志団体や部活動によるステージパフォーマンスを予定しています。</p>
+          <p>中庭ステージとサイエンスホールで、吹奏楽・チア・合唱・書道パフォーマンスにバンドライブ。フィナーレは毎年恒例の校長ライブです！</p>
         </div>
         <div class="pillar reveal">
           <span class="pillar-index" aria-hidden="true">三</span>
           <h3>模擬店・部活動企画</h3>
-          <p>飲食を含む模擬店や、部活動による企画展示も行われます。</p>
+          <p>3年生と部活動の模擬店はたこ焼き・餃子・チュロスなど食べ歩きにぴったり。部活動の展示・体験コーナーも見どころ満載です。</p>
         </div>
       </div>
     </div>
@@ -208,35 +208,44 @@
       <div class="section-head">
         <span class="section-kicker reveal">出し物を探す</span>
         <h2 class="section-title reveal">カテゴリーから探す</h2>
-        <p class="section-lead reveal">企画名・担当クラスは出し物一覧ページで確認できます。学年で絞り込むこともできます。</p>
+        <p class="section-lead reveal">企画名・団体名・場所は出し物一覧ページで確認できます。学年や部活・団体で絞り込むこともできます。</p>
       </div>
       <div class="categories">
         <div class="category reveal">
           <h3>クラス企画</h3>
-          <p class="category-count"><span id="countClass">22</span><small>件</small></p>
-          <p class="category-sub" id="countClassSub">承認済み</p>
-          <p class="category-desc">お化け屋敷・脱出ゲーム・カジノなど、各クラスによる企画です。</p>
+          <p class="category-count"><span id="countClass">35</span><small>件</small></p>
+          <p class="category-sub" id="countClassSub">1年 16件・2年 20件</p>
+          <p class="category-desc">お化け屋敷・脱出ゲーム・カジノなど、1・2年生の各クラスによる企画です。</p>
           <a class="text-link" href="exhibits.html#class-entries">一覧を見る →</a>
         </div>
         <div class="category reveal">
-          <h3>ステージ発表</h3>
-          <p class="category-count is-pending">準備中</p>
-          <p class="category-sub">出演が確定次第掲載します</p>
-          <p class="category-desc">有志団体・部活動によるステージパフォーマンスです。</p>
-          <a class="text-link" href="exhibits.html#stage-entries">詳しく →</a>
+          <h3>部活動・団体</h3>
+          <p class="category-count"><span id="countClub">16</span><small>件</small></p>
+          <p class="category-sub" id="countClubSub">展示・体験・販売</p>
+          <p class="category-desc">部活動や有志団体による展示・体験・販売コーナーです。</p>
+          <a class="text-link" href="exhibits.html#club-entries">一覧を見る →</a>
         </div>
         <div class="category reveal">
-          <h3>模擬店・部活動企画</h3>
-          <p class="category-count is-pending">準備中</p>
-          <p class="category-sub">準備が整い次第掲載します</p>
-          <p class="category-desc">飲食を含む模擬店や、部活動による企画展示です。</p>
-          <a class="text-link" href="exhibits.html#booth-entries">詳しく →</a>
+          <h3>ステージ発表</h3>
+          <p class="category-count"><span id="countStage">6</span><small>件</small></p>
+          <p class="category-sub" id="countStageSub">中庭ステージ・サイエンスホール</p>
+          <p class="category-desc">吹奏楽・チア・合唱・書道パフォーマンス・バンドライブなどです。</p>
+          <a class="text-link" href="exhibits.html#stage-entries">一覧を見る →</a>
+        </div>
+        <div class="category reveal">
+          <h3>模擬店</h3>
+          <p class="category-count"><span id="countBooth">27</span><small>件</small></p>
+          <p class="category-sub" id="countBoothSub">3年 12件・部活動・団体 15件</p>
+          <p class="category-desc">3年生のクラスと部活動・団体によるグルメです。</p>
+          <a class="text-link" href="exhibits.html#booth-entries">一覧を見る →</a>
         </div>
       </div>
       <div class="find-cta reveal">
         <a class="btn btn-ink" href="exhibits.html">出し物一覧をすべて見る</a>
         <a class="btn btn-ghost" href="exhibits.html?grade=1">1年生の企画</a>
         <a class="btn btn-ghost" href="exhibits.html?grade=2">2年生の企画</a>
+        <a class="btn btn-ghost" href="exhibits.html?grade=3">3年生の企画</a>
+        <a class="btn btn-ghost" href="exhibits.html?grade=club">部活・団体の企画</a>
       </div>
     </div>
   </section>
@@ -358,6 +367,6 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/main.js?v=7"></script>
+<script src="js/main.js?v=8"></script>
 </body>
 </html>

@@ -17,6 +17,7 @@
 <meta name="twitter:title" content="文理祭 2026 | 文理祭実行委員会">
 <meta name="twitter:description" content="文理祭2026 公式サイト。開催日程・出し物・アクセス情報をご案内します。">
 <meta name="twitter:image" content="https://bunrisai2026.github.io/images/hero-courtyard.jpg">
+<meta name="theme-color" content="#14213b">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <script type="application/ld+json">
 {
@@ -52,7 +53,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="css/style.css?v=10">
+<link rel="stylesheet" href="css/style.css?v=11">
 </head>
 <body>
 
@@ -60,11 +61,13 @@
 
 <!-- ================================================================
   編集ガイド
-  ・「▼ここを編集」とあるブロックの中の文字だけ書き換えれば更新できます。
-  ・タグ(< >で囲まれた部分)は消さずに、日本語の文章部分だけ直してください。
+  ・日本語の文章部分だけを書き換えれば更新できます。タグ(< >で囲まれた
+    部分)は消さないでください。
   ・"reveal" というclassはスクロールで現れる演出用なので、消さないでください。
-  ・写真を差し替えたいときは images/ フォルダに新しい画像を置いて、
-    src="images/○○.jpg" の部分をそのファイル名に書き換えてください。
+  ・写真を差し替えるときは images/ に新しい画像を置き、src="images/○○.jpg"
+    の部分をそのファイル名に書き換えてください。
+  ・出し物の件数(承認済み○件)は、出し物一覧ページの件数から自動で
+    集計されます。手で直す必要はありません。
 ================================================================= -->
 
 <header class="site-header" id="siteHeader">
@@ -73,7 +76,7 @@
     <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="siteNav">
       <span></span><span></span><span></span>
     </button>
-    <nav class="site-nav" id="siteNav" role="navigation" aria-label="メインメニュー">
+    <nav class="site-nav" id="siteNav" aria-label="メインメニュー">
       <a href="#about">文理祭とは</a>
       <a href="exhibits.html">出し物</a>
       <a href="#schedule">タイムスケジュール</a>
@@ -85,18 +88,24 @@
 
 <main id="main-content">
 
-  <section class="sheet-hero" id="top">
+  <section class="hero" id="top">
     <img class="hero-photo" id="heroPhoto" src="images/hero-courtyard.jpg" alt="" fetchpriority="high">
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-content">
         <p class="hero-eyebrow">西武学園文理高等学校</p>
         <h1 class="hero-title">文理祭2026</h1>
-        <p class="hero-meta">2026年10月3日(土)・4日(日)　｜　テーマ：<span class="theme-highlight">青春バースト</span></p>
+        <p class="hero-date" aria-hidden="true">
+          <span class="hero-date-num">10.3</span><span class="hero-date-dow">土</span>
+          <span class="hero-date-sep">—</span>
+          <span class="hero-date-num">10.4</span><span class="hero-date-dow">日</span>
+        </p>
+        <p class="hero-date-text">2026年10月3日（土）・4日（日）　両日 9:00 開場</p>
+        <p class="hero-theme-inline">テーマ：<strong>青春バースト</strong></p>
 
         <div id="countdown" class="countdown" hidden>
-          <p class="countdown-label">文化祭まで</p>
-          <div class="countdown-row">
+          <p class="countdown-label" id="countdownLabel">文化祭まで</p>
+          <div class="countdown-row" id="countdownRow">
             <div class="countdown-item">
               <span class="countdown-number" id="cdDays">--</span>
               <span class="countdown-unit">日</span>
@@ -114,12 +123,47 @@
               <span class="countdown-unit">秒</span>
             </div>
           </div>
+          <p class="countdown-state" id="countdownState" hidden></p>
         </div>
 
         <div class="hero-actions">
-          <a href="#find" class="btn btn-primary">出し物を探す</a>
+          <a href="exhibits.html" class="btn btn-primary">出し物一覧を見る</a>
           <a href="#access" class="btn btn-outline">アクセス</a>
         </div>
+      </div>
+      <p class="hero-theme-vertical">テーマ　<strong>青春バースト</strong></p>
+    </div>
+  </section>
+
+  <section class="info-strip" aria-label="開催概要">
+    <div class="container">
+      <div class="info-strip-inner">
+        <div class="info-item">
+          <span class="info-label">開催日</span>
+          <span class="info-value">10月3日（土）・4日（日）<small>2026年</small></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">開場</span>
+          <span class="info-value">9:00<small>両日とも／時間は予定です</small></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">会場</span>
+          <span class="info-value">西武学園文理高等学校<small>埼玉県狭山市柏原新田311-1</small></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">最寄駅</span>
+          <span class="info-value">西武新宿線 新狭山駅<small>北口よりスクールバス約10分</small></span>
+        </div>
+      </div>
+      <div class="info-actions">
+        <a class="btn btn-ghost btn-sm" href="files/bunrisai2026.ics" download="bunrisai2026.ics">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          カレンダーに追加
+        </a>
+        <button type="button" class="btn btn-ghost btn-sm" id="shareBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v13M7 8l5-5 5 5M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
+          このページを共有
+        </button>
       </div>
     </div>
   </section>
@@ -127,58 +171,72 @@
   <section class="section" id="about">
     <div class="container about-grid">
       <div class="about-text">
-        <h2 class="section-title reveal">文理祭とは</h2>
+        <span class="section-kicker reveal">文理祭とは</span>
+        <h2 class="section-title reveal">生徒が企画し、生徒が運営する、本校最大の学校行事です。</h2>
         <p class="section-lead reveal">
-          生徒が主体となって企画・運営する、本校最大の学校行事。
           各クラス・部活動による出し物、ステージ発表、模擬店などが2日間にわたって行われます。
         </p>
-        <div class="pillars">
-          <div class="pillar reveal">
-            <span class="pillar-index">01</span>
-            <h3>クラス企画</h3>
-            <p>お化け屋敷・脱出ゲーム・カジノなど、各クラスが趣向を凝らした企画を実施します。</p>
-          </div>
-          <div class="pillar reveal">
-            <span class="pillar-index">02</span>
-            <h3>ステージ発表</h3>
-            <p>有志団体や部活動によるステージパフォーマンスを予定しています。</p>
-          </div>
-          <div class="pillar reveal">
-            <span class="pillar-index">03</span>
-            <h3>模擬店・部活動企画</h3>
-            <p>飲食を含む模擬店や、部活動による企画展示も行われます。</p>
-          </div>
-        </div>
       </div>
       <figure class="about-photo">
         <img src="images/about-campus.jpg" alt="西武学園文理高等学校 キャンパス" loading="lazy" width="400" height="400">
+        <figcaption>西武学園文理高等学校 キャンパス</figcaption>
       </figure>
+    </div>
+    <div class="container">
+      <div class="pillars">
+        <div class="pillar reveal">
+          <span class="pillar-index" aria-hidden="true">一</span>
+          <h3>クラス企画</h3>
+          <p>お化け屋敷・脱出ゲーム・カジノなど、各クラスが趣向を凝らした企画を実施します。</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="pillar-index" aria-hidden="true">二</span>
+          <h3>ステージ発表</h3>
+          <p>有志団体や部活動によるステージパフォーマンスを予定しています。</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="pillar-index" aria-hidden="true">三</span>
+          <h3>模擬店・部活動企画</h3>
+          <p>飲食を含む模擬店や、部活動による企画展示も行われます。</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="find">
-    <div class="container section-head">
-      <h2 class="section-title reveal">出し物を探す</h2>
-      <p class="section-lead reveal">カテゴリーごとにご案内します。詳しい企画名・担当クラスは、出し物一覧ページから確認できます。</p>
-    </div>
-    <div class="container categories">
-      <div class="category reveal">
-        <h3>クラス企画</h3>
-        <p class="category-count">承認済み22件</p>
-        <p>お化け屋敷・脱出ゲーム・カジノなど、各クラスによる企画です。</p>
-        <a class="exhibit-link" href="exhibits.html#class-entries">一覧を見る →</a>
+  <section class="section section--deep" id="find">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker reveal">出し物を探す</span>
+        <h2 class="section-title reveal">カテゴリーから探す</h2>
+        <p class="section-lead reveal">企画名・担当クラスは出し物一覧ページで確認できます。学年で絞り込むこともできます。</p>
       </div>
-      <div class="category reveal">
-        <h3>ステージ発表</h3>
-        <p class="category-count">準備中</p>
-        <p>有志団体・部活動によるステージパフォーマンスです。準備が整い次第掲載します。</p>
-        <a class="exhibit-link" href="exhibits.html#stage-entries">一覧を見る →</a>
+      <div class="categories">
+        <div class="category reveal">
+          <h3>クラス企画</h3>
+          <p class="category-count"><span id="countClass">22</span><small>件</small></p>
+          <p class="category-sub" id="countClassSub">承認済み</p>
+          <p class="category-desc">お化け屋敷・脱出ゲーム・カジノなど、各クラスによる企画です。</p>
+          <a class="text-link" href="exhibits.html#class-entries">一覧を見る →</a>
+        </div>
+        <div class="category reveal">
+          <h3>ステージ発表</h3>
+          <p class="category-count is-pending">準備中</p>
+          <p class="category-sub">出演が確定次第掲載します</p>
+          <p class="category-desc">有志団体・部活動によるステージパフォーマンスです。</p>
+          <a class="text-link" href="exhibits.html#stage-entries">詳しく →</a>
+        </div>
+        <div class="category reveal">
+          <h3>模擬店・部活動企画</h3>
+          <p class="category-count is-pending">準備中</p>
+          <p class="category-sub">準備が整い次第掲載します</p>
+          <p class="category-desc">飲食を含む模擬店や、部活動による企画展示です。</p>
+          <a class="text-link" href="exhibits.html#booth-entries">詳しく →</a>
+        </div>
       </div>
-      <div class="category reveal">
-        <h3>模擬店・部活動企画</h3>
-        <p class="category-count">準備中</p>
-        <p>飲食を含む模擬店や、部活動による企画展示です。準備が整い次第掲載します。</p>
-        <a class="exhibit-link" href="exhibits.html#booth-entries">一覧を見る →</a>
+      <div class="find-cta reveal">
+        <a class="btn btn-ink" href="exhibits.html">出し物一覧をすべて見る</a>
+        <a class="btn btn-ghost" href="exhibits.html?grade=1">1年生の企画</a>
+        <a class="btn btn-ghost" href="exhibits.html?grade=2">2年生の企画</a>
       </div>
     </div>
   </section>
@@ -186,74 +244,120 @@
   <section class="section" id="schedule">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title reveal">タイムスケジュール</h2>
+        <span class="section-kicker reveal">タイムスケジュール</span>
+        <h2 class="section-title reveal">2日間の流れ</h2>
         <p class="section-lead reveal">時間は予定です。確定次第このページを更新します。</p>
       </div>
+
+      <div class="schedule-tabs" role="group" aria-label="表示する日を選ぶ">
+        <button type="button" class="schedule-tab" data-day="1" aria-pressed="true" aria-controls="day1">1日目（10/3 土）</button>
+        <button type="button" class="schedule-tab" data-day="2" aria-pressed="false" aria-controls="day2">2日目（10/4 日）</button>
+      </div>
+
       <div class="schedule-cols">
-        <div class="schedule-col reveal">
-          <h3>1日目（10月3日・土）</h3>
-          <ul class="schedule-list">
-            <li><span class="time">9:00</span><span class="event">開場</span></li>
-            <li><span class="time">9:20</span><span class="event">オープニングセレモニー</span></li>
-            <li><span class="time">10:00〜15:00</span><span class="event">クラス企画・模擬店・展示</span></li>
-            <li><span class="time">15:30</span><span class="event">ステージ発表</span></li>
-            <li><span class="time">16:30</span><span class="event">1日目終了</span></li>
-          </ul>
+        <div class="schedule-day reveal" id="day1" data-day="1">
+          <h3>1日目<small>10月3日（土）</small></h3>
+          <ol class="timeline">
+            <li><span class="time">9:00</span><span class="dot" aria-hidden="true"></span><span class="event is-major">開場</span></li>
+            <li><span class="time">9:20</span><span class="dot" aria-hidden="true"></span><span class="event">オープニングセレモニー</span></li>
+            <li><span class="time">10:00〜15:00</span><span class="dot" aria-hidden="true"></span><span class="event is-major">クラス企画・模擬店・展示</span></li>
+            <li><span class="time">15:30</span><span class="dot" aria-hidden="true"></span><span class="event">ステージ発表</span></li>
+            <li><span class="time">16:30</span><span class="dot" aria-hidden="true"></span><span class="event">1日目終了</span></li>
+          </ol>
         </div>
-        <div class="schedule-col reveal">
-          <h3>2日目（10月4日・日）</h3>
-          <ul class="schedule-list">
-            <li><span class="time">9:00</span><span class="event">開場</span></li>
-            <li><span class="time">10:00〜15:00</span><span class="event">クラス企画・模擬店・展示</span></li>
-            <li><span class="time">15:00</span><span class="event">後夜祭・クロージング</span></li>
-            <li><span class="time">16:00</span><span class="event">2日目終了</span></li>
-          </ul>
+        <div class="schedule-day reveal" id="day2" data-day="2">
+          <h3>2日目<small>10月4日（日）</small></h3>
+          <ol class="timeline">
+            <li><span class="time">9:00</span><span class="dot" aria-hidden="true"></span><span class="event is-major">開場</span></li>
+            <li><span class="time">10:00〜15:00</span><span class="dot" aria-hidden="true"></span><span class="event is-major">クラス企画・模擬店・展示</span></li>
+            <li><span class="time">15:00</span><span class="dot" aria-hidden="true"></span><span class="event">後夜祭・クロージング</span></li>
+            <li><span class="time">16:00</span><span class="dot" aria-hidden="true"></span><span class="event">2日目終了</span></li>
+          </ol>
         </div>
       </div>
     </div>
   </section>
 
   <section class="section" id="access">
-    <div class="container access-grid">
-      <div class="reveal">
-        <h2 class="section-title">アクセス</h2>
-        <p>〒350-1336　埼玉県狭山市柏原新田311-1</p>
-        <p>西武新宿線「新狭山駅」北口よりスクールバス約10分<br>
-           （川越駅・東飯能駅・稲荷山公園駅・鶴ヶ島駅からもスクールバスあり／路線バスも利用可）</p>
-        <p class="tbd">
-          通常期のスクールバス時刻表はこちら（<a id="busPdfLink" href="files/school-bus-timetable.pdf" target="_blank" rel="noopener" aria-label="通常期のスクールバス時刻表PDF（文理祭当日は使用不可）">PDF・通常期のみ／文理祭当日は使用不可</a>）。
-          通常ダイヤは日曜・祭日運休のため、文理祭2日目（10/4・日）を含む当日の運行時刻・臨時ダイヤはお知らせ欄で別途お知らせします。
-        </p>
-        <a class="btn btn-outline-navy" href="https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E6%AD%A6%E5%AD%A6%E5%9C%92%E6%96%87%E7%90%86%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1" target="_blank" rel="noopener">地図で見る</a>
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker reveal">アクセス</span>
+        <h2 class="section-title reveal">会場へのアクセス</h2>
       </div>
-      <figure class="access-photo">
-        <img src="images/access-gate.jpg" alt="正門" loading="lazy" width="750" height="501">
-      </figure>
+      <div class="access-grid">
+        <div class="reveal">
+          <ul class="access-list">
+            <li><span class="k">住所</span><span class="v">〒350-1336　埼玉県狭山市柏原新田311-1<small>西武学園文理高等学校</small></span></li>
+            <li><span class="k">電車・バス</span><span class="v">西武新宿線「新狭山駅」北口よりスクールバス約10分<small>川越駅・東飯能駅・稲荷山公園駅・鶴ヶ島駅からもスクールバスあり／路線バスも利用可</small></span></li>
+            <li><span class="k">当日のバス</span><span class="v">文理祭当日の運行時刻・臨時ダイヤは、確定次第お知らせ欄でご案内します。<small>通常ダイヤは日曜・祭日運休のため、2日目（10/4・日）は通常期の時刻表をそのまま使えません。</small></span></li>
+          </ul>
+          <div class="access-actions">
+            <a class="btn btn-ink" href="https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E6%AD%A6%E5%AD%A6%E5%9C%92%E6%96%87%E7%90%86%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1" target="_blank" rel="noopener">Googleマップで開く</a>
+            <a class="btn btn-ghost" id="busPdfLink" href="files/school-bus-timetable.pdf" target="_blank" rel="noopener" aria-label="通常期のスクールバス時刻表PDF（文理祭当日は使用不可）">通常期のバス時刻表（PDF）</a>
+          </div>
+          <p class="note"><strong>ご注意：</strong>上のPDFは通常期の時刻表です。文理祭当日には使用できません。</p>
+        </div>
+        <div>
+          <iframe class="map-embed" src="https://www.google.com/maps?q=%E8%A5%BF%E6%AD%A6%E5%AD%A6%E5%9C%92%E6%96%87%E7%90%86%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1&output=embed" title="西武学園文理高等学校の地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <figure class="access-photo">
+            <img src="images/access-gate.jpg" alt="西武学園文理高等学校 正門" loading="lazy" width="750" height="501">
+            <figcaption>正門</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="section" id="news">
     <div class="container">
-      <h2 class="section-title reveal">お知らせ</h2>
+      <div class="section-head">
+        <span class="section-kicker reveal">お知らせ</span>
+        <h2 class="section-title reveal">最新情報</h2>
+      </div>
       <ul class="news-list reveal">
-        <li><span class="news-date">2026.07.29</span> 文理祭2026 公式サイトを公開しました。</li>
+        <li><time datetime="2026-07-29">2026.07.29</time><span>文理祭2026 公式サイトを公開しました。</span></li>
       </ul>
     </div>
   </section>
 
 </main>
 
-<button id="backToTop" class="back-to-top" aria-label="トップに戻る">↑</button>
+<button id="backToTop" class="back-to-top" aria-label="ページの先頭へ戻る">↑</button>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-mascot-wrap"><img class="footer-mascot" src="images/mascot-bunris.png" alt="BUNRI'S" loading="lazy" width="424" height="284"></div>
-    <p class="footer-name">文理祭実行委員会</p>
-    <p class="footer-sub">お問い合わせ先は確定次第、このページに掲載します。</p>
-    <p class="footer-copy">&copy; <span id="year"></span> 文理祭実行委員会</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#top">文理祭<span>2026</span></a>
+        <p>西武学園文理高等学校 文化祭<br>2026年10月3日（土）・4日（日）</p>
+        <div class="footer-mascot-wrap"><img class="footer-mascot" src="images/mascot-bunris.png" alt="BUNRI'S" loading="lazy" width="424" height="284"></div>
+      </div>
+      <div class="footer-col">
+        <h4>メニュー</h4>
+        <ul>
+          <li><a href="#about">文理祭とは</a></li>
+          <li><a href="exhibits.html">出し物一覧</a></li>
+          <li><a href="#schedule">タイムスケジュール</a></li>
+          <li><a href="#access">アクセス</a></li>
+          <li><a href="#news">お知らせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li>お問い合わせ先は確定次第、このページに掲載します。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> 文理祭実行委員会</span>
+      <span>運営：西武学園文理高等学校 文理祭実行委員会</span>
+    </div>
   </div>
 </footer>
 
-<script src="js/main.js?v=6"></script>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/main.js?v=7"></script>
 </body>
 </html>

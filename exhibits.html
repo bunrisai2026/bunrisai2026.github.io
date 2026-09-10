@@ -17,11 +17,12 @@
 <meta name="twitter:title" content="出し物一覧 | 文理祭 2026">
 <meta name="twitter:description" content="文理祭2026 出し物一覧。クラス企画・ステージ発表・模擬店/部活動企画をカテゴリーごとにご案内します。">
 <meta name="twitter:image" content="https://bunrisai2026.github.io/images/hero-courtyard.jpg">
+<meta name="theme-color" content="#14213b">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="css/style.css?v=10">
+<link rel="stylesheet" href="css/style.css?v=11">
 </head>
 <body>
 
@@ -29,8 +30,12 @@
 
 <!-- ================================================================
   編集ガイド
-  ・企画を追加するときは、一覧内の同じ1件分のブロックをコピーして
-    貼り付け、企画名・担当の文字だけ書き換えてください。
+  ・企画を追加するときは、一覧内の同じ1件分のブロック(li要素)をコピーして
+    貼り付け、次の4か所を書き換えてください。
+      data-name="企画名"  data-class="担当クラス"  data-grade="学年(1か2)"
+      <h3>企画名</h3>  担当：担当クラス  <span class="chip chip--grade">1年</span>
+  ・番号(01, 02, ...)は自動で振られるので、手で書く必要はありません。
+  ・検索・学年の絞り込み・件数表示はJavaScriptが自動で行います。
 ================================================================= -->
 
 <header class="site-header is-scrolled" id="siteHeader">
@@ -39,9 +44,9 @@
     <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="siteNav">
       <span></span><span></span><span></span>
     </button>
-    <nav class="site-nav" id="siteNav" role="navigation" aria-label="メインメニュー">
+    <nav class="site-nav" id="siteNav" aria-label="メインメニュー">
       <a href="index.html#about">文理祭とは</a>
-      <a href="exhibits.html">出し物</a>
+      <a href="exhibits.html" aria-current="page">出し物</a>
       <a href="index.html#schedule">タイムスケジュール</a>
       <a href="index.html#access">アクセス</a>
       <a href="index.html#news">お知らせ</a>
@@ -52,186 +57,223 @@
 <main id="main-content">
 
   <section class="page-head">
-    <div class="container section-head">
+    <div class="container">
+      <span class="section-kicker">文理祭2026</span>
       <h1 class="page-title">出し物一覧</h1>
-      <p class="section-lead">
-        クラス企画・ステージ発表・模擬店/部活動企画をカテゴリーごとにご案内します。
-      </p>
+      <p class="page-lead">クラス企画・ステージ発表・模擬店/部活動企画をカテゴリーごとにご案内します。</p>
     </div>
   </section>
+
+  <nav class="subnav" aria-label="カテゴリー">
+    <div class="container subnav-inner">
+      <a href="#class-entries">クラス企画</a>
+      <a href="#stage-entries">ステージ発表</a>
+      <a href="#booth-entries">模擬店・部活動企画</a>
+    </div>
+  </nav>
 
   <section class="section" id="class-entries">
     <div class="container">
       <div class="section-head">
         <h2 class="section-title">クラス企画</h2>
-        <p class="section-lead">承認済み22件</p>
+        <p class="section-lead">承認済み<span id="classTotal">22</span>件。企画名・担当クラスで検索したり、学年で絞り込めます。</p>
       </div>
-      <ul class="exhibit-list">
+
+      <form class="toolbar" id="exhibitToolbar" role="search" aria-label="出し物を検索" onsubmit="return false;">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input type="search" id="exhibitSearch" placeholder="企画名・担当クラスで検索（例：お化け屋敷、2年D）" aria-label="企画名・担当クラスで検索" autocomplete="off">
+        </div>
+        <div class="filter-group" role="radiogroup" aria-label="学年で絞り込む">
+          <label><input type="radio" name="grade" value="" checked><span>すべて</span></label>
+          <label><input type="radio" name="grade" value="1"><span>1年</span></label>
+          <label><input type="radio" name="grade" value="2"><span>2年</span></label>
+        </div>
+      </form>
+      <p class="result-count" id="exhibitCount" aria-live="polite"><strong>22</strong> 件を表示</p>
+
+      <ul class="exhibit-list" id="exhibitList">
         <!-- ▼ここから22件 -->
-                <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>ジェットコースター</h3>
-            <p class="exhibit-row-meta">担当：1年AC1</p>
-          </div>
+        <li class="exhibit-row" data-name="ジェットコースター" data-class="1年AC1" data-grade="1">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>ジェットコースター</h3><p class="exhibit-row-meta">担当：1年AC1</p></div>
+          <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>トイマニ</h3>
-            <p class="exhibit-row-meta">担当：1年AM1</p>
-          </div>
+        <li class="exhibit-row" data-name="トイマニ" data-class="1年AM1" data-grade="1">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>トイマニ</h3><p class="exhibit-row-meta">担当：1年AM1</p></div>
+          <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>フォトスポット</h3>
-            <p class="exhibit-row-meta">担当：1年AM2</p>
-          </div>
+        <li class="exhibit-row" data-name="フォトスポット" data-class="1年AM2" data-grade="1">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>フォトスポット</h3><p class="exhibit-row-meta">担当：1年AM2</p></div>
+          <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>お化け屋敷（コンセプトあり）</h3>
-            <p class="exhibit-row-meta">担当：1年AM3</p>
-          </div>
+        <li class="exhibit-row" data-name="お化け屋敷（コンセプトあり）" data-class="1年AM3" data-grade="1">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>お化け屋敷（コンセプトあり）</h3><p class="exhibit-row-meta">担当：1年AM3</p></div>
+          <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>お化け屋敷（コンセプトあり）</h3>
-            <p class="exhibit-row-meta">担当：1年AM4</p>
-          </div>
+        <li class="exhibit-row" data-name="お化け屋敷（コンセプトあり）" data-class="1年AM4" data-grade="1">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>お化け屋敷（コンセプトあり）</h3><p class="exhibit-row-meta">担当：1年AM4</p></div>
+          <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>占い</h3>
-            <p class="exhibit-row-meta">担当：1年C1</p>
-          </div>
+        <li class="exhibit-row" data-name="占い" data-class="1年C1" data-grade="1">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>占い</h3><p class="exhibit-row-meta">担当：1年C1</p></div>
+          <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>お化け屋敷（コンセプトあり）</h3>
-            <p class="exhibit-row-meta">担当：1年D1</p>
-          </div>
+        <li class="exhibit-row" data-name="お化け屋敷（コンセプトあり）" data-class="1年D1" data-grade="1">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>お化け屋敷（コンセプトあり）</h3><p class="exhibit-row-meta">担当：1年D1</p></div>
+          <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>お化け屋敷（コンセプトあり）</h3>
-            <p class="exhibit-row-meta">担当：1年D3</p>
-          </div>
+        <li class="exhibit-row" data-name="お化け屋敷（コンセプトあり）" data-class="1年D3" data-grade="1">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>お化け屋敷（コンセプトあり）</h3><p class="exhibit-row-meta">担当：1年D3</p></div>
+          <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>お化け屋敷（コンセプトあり）</h3>
-            <p class="exhibit-row-meta">担当：1年D4</p>
-          </div>
+        <li class="exhibit-row" data-name="お化け屋敷（コンセプトあり）" data-class="1年D4" data-grade="1">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>お化け屋敷（コンセプトあり）</h3><p class="exhibit-row-meta">担当：1年D4</p></div>
+          <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>トイマニ</h3>
-            <p class="exhibit-row-meta">担当：1年D6</p>
-          </div>
+        <li class="exhibit-row" data-name="トイマニ" data-class="1年D6" data-grade="1">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>トイマニ</h3><p class="exhibit-row-meta">担当：1年D6</p></div>
+          <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>脱出ゲーム</h3>
-            <p class="exhibit-row-meta">担当：2年AC1</p>
-          </div>
+        <li class="exhibit-row" data-name="脱出ゲーム" data-class="2年AC1" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>脱出ゲーム</h3><p class="exhibit-row-meta">担当：2年AC1</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>トロッコシューティング</h3>
-            <p class="exhibit-row-meta">担当：2年AM3</p>
-          </div>
+        <li class="exhibit-row" data-name="トロッコシューティング" data-class="2年AM3" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>トロッコシューティング</h3><p class="exhibit-row-meta">担当：2年AM3</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>脱出ゲーム</h3>
-            <p class="exhibit-row-meta">担当：2年AM5</p>
-          </div>
+        <li class="exhibit-row" data-name="脱出ゲーム" data-class="2年AM5" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>脱出ゲーム</h3><p class="exhibit-row-meta">担当：2年AM5</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>カジノ</h3>
-            <p class="exhibit-row-meta">担当：2年AR1</p>
-          </div>
+        <li class="exhibit-row" data-name="カジノ" data-class="2年AR1" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>カジノ</h3><p class="exhibit-row-meta">担当：2年AR1</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>ラウンドワン</h3>
-            <p class="exhibit-row-meta">担当：2年C1</p>
-          </div>
+        <li class="exhibit-row" data-name="ラウンドワン" data-class="2年C1" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>ラウンドワン</h3><p class="exhibit-row-meta">担当：2年C1</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>ディズニーインスピレーション</h3>
-            <p class="exhibit-row-meta">担当：2年D1</p>
-          </div>
+        <li class="exhibit-row" data-name="ディズニーインスピレーション" data-class="2年D1" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>ディズニーインスピレーション</h3><p class="exhibit-row-meta">担当：2年D1</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>ディズニーインスピレーション</h3>
-            <p class="exhibit-row-meta">担当：2年D3</p>
-          </div>
+        <li class="exhibit-row" data-name="ディズニーインスピレーション" data-class="2年D3" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>ディズニーインスピレーション</h3><p class="exhibit-row-meta">担当：2年D3</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>お化け屋敷</h3>
-            <p class="exhibit-row-meta">担当：2年D5</p>
-          </div>
+        <li class="exhibit-row" data-name="お化け屋敷" data-class="2年D5" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>お化け屋敷</h3><p class="exhibit-row-meta">担当：2年D5</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>お化け屋敷</h3>
-            <p class="exhibit-row-meta">担当：2年D6</p>
-          </div>
+        <li class="exhibit-row" data-name="お化け屋敷" data-class="2年D6" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>お化け屋敷</h3><p class="exhibit-row-meta">担当：2年D6</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>お化け屋敷</h3>
-            <p class="exhibit-row-meta">担当：2年D7</p>
-          </div>
+        <li class="exhibit-row" data-name="お化け屋敷" data-class="2年D7" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>お化け屋敷</h3><p class="exhibit-row-meta">担当：2年D7</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>トロッコアトラクション</h3>
-            <p class="exhibit-row-meta">担当：2年S1</p>
-          </div>
+        <li class="exhibit-row" data-name="トロッコアトラクション" data-class="2年S1" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>トロッコアトラクション</h3><p class="exhibit-row-meta">担当：2年S1</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row">
-          <div class="exhibit-row-main">
-            <h3>カーレース</h3>
-            <p class="exhibit-row-meta">担当：2年SP2</p>
-          </div>
+        <li class="exhibit-row" data-name="カーレース" data-class="2年SP2" data-grade="2">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>カーレース</h3><p class="exhibit-row-meta">担当：2年SP2</p></div>
+          <span class="chip chip--grade">2年</span>
         </li>
         <!-- ▲ここまで22件 -->
       </ul>
+      <p class="exhibit-empty" id="exhibitEmpty" hidden>条件に合う企画が見つかりませんでした。検索語や学年の絞り込みを変えてお試しください。</p>
     </div>
   </section>
 
   <section class="section" id="stage-entries">
-    <div class="container section-head">
-      <h2 class="section-title">ステージ発表</h2>
-      <p class="section-lead">準備中です。有志団体・部活動の出演が確定次第、このページに掲載します。</p>
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">ステージ発表</h2>
+        <p class="section-lead">有志団体・部活動によるステージパフォーマンスです。</p>
+      </div>
+      <div class="pending-block">
+        <span class="pending-label">準備中</span>
+        <p>出演が確定次第、このページに掲載します。</p>
+      </div>
     </div>
   </section>
 
   <section class="section" id="booth-entries">
-    <div class="container section-head">
-      <h2 class="section-title">模擬店・部活動企画</h2>
-      <p class="section-lead">準備中です。準備が整い次第、このページに掲載します。</p>
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">模擬店・部活動企画</h2>
+        <p class="section-lead">飲食を含む模擬店や、部活動による企画展示です。</p>
+      </div>
+      <div class="pending-block">
+        <span class="pending-label">準備中</span>
+        <p>準備が整い次第、このページに掲載します。</p>
+      </div>
     </div>
   </section>
 
 </main>
 
-<button id="backToTop" class="back-to-top" aria-label="トップに戻る">↑</button>
+<button id="backToTop" class="back-to-top" aria-label="ページの先頭へ戻る">↑</button>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-mascot-wrap"><img class="footer-mascot" src="images/mascot-bunris.png" alt="BUNRI'S" loading="lazy" width="424" height="284"></div>
-    <p class="footer-name">文理祭実行委員会</p>
-    <p class="footer-sub">お問い合わせ先は確定次第、このページに掲載します。</p>
-    <p class="footer-copy">&copy; <span id="year"></span> 文理祭実行委員会</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html#top">文理祭<span>2026</span></a>
+        <p>西武学園文理高等学校 文化祭<br>2026年10月3日（土）・4日（日）</p>
+        <div class="footer-mascot-wrap"><img class="footer-mascot" src="images/mascot-bunris.png" alt="BUNRI'S" loading="lazy" width="424" height="284"></div>
+      </div>
+      <div class="footer-col">
+        <h4>メニュー</h4>
+        <ul>
+          <li><a href="index.html#about">文理祭とは</a></li>
+          <li><a href="exhibits.html">出し物一覧</a></li>
+          <li><a href="index.html#schedule">タイムスケジュール</a></li>
+          <li><a href="index.html#access">アクセス</a></li>
+          <li><a href="index.html#news">お知らせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li>お問い合わせ先は確定次第、このページに掲載します。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> 文理祭実行委員会</span>
+      <span>運営：西武学園文理高等学校 文理祭実行委員会</span>
+    </div>
   </div>
 </footer>
 
-<script src="js/main.js?v=6"></script>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/main.js?v=7"></script>
 </body>
 </html>

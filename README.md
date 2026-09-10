@@ -2,52 +2,57 @@
 
 コードを書かずにテキストエディタ(メモ帳/VSCodeなど)だけで更新できる、静的なHTMLサイトです。
 
+- 公開URL: https://bunrisai2026.github.io/
+- 出し物一覧: https://bunrisai2026.github.io/exhibits.html
+
 ## 更新のしかた
 
-1. `index.html` を開く
-2. `<!-- ▼ここを編集 -->` から `<!-- ここまで編集 -->` の間にある日本語のテキストだけを書き換える
-3. 出し物カードやお知らせを増やしたいときは、同じブロック（`<div class="exhibit-card">...</div>` や `<li>...</li>`）をコピーして、その下に貼り付けてから中の文字を変える
-4. 保存してブラウザで `index.html` を開けば見た目を確認できる
+1. `index.html`（トップページ）または `exhibits.html`（出し物一覧）を開く
+2. 各ファイルの先頭にある「編集ガイド」のコメントに沿って、日本語の文章部分だけを書き換える
+3. 保存してブラウザで開けば見た目を確認できる
 
 タグ（`<` と `>` で囲まれた部分）は消さないように注意してください。
 
+### 出し物を追加する
+
+`exhibits.html` の「▼ここから」〜「▲ここまで」の間にある1件分の `<li ...>` ブロックをコピーし、
+`data-name`（企画名）・`data-class`（担当クラス）・`data-grade`（学年 1か2）と、
+表示用の `<h3>` / 担当 / 学年チップの文字を書き換えます。
+番号は自動で振られ、トップページの件数（「承認済み○件」「1年○件・2年○件」）も自動で集計されます。
+
+### お知らせを追加する
+
+`index.html` の「お知らせ」の `<li>` をコピーして、`<time datetime="2026-09-01">2026.09.01</time>` と本文を書き換えます。
+
 ## 色を変えたいとき
 
-`css/style.css` の一番上、`:root { ... }` の中にある色コード（`#4b2e83` など）を変えるだけで、サイト全体の配色が変わります。
+`css/style.css` の一番上、`:root { ... }` の中の色コードを変えるだけで、サイト全体の配色が変わります。
+文字色（`--accent` など）は背景との明るさの差が十分になるよう選んでください。
+
+## 機能
+
+- 文化祭までのカウントダウン（当日は「開催中」、終了後は「終了しました」に自動で切り替わります）
+- 「カレンダーに追加」（`files/bunrisai2026.ics`）と「このページを共有」
+- 出し物一覧の検索・学年フィルタ（URLの `?q=` や `?grade=1` でも指定できます）
+- スマホではタイムスケジュールを日付タブで切り替え
+- 検索エンジン対応（`robots.txt` / `sitemap.xml` / OGP / Event構造化データ）
 
 ## GitHub Pagesで公開する手順
 
-1. GitHubで新しいリポジトリを作成する（例: `bunrisai2026`）
-2. このフォルダの中身をそのリポジトリにpushする
-   ```
-   git init
-   git add .
-   git commit -m "文理祭2026サイト初版"
-   git branch -M main
-   git remote add origin https://github.com/ユーザー名/リポジトリ名.git
-   git push -u origin main
-   ```
-3. GitHubのリポジトリ画面で「Settings」→「Pages」を開く
-4. 「Branch」を `main` / `/(root)` に設定して保存する
-5. 数分後、`https://ユーザー名.github.io/リポジトリ名/` でサイトが公開される
-
-## 待ち時間ページについて
-
-以前はこのリポジトリの中に `wait.html` / `staff.html` として置いていましたが、
-現在は **別リポジトリ・別サイト** (`bunrisai2026/wait`) に分離しています。
-
-- 公開URL: https://bunrisai2026.github.io/wait/
-- ナビの「待ち時間」ボタンはこのURLにリンクしています。
-- セットアップ方法（Firebaseの接続など）は、そちらのリポジトリの `README.md` を参照してください。
+`main` ブランチに push すると、GitHub Pages が自動で公開します（数十秒〜数分）。
+設定は GitHub の「Settings」→「Pages」で、`main` / `/(root)` を選んでいます。
 
 ## フォルダ構成
 
 ```
 website/
-├── index.html                    トップページ
-├── css/style.css                 トップページのデザイン
-├── js/main.js                    メニュー開閉などの最小限の動き
-├── images/                       画像を置く場所
-├── files/                        PDFなどダウンロード用ファイルを置く場所
-└── README.md                     このファイル
+├── index.html                トップページ
+├── exhibits.html             出し物一覧
+├── css/style.css             デザイン
+├── js/main.js                メニュー開閉・カウントダウン・検索などの動き
+├── images/                   画像
+├── files/                    PDF・カレンダー(.ics)などダウンロード用ファイル
+├── robots.txt / sitemap.xml  検索エンジン向け
+├── TROUBLESHOOTING.md        過去に起きた問題と対策
+└── README.md                 このファイル
 ```

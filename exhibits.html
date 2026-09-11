@@ -35,9 +35,8 @@
       data-name="企画名"  data-group="団体名"  data-grade="1/2/3/club"
       <h3>企画名</h3>  団体名と場所  <p class="exhibit-desc">紹介文</p>  学年チップ
   ・番号は自動で振られ、トップページの件数も自動で集計されます。
-  ・元資料(委員会の企画一覧)で企画名が途中までしか確認できなかった企画は、
-    団体名・承認一覧の概要・紹介文中の語のいずれかで掲載しています。
-    正式名称が分かったら <h3> と data-name を書き換えてください。
+  ・企画名が未定のものは「企画名は準備中」と表示しています。
+    決まったら h3 と data-name を書き換えてください。
 ================================================================= -->
 
 <header class="site-header is-scrolled" id="siteHeader">
@@ -62,7 +61,7 @@
     <div class="container">
       <span class="section-kicker">文理祭2026</span>
       <h1 class="page-title">出し物一覧</h1>
-      <p class="page-lead">クラス企画・部活動や団体の展示・ステージ発表・模擬店、全84件をご案内します。企画名や団体名で検索したり、学年・部活で絞り込めます。</p>
+      <p class="page-lead">クラス企画・部活動や団体の展示・ステージ発表・模擬店、全88件をご案内します。企画名や団体名で検索したり、学年・部活で絞り込めます。</p>
     </div>
   </section>
 
@@ -90,9 +89,9 @@
           <label><input type="radio" name="grade" value="club"><span>部活・団体</span></label>
         </div>
       </form>
-      <p class="result-count" id="exhibitCount" aria-live="polite"><strong>84</strong> 件を表示</p>
+      <p class="result-count" id="exhibitCount" aria-live="polite"><strong>88</strong> 件を表示</p>
       <p class="exhibit-empty" id="exhibitEmpty" hidden>条件に合う企画が見つかりませんでした。検索語を変えるか、絞り込みを「すべて」に戻してください。</p>
-      <p class="note">企画名は委員会の企画一覧をもとに掲載しています。一部、元資料で名前が途中までしか確認できなかった企画は、団体名や内容から分かる範囲の名前で掲載しています。</p>
+      <p class="note">企画名・場所は委員会の企画一覧（確定版）をもとに掲載しています。まだ名前が決まっていない企画は「企画名は準備中」と表示しています。</p>
     </div>
   </section>
 
@@ -104,39 +103,39 @@
       </div>
       <ul class="exhibit-list" data-list="class">
         <!-- ▼ここからクラス企画（35件） -->
-        <li class="exhibit-row" data-name="諭せ！完全犯罪" data-group="2年AC1" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="諭せ！完全犯罪の設計図" data-group="2年AC1" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>諭せ！完全犯罪</h3><p class="exhibit-row-meta">2年AC1<span class="exhibit-place">本館3階 A棟 H307</span></p><p class="exhibit-desc">目の前に突きつけられたのは、隙のない「完全犯罪」。貴方には、この謎を解き明かすことができるのか？</p></div>
+          <div class="exhibit-row-main"><h3>諭せ！完全犯罪の設計図</h3><p class="exhibit-row-meta">2年AC1<span class="exhibit-place">本館3階 A棟 H307</span></p><p class="exhibit-desc">目の前に突きつけられたのは、隙のない「完全犯罪」。貴方には、この謎を解き明かすことができるのか？</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="インディー・ジョーンズ" data-group="2年AM1" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="インディー・ジョーンズ・アドベンチャー" data-group="2年AM1" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>インディー・ジョーンズ</h3><p class="exhibit-row-meta">2年AM1<span class="exhibit-place">本館3階 A棟 H302</span></p><p class="exhibit-desc">若さの泉を探すツアーへようこそ！忘れないで、クリスタルスタルを怒らせると何があるかわからないよ…。</p></div>
+          <div class="exhibit-row-main"><h3>インディー・ジョーンズ・アドベンチャー</h3><p class="exhibit-row-meta">2年AM1<span class="exhibit-place">本館3階 A棟 H302</span></p><p class="exhibit-desc">若さの泉を探すツアーへようこそ！忘れないで、クリスタルスタルを怒らせると何があるかわからないよ…。</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="たけのこ・きのこ" data-group="2年AM3" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="たけのこ・きのこ大戦争" data-group="2年AM3" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>たけのこ・きのこ</h3><p class="exhibit-row-meta">2年AM3<span class="exhibit-place">本館3階 A棟 H304</span></p><p class="exhibit-desc">「たけのこときのこ、どちらが上か――」この戦いに決着をつけるには、あなたの力が必要です！！</p></div>
+          <div class="exhibit-row-main"><h3>たけのこ・きのこ大戦争</h3><p class="exhibit-row-meta">2年AM3<span class="exhibit-place">本館3階 A棟 H304</span></p><p class="exhibit-desc">「たけのこときのこ、どちらが上か――」この戦いに決着をつけるには、あなたの力が必要です！！</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="企画名は準備中" data-group="2年AM4" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="脱出ゲーム" data-group="2年AM4" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>企画名は準備中</h3><p class="exhibit-row-meta">2年AM4<span class="exhibit-place">本館3階 A棟 H305</span></p></div>
+          <div class="exhibit-row-main"><h3>脱出ゲーム</h3><p class="exhibit-row-meta">2年AM4<span class="exhibit-place">本館3階 A棟 H305</span></p><p class="exhibit-desc">風船とアスレチックの脱出ゲーム。挑戦待ってます！</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="北林家" data-group="2年AM5" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="北林家 ”ホラー×謎解き脱出”" data-group="2年AM5" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>北林家</h3><p class="exhibit-row-meta">2年AM5<span class="exhibit-place">本館3階 A棟 H306</span></p><p class="exhibit-desc">生存率ゼロの心霊スポット。狂った人形が支配する家から、すべての謎を解き明かし、生きて帰れ</p></div>
+          <div class="exhibit-row-main"><h3>北林家 ”ホラー×謎解き脱出”</h3><p class="exhibit-row-meta">2年AM5<span class="exhibit-place">本館3階 A棟 H306</span></p><p class="exhibit-desc">生存率ゼロの心霊スポット。狂った人形が支配する家から、すべての謎を解き明かし、生きて帰れ</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="ラプンツェル" data-group="2年D1" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="ラプンツェルのランタンフェスティバル" data-group="2年D1" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>ラプンツェル</h3><p class="exhibit-row-meta">2年D1<span class="exhibit-place">本館3階 C棟 H319</span></p><p class="exhibit-desc">〜ランタンが輝く夢のボート旅へ〜</p></div>
+          <div class="exhibit-row-main"><h3>ラプンツェルのランタンフェスティバル</h3><p class="exhibit-row-meta">2年D1<span class="exhibit-place">本館3階 C棟 H319</span></p><p class="exhibit-desc">〜ランタンが輝く夢のボート旅へ〜</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="D2マンション" data-group="2年D2" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="のりこ屋敷の999人の亡霊" data-group="2年D2" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>D2マンション</h3><p class="exhibit-row-meta">2年D2<span class="exhibit-place">本館3階 C棟 H318</span></p><p class="exhibit-desc">ディズニーに行きたい人集合</p></div>
+          <div class="exhibit-row-main"><h3>のりこ屋敷の999人の亡霊</h3><p class="exhibit-row-meta">2年D2<span class="exhibit-place">本館3階 C棟 H318</span></p><p class="exhibit-desc">ディズニーに行きたい人集合</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
         <li class="exhibit-row" data-name="美女と野獣の城" data-group="2年D3" data-grade="2" data-cat="class">
@@ -149,9 +148,9 @@
           <div class="exhibit-row-main"><h3>カリブの海賊</h3><p class="exhibit-row-meta">2年D4<span class="exhibit-place">本館3階 C棟 H316</span></p><p class="exhibit-desc">帆を上げろ、まだ見ぬ海が待っている</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="シンドバッド" data-group="2年D5" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="シンドバッド・ストーリーブック・ヴォヤッジ" data-group="2年D5" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>シンドバッド</h3><p class="exhibit-row-meta">2年D5<span class="exhibit-place">本館3階 C棟 H315</span></p><p class="exhibit-desc">コンパス・オブ・ユア・ハートを胸に、夢と冒険の旅へでかけませんか？</p></div>
+          <div class="exhibit-row-main"><h3>シンドバッド・ストーリーブック・ヴォヤッジ</h3><p class="exhibit-row-meta">2年D5<span class="exhibit-place">本館3階 C棟 H315</span></p><p class="exhibit-desc">コンパス・オブ・ユア・ハートを胸に、夢と冒険の旅へでかけませんか？</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
         <li class="exhibit-row" data-name="企画名は準備中" data-group="2年D6" data-grade="2" data-cat="class">
@@ -164,39 +163,39 @@
           <div class="exhibit-row-main"><h3>廃ホテル</h3><p class="exhibit-row-meta">2年D7<span class="exhibit-place">本館3階 B棟 H311</span></p><p class="exhibit-desc">数年前に突然閉鎖されたホテル。しかし今もなお、宿泊客の姿が目撃されています…。</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="妖怪ウォッチ" data-group="2年D8" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="妖怪ウォッチ〜鬼時間から脱出せよ！〜" data-group="2年D8" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>妖怪ウォッチ</h3><p class="exhibit-row-meta">2年D8<span class="exhibit-place">本館3階 B棟 H310</span></p><p class="exhibit-desc">みんなが当時怖かったあの鬼時間を再現して鬼から逃げながらたくさんの妖怪を仲間にして脱出しよう！</p></div>
+          <div class="exhibit-row-main"><h3>妖怪ウォッチ〜鬼時間から脱出せよ！〜</h3><p class="exhibit-row-meta">2年D8<span class="exhibit-place">本館3階 B棟 H310</span></p><p class="exhibit-desc">みんなが当時怖かったあの鬼時間を再現して鬼から逃げながらたくさんの妖怪を仲間にして脱出しよう！</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="処刑迷宮" data-group="2年S1" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="処刑迷宮 〜生贄の狂宴〜" data-group="2年S1" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>処刑迷宮</h3><p class="exhibit-row-meta">2年S1<span class="exhibit-place">本館3階 B棟 H309</span></p><p class="exhibit-desc">1938年、生贄の怨念眠る神殿へ。ジープで駆け抜け、罠だらけの魔宮から生還せよ！</p></div>
+          <div class="exhibit-row-main"><h3>処刑迷宮 〜生贄の狂宴〜</h3><p class="exhibit-row-meta">2年S1<span class="exhibit-place">本館3階 B棟 H309</span></p><p class="exhibit-desc">1938年、生贄の怨念眠る神殿へ。ジープで駆け抜け、罠だらけの魔宮から生還せよ！</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="ジェットコースター" data-group="1年AC1" data-grade="1" data-cat="class">
+        <li class="exhibit-row" data-name="このジェットコースターすんごいじゃん" data-group="1年AC1" data-grade="1" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>ジェットコースター</h3><p class="exhibit-row-meta">1年AC1<span class="exhibit-place">本館4階 C棟 H415</span></p><p class="exhibit-desc">安全面にこだわり丁寧に作り上げました。どなたでも安心して乗れる、楽しさ満載のコースターです！</p></div>
+          <div class="exhibit-row-main"><h3>このジェットコースターすんごいじゃん</h3><p class="exhibit-row-meta">1年AC1<span class="exhibit-place">本館4階 C棟 H415</span></p><p class="exhibit-desc">安全面にこだわり丁寧に作り上げました。どなたでも安心して乗れる、楽しさ満載のコースターです！</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row" data-name="トイマニ" data-group="1年AM1" data-grade="1" data-cat="class">
+        <li class="exhibit-row" data-name="〜巨大なおもちゃ箱から脱出せよ〜" data-group="1年AM1" data-grade="1" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>トイマニ</h3><p class="exhibit-row-meta">1年AM1<span class="exhibit-place">本館4階 A棟 H402</span></p><p class="exhibit-desc">狙って撃ってハイスコアを目指そう！誰でも楽しめる爽快シューティングゲーム！</p></div>
+          <div class="exhibit-row-main"><h3>〜巨大なおもちゃ箱から脱出せよ〜</h3><p class="exhibit-row-meta">1年AM1<span class="exhibit-place">本館4階 A棟 H402</span></p><p class="exhibit-desc">狙って撃ってハイスコアを目指そう！誰でも楽しめる爽快シューティングゲーム！</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row" data-name="フォトスポット" data-group="1年AM2" data-grade="1" data-cat="class">
+        <li class="exhibit-row" data-name="紳士と淑女が送るくつろぎどころ" data-group="1年AM2" data-grade="1" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>フォトスポット</h3><p class="exhibit-row-meta">1年AM2<span class="exhibit-place">本館4階 A棟 H406</span></p><p class="exhibit-desc">紳士淑女が音楽・ミニゲーム・トークで癒しの時間を届けます。（フォトスポットあり）</p></div>
+          <div class="exhibit-row-main"><h3>紳士と淑女が送るくつろぎどころ</h3><p class="exhibit-row-meta">1年AM2<span class="exhibit-place">本館4階 A棟 H406</span></p><p class="exhibit-desc">紳士淑女が音楽・ミニゲーム・トークで癒しの時間を届けます。（フォトスポットあり）</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row" data-name="冥土の館" data-group="1年AM3" data-grade="1" data-cat="class">
+        <li class="exhibit-row" data-name="冥土の館〜地獄の館へご案内...♡〜" data-group="1年AM3" data-grade="1" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>冥土の館</h3><p class="exhibit-row-meta">1年AM3<span class="exhibit-place">本館4階 A棟 H404</span></p><p class="exhibit-desc">新感覚のお化け屋敷へようこそ!! 本格的ある意味恐怖をあなたに...♡</p></div>
+          <div class="exhibit-row-main"><h3>冥土の館〜地獄の館へご案内...♡〜</h3><p class="exhibit-row-meta">1年AM3<span class="exhibit-place">本館4階 A棟 H404</span></p><p class="exhibit-desc">新感覚のお化け屋敷へようこそ!! 本格的ある意味恐怖をあなたに...♡</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row" data-name="企画名は準備中" data-group="1年AM4" data-grade="1" data-cat="class">
+        <li class="exhibit-row" data-name="キッキングスナイパー" data-group="1年AM4" data-grade="1" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>企画名は準備中</h3><p class="exhibit-row-meta">1年AM4<span class="exhibit-place">本館4階 B棟 H408</span></p></div>
+          <div class="exhibit-row-main"><h3>キッキングスナイパー</h3><p class="exhibit-row-meta">1年AM4<span class="exhibit-place">本館4階 B棟 H408</span></p><p class="exhibit-desc">ビックなキックでトップをゲット</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
         <li class="exhibit-row" data-name="おかえり占いませ" data-group="1年C1" data-grade="1" data-cat="class">
@@ -209,9 +208,9 @@
           <div class="exhibit-row-main"><h3>一発必中‼</h3><p class="exhibit-row-meta">1年D1<span class="exhibit-place">本館4階 C棟 H416</span></p><p class="exhibit-desc">的を倒して景品をゲットしよう！挑戦お待ちしております‼</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row" data-name="企画名は準備中" data-group="1年D2" data-grade="1" data-cat="class">
+        <li class="exhibit-row" data-name="脱出ゲーム" data-group="1年D2" data-grade="1" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>企画名は準備中</h3><p class="exhibit-row-meta">1年D2<span class="exhibit-place">本館4階 A棟 H403</span></p></div>
+          <div class="exhibit-row-main"><h3>脱出ゲーム</h3><p class="exhibit-row-meta">1年D2<span class="exhibit-place">本館4階 A棟 H403</span></p><p class="exhibit-desc">クイズや謎を解いてゴールを目指す脱出ゲームです！フォトスポットもあります！ぜひ挑戦してください！</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
         <li class="exhibit-row" data-name="カラダ探し" data-group="1年D3" data-grade="1" data-cat="class">
@@ -219,9 +218,9 @@
           <div class="exhibit-row-main"><h3>カラダ探し</h3><p class="exhibit-row-meta">1年D3<span class="exhibit-place">本館4階 C棟 H414</span></p><p class="exhibit-desc">カラダ探しを元につくったお化け屋敷！待ち時間にはおみくじを引けるので楽しめます!! ぜひ来てね!!</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row" data-name="青鬼" data-group="1年D4" data-grade="1" data-cat="class">
+        <li class="exhibit-row" data-name="青鬼は、すぐ後ろ。" data-group="1年D4" data-grade="1" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>青鬼</h3><p class="exhibit-row-meta">1年D4<span class="exhibit-place">本館4階 A棟 H407</span></p><p class="exhibit-desc">その扉を開けた瞬間、ゲームは始まる。謎を解けば脱出成功。解けなければ青鬼が迫る。</p></div>
+          <div class="exhibit-row-main"><h3>青鬼は、すぐ後ろ。</h3><p class="exhibit-row-meta">1年D4<span class="exhibit-place">本館4階 A棟 H407</span></p><p class="exhibit-desc">その扉を開けた瞬間、ゲームは始まる。謎を解けば脱出成功。解けなければ青鬼が迫る。</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
         <li class="exhibit-row" data-name="D5の殺人事件" data-group="1年D5" data-grade="1" data-cat="class">
@@ -229,9 +228,9 @@
           <div class="exhibit-row-main"><h3>D5の殺人事件</h3><p class="exhibit-row-meta">1年D5<span class="exhibit-place">本館4階 A棟 H405</span></p><p class="exhibit-desc">その事件、まだ終わっていません。</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row" data-name="トイマニ" data-group="1年D6" data-grade="1" data-cat="class">
+        <li class="exhibit-row" data-name="トイストーリーマニア" data-group="1年D6" data-grade="1" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>トイマニ</h3><p class="exhibit-row-meta">1年D6<span class="exhibit-place">本館4階 B棟 H409</span></p><p class="exhibit-desc">おもちゃたちと一緒に大はしゃぎ！みんなで楽しめる夢いっぱいのアトラクション！</p></div>
+          <div class="exhibit-row-main"><h3>トイストーリーマニア</h3><p class="exhibit-row-meta">1年D6<span class="exhibit-place">本館4階 B棟 H409</span></p><p class="exhibit-desc">おもちゃたちと一緒に大はしゃぎ！みんなで楽しめる夢いっぱいのアトラクション！</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
         <li class="exhibit-row" data-name="コスプレカジノ" data-group="1年S1＋1年AC2" data-grade="1" data-cat="class">
@@ -239,19 +238,19 @@
           <div class="exhibit-row-main"><h3>コスプレカジノ</h3><p class="exhibit-row-meta">1年S1＋1年AC2<span class="exhibit-place">本館4階 B棟 H410</span></p><p class="exhibit-desc">コスプレをしたディーラーと一緒にカジノで遊べます。とっても楽しいのでぜひ遊びに来てください。</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
-        <li class="exhibit-row" data-name="カジノ" data-group="2年AM2" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="おかえりなさいませ、大富豪様" data-group="2年AM2" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>カジノ</h3><p class="exhibit-row-meta">2年AM2<span class="exhibit-place">本館4階 A棟 H303</span></p><p class="exhibit-desc">ここではこれからカジノで、大富豪になる皆さんをメイド達が待っています。至高の時を、大富豪様</p></div>
+          <div class="exhibit-row-main"><h3>おかえりなさいませ、大富豪様</h3><p class="exhibit-row-meta">2年AM2<span class="exhibit-place">本館4階 A棟 H303</span></p><p class="exhibit-desc">ここではこれからカジノで、大富豪になる皆さんをメイド達が待っています。至高の時を、大富豪様</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="企画名は準備中" data-group="2年C1" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="ラウンドワン" data-group="2年C1" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>企画名は準備中</h3><p class="exhibit-row-meta">2年C1<span class="exhibit-place">1号館3階 D302</span></p></div>
+          <div class="exhibit-row-main"><h3>ラウンドワン</h3><p class="exhibit-row-meta">2年C1<span class="exhibit-place">1号館3階 D302</span></p><p class="exhibit-desc">文理でスポッチャを開催！バルーンサッカーやでっかいテニスを再現！ぜひ遊びにきてください！</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="たはランド" data-group="2年C2" data-grade="2" data-cat="class">
+        <li class="exhibit-row" data-name="たはランド〜逆襲のピエロ〜" data-group="2年C2" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>たはランド</h3><p class="exhibit-row-meta">2年C2<span class="exhibit-place">1号館3階 D303</span></p><p class="exhibit-desc">こんにちは！たはランドへようこそ！事故によりお休みしていたゴーカートが大復活！ぜひ遊びに来てね！</p></div>
+          <div class="exhibit-row-main"><h3>たはランド〜逆襲のピエロ〜</h3><p class="exhibit-row-meta">2年C2<span class="exhibit-place">1号館3階 D303</span></p><p class="exhibit-desc">こんにちは！たはランドへようこそ！事故によりお休みしていたゴーカートが大復活！ぜひ遊びに来てね！</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
         <li class="exhibit-row" data-name="SP迷宮" data-group="1年SP1" data-grade="1" data-cat="class">
@@ -266,7 +265,7 @@
         </li>
         <li class="exhibit-row" data-name="今日、好きになりました。～2-SP1編～" data-group="2年SP1" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>今日、好きになりました。～2-SP1編～</h3><p class="exhibit-row-meta">2年SP1<span class="exhibit-place">1号館4階 D403</span></p></div>
+          <div class="exhibit-row-main"><h3>今日、好きになりました。～2-SP1編～</h3><p class="exhibit-row-meta">2年SP1<span class="exhibit-place">1号館4階 D403</span></p><p class="exhibit-desc">2-SP1でしか見られない今日好きを是非見てきてください！</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
         <li class="exhibit-row" data-name="カーレース" data-group="2年SP2" data-grade="2" data-cat="class">
@@ -274,9 +273,9 @@
           <div class="exhibit-row-main"><h3>カーレース</h3><p class="exhibit-row-meta">2年SP2<span class="exhibit-place">1号館4階 D405</span></p><p class="exhibit-desc">SPクラスの熱いカーレースを一緒にやろう！！</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
-        <li class="exhibit-row" data-name="カジノ" data-group="2年AR1＋1年AR1" data-grade="2 1" data-cat="class">
+        <li class="exhibit-row" data-name="不思議の国のカジノ" data-group="2年AR1＋1年AR1" data-grade="2 1" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>カジノ</h3><p class="exhibit-row-meta">2年AR1＋1年AR1<span class="exhibit-place">1号館5階（5階全域）</span></p><p class="exhibit-desc">迷い込んだ先は、アリスのカジノ！？ゲームに勝って元の世界に戻ろう!!!♡</p></div>
+          <div class="exhibit-row-main"><h3>不思議の国のカジノ</h3><p class="exhibit-row-meta">2年AR1＋1年AR1<span class="exhibit-place">1号館5階（5階全域）</span></p><p class="exhibit-desc">迷い込んだ先は、アリスのカジノ！？ゲームに勝って元の世界に戻ろう!!!♡</p></div>
           <span class="chip chip--grade">1・2年</span>
         </li>
         <!-- ▲ここまでクラス企画 -->
@@ -291,10 +290,15 @@
         <p class="section-lead">部活動や有志団体による展示・体験・販売です。</p>
       </div>
       <ul class="exhibit-list" data-list="club">
-        <!-- ▼ここから部活動・団体の展示・体験（16件） -->
-        <li class="exhibit-row" data-name="デジタルクリエイト部" data-group="デジタルクリエイト部" data-grade="club" data-cat="club">
+        <!-- ▼ここから部活動・団体の展示・体験（18件） -->
+        <li class="exhibit-row" data-name="魔法使いの秘密の部屋" data-group="高校魔法部" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>デジタルクリエイト部</h3><p class="exhibit-row-meta">デジタルクリエイト部<span class="exhibit-place">本館2階 B棟 H211</span></p><p class="exhibit-desc">トロッコに乗って、ゾンビを退けながら隔離区域の最深部へと進め！勇気ある”調査員“を募集中！</p></div>
+          <div class="exhibit-row-main"><h3>魔法使いの秘密の部屋</h3><p class="exhibit-row-meta">高校魔法部<span class="exhibit-place">本館1階 高校中庭</span></p><p class="exhibit-desc">日常を忘れる魔法の空間へようこそ。あっと驚く魔法をご用意いたします。</p></div>
+          <span class="chip chip--grade">部活・団体</span>
+        </li>
+        <li class="exhibit-row" data-name="体験型シューティングゲーム「NO:ENTRY」" data-group="デジタルクリエイト部" data-grade="club" data-cat="club">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>体験型シューティングゲーム「NO:ENTRY」</h3><p class="exhibit-row-meta">デジタルクリエイト部<span class="exhibit-place">本館2階 B棟 H211</span></p><p class="exhibit-desc">トロッコに乗って、ゾンビを退けながら隔離区域の最深部へと進め！勇気ある”調査員“を募集中！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <li class="exhibit-row" data-name="TEKKEN DAYS" data-group="鉄道研究部" data-grade="club" data-cat="club">
@@ -302,29 +306,34 @@
           <div class="exhibit-row-main"><h3>TEKKEN DAYS</h3><p class="exhibit-row-meta">鉄道研究部<span class="exhibit-place">本館2階 A棟 高校物理室</span></p><p class="exhibit-desc">鉄道の世界へようこそ！皆様のご乗車お待ちしております</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
+        <li class="exhibit-row" data-name="展示会" data-group="美術部" data-grade="club" data-cat="club">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>展示会</h3><p class="exhibit-row-meta">美術部<span class="exhibit-place">本館2階 C棟 H214</span></p><p class="exhibit-desc">部員の作品展示と、うちわ制作を行います！オリジナルうちわを作ってみては！</p></div>
+          <span class="chip chip--grade">部活・団体</span>
+        </li>
         <li class="exhibit-row" data-name="書道部展覧会" data-group="書道部" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
           <div class="exhibit-row-main"><h3>書道部展覧会</h3><p class="exhibit-row-meta">書道部<span class="exhibit-place">本館2階 C棟 H216</span></p><p class="exhibit-desc">部員が心を込めて書き上げた、個性豊かな作品を多数展示しています。日頃の練習の成果をぜひご覧ください。</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="研究発表" data-group="科学部" data-grade="club" data-cat="club">
+        <li class="exhibit-row" data-name="令和８年度科学部文化祭展示" data-group="科学部" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>研究発表</h3><p class="exhibit-row-meta">科学部<span class="exhibit-place">本館2階 A棟 化学室</span></p><p class="exhibit-desc">研究内容の展示と、活性炭電池・DNA抽出の２つの実験を実演しています。ぜひご覧ください。</p></div>
+          <div class="exhibit-row-main"><h3>令和８年度科学部文化祭展示</h3><p class="exhibit-row-meta">科学部<span class="exhibit-place">本館2階 A棟 化学室</span></p><p class="exhibit-desc">研究内容の展示と、活性炭電池・DNA抽出の２つの実験を実演しています。ぜひご覧ください。</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="BUNRI大学の演習" data-group="高大連携企画" data-grade="club" data-cat="club">
+        <li class="exhibit-row" data-name="BUNRI大学の演習授業での看護援助技術を体験しよう！" data-group="高大連携企画" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>BUNRI大学の演習</h3><p class="exhibit-row-meta">高大連携企画<span class="exhibit-place">本館2階 C棟 H218</span></p><p class="exhibit-desc">レサシアン人形とAEDを用いた心肺蘇生体験や人形を使った赤ちゃん抱っこ体験、高齢者体験ができます！</p></div>
+          <div class="exhibit-row-main"><h3>BUNRI大学の演習授業での看護援助技術を体験しよう！</h3><p class="exhibit-row-meta">高大連携企画<span class="exhibit-place">本館2階 C棟 H218</span></p><p class="exhibit-desc">レサシアン人形とAEDを用いた心肺蘇生体験や人形を使った赤ちゃん抱っこ体験、高齢者体験ができます！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="ユースクリニック" data-group="ユースクリニック" data-grade="club" data-cat="club">
+        <li class="exhibit-row" data-name="たんぽぽユースクリニック" data-group="ユースクリニック" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>ユースクリニック</h3><p class="exhibit-row-meta">ユースクリニック<span class="exhibit-place">本館2階 C棟 H217</span></p><p class="exhibit-desc">からだのこと、こころのこと、性のこと、HPVワクチン、正しい知識知りたくない？サッコ先生と性教育！</p></div>
+          <div class="exhibit-row-main"><h3>たんぽぽユースクリニック</h3><p class="exhibit-row-meta">ユースクリニック<span class="exhibit-place">本館2階 C棟 H217</span></p><p class="exhibit-desc">からだのこと、こころのこと、性のこと、HPVワクチン、正しい知識知りたくない？サッコ先生と性教育！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="V-Tech" data-group="Vプロジェクト" data-grade="club" data-cat="club">
+        <li class="exhibit-row" data-name="V-Tech アミューズメント・ラボ〜モーションキャプチャで繋がる未来の遊び〜" data-group="Vプロジェクト" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>V-Tech</h3><p class="exhibit-row-meta">Vプロジェクト<span class="exhibit-place">本館3階 B棟 H308</span></p><p class="exhibit-desc">AIと体感する未来のVRゲームラボ。カメラの前に立って遊ぶアトラクションで未来を体験しちゃおう！</p></div>
+          <div class="exhibit-row-main"><h3>V-Tech アミューズメント・ラボ〜モーションキャプチャで繋がる未来の遊び〜</h3><p class="exhibit-row-meta">Vプロジェクト<span class="exhibit-place">本館3階 B棟 H308</span></p><p class="exhibit-desc">AIと体感する未来のVRゲームラボ。カメラの前に立って遊ぶアトラクションで未来を体験しちゃおう！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <li class="exhibit-row" data-name="写真展・小物販売" data-group="写真部" data-grade="club" data-cat="club">
@@ -337,9 +346,9 @@
           <div class="exhibit-row-main"><h3>茶席体験</h3><p class="exhibit-row-meta">茶道講習会<span class="exhibit-place">本館4階 C棟 茶道室</span></p><p class="exhibit-desc">私達と一緒にお抹茶を点ててみませんか？初心者だという方もお気軽に。お点前の披露も。</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="文理祭コミケ" data-group="漫画研究部" data-grade="club" data-cat="club">
+        <li class="exhibit-row" data-name="文理祭コミケ2026" data-group="漫画研究部" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>文理祭コミケ</h3><p class="exhibit-row-meta">漫画研究部<span class="exhibit-place">本館4階 C棟 H417</span></p><p class="exhibit-desc">部誌やグッズの販売を行っています。コスプレした部員もいます！らくがきスペースの用意もありますよ！</p></div>
+          <div class="exhibit-row-main"><h3>文理祭コミケ2026</h3><p class="exhibit-row-meta">漫画研究部<span class="exhibit-place">本館4階 C棟 H417</span></p><p class="exhibit-desc">部誌やグッズの販売を行っています。コスプレした部員もいます！らくがきスペースの用意もありますよ！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <li class="exhibit-row" data-name="文化祭ライブ" data-group="フォークソング部" data-grade="club" data-cat="club">
@@ -347,9 +356,9 @@
           <div class="exhibit-row-main"><h3>文化祭ライブ</h3><p class="exhibit-row-meta">フォークソング部<span class="exhibit-place">本館4階 C棟 H419</span></p><p class="exhibit-desc">私達フォークソング部、今年もやりたい放題音鳴らします。音に飲まれろ、鼓膜はおいてこい。</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="文理ポケモンリーグ" data-group="文理ポケモンリーグ" data-grade="club" data-cat="club">
+        <li class="exhibit-row" data-name="ポケモンチャンピオンズ対戦会場" data-group="文理ポケモンリーグ" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>文理ポケモンリーグ</h3><p class="exhibit-row-meta">文理ポケモンリーグ<span class="exhibit-place">1号館3階 D306</span></p><p class="exhibit-desc">歩き疲れた、涼みたいと思ったそこのポケモントレーナー！ここで1戦やっていかない？</p></div>
+          <div class="exhibit-row-main"><h3>ポケモンチャンピオンズ対戦会場</h3><p class="exhibit-row-meta">文理ポケモンリーグ<span class="exhibit-place">1号館3階 D306</span></p><p class="exhibit-desc">歩き疲れた、涼みたいと思ったそこのポケモントレーナー！ここで1戦やっていかない？</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <li class="exhibit-row" data-name="ミニ学校説明会" data-group="ミニ学校説明会" data-grade="club" data-cat="club">
@@ -364,12 +373,12 @@
         </li>
         <li class="exhibit-row" data-name="射撃体験" data-group="ライフル射撃部" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>射撃体験</h3><p class="exhibit-row-meta">ライフル射撃部</p><p class="exhibit-desc">1回100円で射撃体験！射撃部の模擬店で商品を買うと、無料で1回遊べる射撃体験券をプレゼント！</p></div>
+          <div class="exhibit-row-main"><h3>射撃体験</h3><p class="exhibit-row-meta">ライフル射撃部<span class="exhibit-place">M202</span></p><p class="exhibit-desc">1回100円で射撃体験！射撃部の模擬店で商品を買うと、無料で1回遊べる射撃体験券をプレゼント！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="撮影の裏側展" data-group="プロメディア" data-grade="club" data-cat="club">
+        <li class="exhibit-row" data-name="撮影の裏側展" data-group="ガチプロメディアマネジメント" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>撮影の裏側展</h3><p class="exhibit-row-meta">プロメディア</p><p class="exhibit-desc">文理内で収録された作品で使用された小道具やタレントさんたちのサイン色紙を展示しています！ぜひ見に来てください！</p></div>
+          <div class="exhibit-row-main"><h3>撮影の裏側展</h3><p class="exhibit-row-meta">ガチプロメディアマネジメント<span class="exhibit-place">生物室</span></p><p class="exhibit-desc">文理内で収録された作品で使用された小道具やタレントさんたちのサイン色紙を展示しています！ぜひ見に来てください！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <!-- ▲ここまで部活動・団体の展示・体験 -->
@@ -381,10 +390,10 @@
     <div class="container">
       <div class="section-head">
         <h2 class="section-title">ステージ発表</h2>
-        <p class="section-lead">中庭ステージ・サイエンスホールでのパフォーマンスです。出演時刻は決まり次第掲載します。</p>
+        <p class="section-lead">中庭ステージ・サイエンスホール・大勇館でのパフォーマンスです。出演時刻は決まり次第掲載します。</p>
       </div>
       <ul class="exhibit-list" data-list="stage">
-        <!-- ▼ここからステージ発表（6件） -->
+        <!-- ▼ここからステージ発表（8件） -->
         <li class="exhibit-row" data-name="文化祭ライブ" data-group="フォークソング部" data-grade="club" data-cat="stage">
           <span class="exhibit-index" aria-hidden="true"></span>
           <div class="exhibit-row-main"><h3>文化祭ライブ</h3><p class="exhibit-row-meta">フォークソング部<span class="exhibit-place">中庭ステージ</span></p><p class="exhibit-desc">私達フォークソング部、今年もやりたい放題音鳴らします。音に飲まれろ、鼓膜はおいてこい。</p></div>
@@ -395,19 +404,29 @@
           <div class="exhibit-row-main"><h3>演技披露</h3><p class="exhibit-row-meta">チア応援部<span class="exhibit-place">中庭ステージ</span></p><p class="exhibit-desc">チア・応援部として初の文化祭での演技披露です。一生懸命踊りますので、ぜひ見にきてください！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="音楽劇" data-group="合唱部" data-grade="club" data-cat="stage">
+        <li class="exhibit-row" data-name="音楽劇「リトル・マーメイド」" data-group="合唱部" data-grade="club" data-cat="stage">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>音楽劇</h3><p class="exhibit-row-meta">合唱部<span class="exhibit-place">サイエンスホール</span></p><p class="exhibit-desc">合唱とダンス、演技を交えた音楽劇をします。歌と笑顔で贈る、心躍る海の物語。きっとあなたを魅了します！</p></div>
+          <div class="exhibit-row-main"><h3>音楽劇「リトル・マーメイド」</h3><p class="exhibit-row-meta">合唱部<span class="exhibit-place">サイエンスホール</span></p><p class="exhibit-desc">合唱とダンス、演技を交えた音楽劇をします。歌と笑顔で贈る、心躍る海の物語。きっとあなたを魅了します！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="書道パフォーマンス" data-group="書道部" data-grade="club" data-cat="stage">
+        <li class="exhibit-row" data-name="文理に新風を巻き起こす" data-group="書道部" data-grade="club" data-cat="stage">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>書道パフォーマンス</h3><p class="exhibit-row-meta">書道部<span class="exhibit-place">中庭ステージ</span></p><p class="exhibit-desc">テーマは「新風」！新しい風を巻き起こすような、勢いと躍動感あふれる書道パフォーマンスをお届けします。</p></div>
+          <div class="exhibit-row-main"><h3>文理に新風を巻き起こす</h3><p class="exhibit-row-meta">書道部<span class="exhibit-place">中庭ステージ</span></p><p class="exhibit-desc">テーマは「新風」！新しい風を巻き起こすような、勢いと躍動感あふれる書道パフォーマンスをお届けします。</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="中高合同演奏" data-group="吹奏楽部" data-grade="club" data-cat="stage">
+        <li class="exhibit-row" data-name="BWOスペシャルコンサート2026" data-group="吹奏楽部" data-grade="club" data-cat="stage">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>中高合同演奏</h3><p class="exhibit-row-meta">吹奏楽部<span class="exhibit-place">中庭ステージ</span></p><p class="exhibit-desc">青春を彩る名曲と迫力ある中高合同演奏をお届けします。また中高別の一体感あるステージも見どころです。</p></div>
+          <div class="exhibit-row-main"><h3>BWOスペシャルコンサート2026</h3><p class="exhibit-row-meta">吹奏楽部<span class="exhibit-place">中庭ステージ</span></p><p class="exhibit-desc">青春を彩る名曲と迫力ある中高合同演奏をお届けします。また中高別の一体感あるステージも見どころです。</p></div>
+          <span class="chip chip--grade">部活・団体</span>
+        </li>
+        <li class="exhibit-row" data-name="BUNRI DANCE STAGE2026" data-group="中高ダンス部" data-grade="club" data-cat="stage">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>BUNRI DANCE STAGE2026</h3><p class="exhibit-row-meta">中高ダンス部<span class="exhibit-place">大勇館</span></p><p class="exhibit-desc">中高ダンス部総勢47名でさまざまなジャンルのダンスを披露します！笑顔あふれるステージをぜひ大勇館でお楽しみください！</p></div>
+          <span class="chip chip--grade">部活・団体</span>
+        </li>
+        <li class="exhibit-row" data-name="PERFORMANCE 1st STAGE" data-group="パフォーマンス同好会" data-grade="club" data-cat="stage">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>PERFORMANCE 1st STAGE</h3><p class="exhibit-row-meta">パフォーマンス同好会</p><p class="exhibit-desc">はじめまして！パフォーマンス同好会です！文化祭で初めての発表ができることを光栄に思います。皆さんに笑顔を届けられるよう、精一杯踊ります！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <li class="exhibit-row" data-name="校長ライブ" data-group="校長・保護者バンド" data-grade="club" data-cat="stage">
@@ -428,14 +447,14 @@
       </div>
       <ul class="exhibit-list" data-list="booth">
         <!-- ▼ここから模擬店（27件） -->
-        <li class="exhibit-row" data-name="餃子" data-group="3年AC" data-grade="3" data-cat="booth">
+        <li class="exhibit-row" data-name="ACのぶたさん餃子" data-group="3年AC" data-grade="3" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>餃子</h3><p class="exhibit-row-meta">3年AC<span class="exhibit-place">模擬店 No.10</span></p><p class="exhibit-desc">3年ACクラスが3種の餃子を提供します！ぜひお立ち寄りください！</p></div>
+          <div class="exhibit-row-main"><h3>ACのぶたさん餃子</h3><p class="exhibit-row-meta">3年AC<span class="exhibit-place">模擬店 No.10</span></p><p class="exhibit-desc">3年ACクラスが3種の餃子を提供します！ぜひお立ち寄りください！</p></div>
           <span class="chip chip--grade">3年</span>
         </li>
-        <li class="exhibit-row" data-name="つかちゃんのミスったドーナツ" data-group="3年AM2" data-grade="3" data-cat="booth">
+        <li class="exhibit-row" data-name="つかちゃんのmissッタドーナツ" data-group="3年AM2" data-grade="3" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>つかちゃんのミスったドーナツ</h3><p class="exhibit-row-meta">3年AM2<span class="exhibit-place">模擬店 No.6</span></p><p class="exhibit-desc">塚越先生、ついにドーナツまでミスっちゃいました。揚げたての「つかちゃんのミスったドーナツ」、ぜひ一度ご賞味あれ！</p></div>
+          <div class="exhibit-row-main"><h3>つかちゃんのmissッタドーナツ</h3><p class="exhibit-row-meta">3年AM2<span class="exhibit-place">模擬店 No.6</span></p><p class="exhibit-desc">塚越先生、ついにドーナツまでミスっちゃいました。揚げたての「つかちゃんのミスったドーナツ」、ぜひ一度ご賞味あれ！</p></div>
           <span class="chip chip--grade">3年</span>
         </li>
         <li class="exhibit-row" data-name="ちゅっろりん" data-group="3年AM3" data-grade="3" data-cat="booth">
@@ -458,19 +477,19 @@
           <div class="exhibit-row-main"><h3>100円たこ焼き</h3><p class="exhibit-row-meta">3年D2<span class="exhibit-place">模擬店 No.12</span></p><p class="exhibit-desc">こだわり素材を使った手作りたこ焼き！アツアツできたてをなんと4個100円で販売！安くておいしい自慢の一品を、ぜひ食べに来てください！</p></div>
           <span class="chip chip--grade">3年</span>
         </li>
-        <li class="exhibit-row" data-name="ポテポテ" data-group="3年D3" data-grade="3" data-cat="booth">
+        <li class="exhibit-row" data-name="ポテポテしちゃったな" data-group="3年D3" data-grade="3" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>ポテポテ</h3><p class="exhibit-row-meta">3年D3<span class="exhibit-place">模擬店 No.25</span></p><p class="exhibit-desc">サイズSない。Mない。Lない。もういい？</p></div>
+          <div class="exhibit-row-main"><h3>ポテポテしちゃったな</h3><p class="exhibit-row-meta">3年D3<span class="exhibit-place">模擬店 No.25</span></p><p class="exhibit-desc">サイズSない。Mない。Lない。もういい？</p></div>
           <span class="chip chip--grade">3年</span>
         </li>
-        <li class="exhibit-row" data-name="餃子、ゆでました" data-group="3年D4" data-grade="3" data-cat="booth">
+        <li class="exhibit-row" data-name="餃子、ゆでました。" data-group="3年D4" data-grade="3" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>餃子、ゆでました</h3><p class="exhibit-row-meta">3年D4<span class="exhibit-place">模擬店 No.16</span></p><p class="exhibit-desc">一口食べれば笑顔になるもちもちつるんとした水餃子！ぜひ食べに来てください！</p></div>
+          <div class="exhibit-row-main"><h3>餃子、ゆでました。</h3><p class="exhibit-row-meta">3年D4<span class="exhibit-place">模擬店 No.16</span></p><p class="exhibit-desc">一口食べれば笑顔になるもちもちつるんとした水餃子！ぜひ食べに来てください！</p></div>
           <span class="chip chip--grade">3年</span>
         </li>
-        <li class="exhibit-row" data-name="あげパン" data-group="3年D5" data-grade="3" data-cat="booth">
+        <li class="exhibit-row" data-name="丹精込めてあげちゃうぞ♡おいちいあげぱん" data-group="3年D5" data-grade="3" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>あげパン</h3><p class="exhibit-row-meta">3年D5<span class="exhibit-place">模擬店 No.8</span></p><p class="exhibit-desc">3年D5組の漢の子が作るちょーおいちいあげパン！萌え萌えキューン♡</p></div>
+          <div class="exhibit-row-main"><h3>丹精込めてあげちゃうぞ♡おいちいあげぱん</h3><p class="exhibit-row-meta">3年D5<span class="exhibit-place">模擬店 No.8</span></p><p class="exhibit-desc">3年D5組の漢の子が作るちょーおいちいあげパン！萌え萌えキューン♡</p></div>
           <span class="chip chip--grade">3年</span>
         </li>
         <li class="exhibit-row" data-name="〈元祖〉金だこ" data-group="3年S1" data-grade="3" data-cat="booth">
@@ -478,14 +497,14 @@
           <div class="exhibit-row-main"><h3>〈元祖〉金だこ</h3><p class="exhibit-row-meta">3年S1<span class="exhibit-place">模擬店 No.3</span></p><p class="exhibit-desc">エスクラのタコヤキはキモチイ ※年齢確認の為、身分証明書の提示が必要になる場合がございます。</p></div>
           <span class="chip chip--grade">3年</span>
         </li>
-        <li class="exhibit-row" data-name="焼きそば" data-group="3年SP1" data-grade="3" data-cat="booth">
+        <li class="exhibit-row" data-name="勇者様の焼きそば" data-group="3年SP1" data-grade="3" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>焼きそば</h3><p class="exhibit-row-meta">3年SP1<span class="exhibit-place">模擬店 No.5</span></p><p class="exhibit-desc">お腹が空いたらここ！屋台から漂うソースの香りが食欲をそそる、絶品のアツアツ焼きそばです！ぜひ来てください</p></div>
+          <div class="exhibit-row-main"><h3>勇者様の焼きそば</h3><p class="exhibit-row-meta">3年SP1<span class="exhibit-place">模擬店 No.5</span></p><p class="exhibit-desc">お腹が空いたらここ！屋台から漂うソースの香りが食欲をそそる、絶品のアツアツ焼きそばです！ぜひ来てください</p></div>
           <span class="chip chip--grade">3年</span>
         </li>
-        <li class="exhibit-row" data-name="唐揚げ" data-group="3年SP2" data-grade="3" data-cat="booth">
+        <li class="exhibit-row" data-name="激ウマ特製唐揚げ" data-group="3年SP2" data-grade="3" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>唐揚げ</h3><p class="exhibit-row-meta">3年SP2<span class="exhibit-place">模擬店 No.14</span></p><p class="exhibit-desc">スポーツクラスが作る激ウマの唐揚げです！ぜひどうぞ！</p></div>
+          <div class="exhibit-row-main"><h3>激ウマ特製唐揚げ</h3><p class="exhibit-row-meta">3年SP2<span class="exhibit-place">模擬店 No.14</span></p><p class="exhibit-desc">スポーツクラスが作る激ウマの唐揚げです！ぜひどうぞ！</p></div>
           <span class="chip chip--grade">3年</span>
         </li>
         <li class="exhibit-row" data-name="おひさまチュロス" data-group="インターアクト部" data-grade="club" data-cat="booth">
@@ -493,34 +512,34 @@
           <div class="exhibit-row-main"><h3>おひさまチュロス</h3><p class="exhibit-row-meta">インターアクト部<span class="exhibit-place">模擬店 No.20</span></p><p class="exhibit-desc">地域と人をつなぐインターアクト部が、愛情たっぷりチュロスをお届けします！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="チュロス・ドリンク" data-group="ウィンタースポーツ部" data-grade="club" data-cat="booth">
+        <li class="exhibit-row" data-name="ウィンタースポーツ部のチュロス屋さん" data-group="ウィンタースポーツ部" data-grade="club" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>チュロス・ドリンク</h3><p class="exhibit-row-meta">ウィンタースポーツ部<span class="exhibit-place">模擬店 No.24</span></p><p class="exhibit-desc">ウィンタースポーツ部特製30cmチュロスと各種ドリンク販売中！#食べ歩き #スキー部のチュロス屋さん</p></div>
+          <div class="exhibit-row-main"><h3>ウィンタースポーツ部のチュロス屋さん</h3><p class="exhibit-row-meta">ウィンタースポーツ部<span class="exhibit-place">模擬店 No.24</span></p><p class="exhibit-desc">ウィンタースポーツ部特製30cmチュロスと各種ドリンク販売中！#食べ歩き #スキー部のチュロス屋さん</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="フランクフルト" data-group="テニス部" data-grade="club" data-cat="booth">
+        <li class="exhibit-row" data-name="幸せフランクフルト" data-group="テニス部" data-grade="club" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>フランクフルト</h3><p class="exhibit-row-meta">テニス部<span class="exhibit-place">模擬店 No.11</span></p><p class="exhibit-desc">テニス部が食べると幸せになれるフランクフルトを販売します！</p></div>
+          <div class="exhibit-row-main"><h3>幸せフランクフルト</h3><p class="exhibit-row-meta">テニス部<span class="exhibit-place">模擬店 No.11</span></p><p class="exhibit-desc">テニス部が食べると幸せになれるフランクフルトを販売します！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="ラムネ冷えてます" data-group="バスケットボール部" data-grade="club" data-cat="booth">
+        <li class="exhibit-row" data-name="ラムネ冷えてますよ" data-group="女子バスケットボール部" data-grade="club" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>ラムネ冷えてます</h3><p class="exhibit-row-meta">バスケットボール部<span class="exhibit-place">模擬店 No.1</span></p><p class="exhibit-desc">ラムネ冷えてます。心も冷やします。</p></div>
+          <div class="exhibit-row-main"><h3>ラムネ冷えてますよ</h3><p class="exhibit-row-meta">女子バスケットボール部<span class="exhibit-place">模擬店 No.1</span></p><p class="exhibit-desc">ラムネ冷えてます。心も冷やします。</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="つぶつぶアイス" data-group="バドミントン部" data-grade="club" data-cat="booth">
+        <li class="exhibit-row" data-name="ゆうきくんとりことちゃんの大好物" data-group="バドミントン部" data-grade="club" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>つぶつぶアイス</h3><p class="exhibit-row-meta">バドミントン部<span class="exhibit-place">模擬店 No.13</span></p><p class="exhibit-desc">バドミントン部が心を込めておくる、ひんやり楽しいつぶつぶアイス！カラフルでおいしいアイスをぜひ食べに来てください！</p></div>
+          <div class="exhibit-row-main"><h3>ゆうきくんとりことちゃんの大好物</h3><p class="exhibit-row-meta">バドミントン部<span class="exhibit-place">模擬店 No.13</span></p><p class="exhibit-desc">バドミントン部が心を込めておくる、ひんやり楽しいつぶつぶアイス！カラフルでおいしいアイスをぜひ食べに来てください！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="たこせん" data-group="女子バレーボール部" data-grade="club" data-cat="booth">
+        <li class="exhibit-row" data-name="マッチポイントたこせん ～このたこせん食べたらゲームセット～" data-group="女子バレーボール部" data-grade="club" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>たこせん</h3><p class="exhibit-row-meta">女子バレーボール部<span class="exhibit-place">模擬店 No.7</span></p><p class="exhibit-desc">悩みがある人、困ってる人はこれを食べれば一発ゲームセット！！</p></div>
+          <div class="exhibit-row-main"><h3>マッチポイントたこせん ～このたこせん食べたらゲームセット～</h3><p class="exhibit-row-meta">女子バレーボール部<span class="exhibit-place">模擬店 No.7</span></p><p class="exhibit-desc">悩みがある人、困ってる人はこれを食べれば一発ゲームセット！！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="フライドポテト" data-group="空手道部" data-grade="club" data-cat="booth">
+        <li class="exhibit-row" data-name="フライド空手道部" data-group="空手道部" data-grade="club" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>フライドポテト</h3><p class="exhibit-row-meta">空手道部<span class="exhibit-place">模擬店 No.17</span></p><p class="exhibit-desc">空手道部がフライドポテトを販売します！ぜひどうぞ！</p></div>
+          <div class="exhibit-row-main"><h3>フライド空手道部</h3><p class="exhibit-row-meta">空手道部<span class="exhibit-place">模擬店 No.17</span></p><p class="exhibit-desc">空手道部がフライドポテトを販売します！ぜひどうぞ！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <li class="exhibit-row" data-name="樹徳の会" data-group="樹徳の会" data-grade="club" data-cat="booth">
@@ -528,9 +547,9 @@
           <div class="exhibit-row-main"><h3>樹徳の会</h3><p class="exhibit-row-meta">樹徳の会<span class="exhibit-place">模擬店 No.28</span></p><p class="exhibit-desc">中学校の保護者によるイベントです。模擬店にて軽食を販売する他、休憩もできます。</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="餃子" data-group="生徒会" data-grade="club" data-cat="booth">
+        <li class="exhibit-row" data-name="ジョニーのシャバくない焼き餃子" data-group="生徒会" data-grade="club" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>餃子</h3><p class="exhibit-row-meta">生徒会<span class="exhibit-place">模擬店 No.13</span></p><p class="exhibit-desc">シャバい日常に別れを。ジョニーの本気、餃子でどうぞ。</p></div>
+          <div class="exhibit-row-main"><h3>ジョニーのシャバくない焼き餃子</h3><p class="exhibit-row-meta">生徒会<span class="exhibit-place">模擬店 No.13</span></p><p class="exhibit-desc">シャバい日常に別れを。ジョニーの本気、餃子でどうぞ。</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <li class="exhibit-row" data-name="ホットク" data-group="卓球部" data-grade="club" data-cat="booth">
@@ -538,9 +557,9 @@
           <div class="exhibit-row-main"><h3>ホットク</h3><p class="exhibit-row-meta">卓球部<span class="exhibit-place">模擬店 No.18</span></p><p class="exhibit-desc">ホットクを食べれるのはここだけ！ぜひ来てください！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="焼きそば・肉巻き" data-group="北斗星の会" data-grade="club" data-cat="booth">
+        <li class="exhibit-row" data-name="北斗星の会" data-group="北斗星の会" data-grade="club" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>焼きそば・肉巻き</h3><p class="exhibit-row-meta">北斗星の会<span class="exhibit-place">模擬店 No.22</span></p><p class="exhibit-desc">焼きそば・肉巻きを販売します！</p></div>
+          <div class="exhibit-row-main"><h3>北斗星の会</h3><p class="exhibit-row-meta">北斗星の会<span class="exhibit-place">模擬店 No.22</span></p><p class="exhibit-desc">焼きそば・肉巻きを販売します！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <li class="exhibit-row" data-name="ライフルピザ工房" data-group="ライフル射撃部" data-grade="club" data-cat="booth">
@@ -548,9 +567,9 @@
           <div class="exhibit-row-main"><h3>ライフルピザ工房</h3><p class="exhibit-row-meta">ライフル射撃部<span class="exhibit-place">模擬店 No.21</span></p><p class="exhibit-desc">ピザ1つ買うと、射撃体験一回無料チケット一枚もらえる！！ぜひ食べに来てください！！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="ドリンク" data-group="同窓会" data-grade="club" data-cat="booth">
+        <li class="exhibit-row" data-name="同窓会" data-group="同窓会" data-grade="club" data-cat="booth">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>ドリンク</h3><p class="exhibit-row-meta">同窓会<span class="exhibit-place">模擬店 No.27</span></p><p class="exhibit-desc">冷たいドリンクを販売します！</p></div>
+          <div class="exhibit-row-main"><h3>同窓会</h3><p class="exhibit-row-meta">同窓会<span class="exhibit-place">模擬店 No.27</span></p><p class="exhibit-desc">冷たいドリンクを販売します！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <li class="exhibit-row" data-name="ニューフジ" data-group="ニューフジ" data-grade="club" data-cat="booth">

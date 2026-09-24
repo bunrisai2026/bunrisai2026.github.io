@@ -9,7 +9,7 @@
   --paper: #ffffff;
   --ink: #14213b;
   --text: #22304a;
-  --muted: #64708a;
+  --muted: #5c6880;
   --line: rgba(20, 33, 59, 0.14);
   --line-strong: rgba(20, 33, 59, 0.3);
   --accent: #a83e1a;
@@ -24,6 +24,8 @@
 }
 
 * { box-sizing: border-box; }
+/* JSが hidden を付けた要素は必ず隠す(display指定に負けないように) */
+[hidden] { display: none !important; }
 html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -369,7 +371,7 @@ section[id], [id].anchor-target { scroll-margin-top: calc(var(--header-h) + 16px
 .footer-brand p { margin: 12px 0 0; font-size: 0.9rem; }
 .footer-mascot-wrap { display: inline-block; background: #fff; border-radius: 6px; padding: 6px 12px; margin-top: 18px; }
 .footer-mascot { height: 36px; width: auto; }
-.footer-col h4 { margin: 0 0 14px; font-size: 0.78rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.6); font-weight: 700; }
+.footer-col h3 { margin: 0 0 14px; font-size: 0.78rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.6); font-weight: 700; }
 .footer-col ul { list-style: none; margin: 0; padding: 0; }
 .footer-col li { margin: 0 0 10px; font-size: 0.92rem; }
 .footer-col a { color: #fff; text-decoration: none; }
@@ -435,6 +437,11 @@ section[hidden] { display: none; }
 @media (max-width: 520px) { .exhibit-row { grid-template-columns: 36px 1fr; } .exhibit-row .chip--grade { grid-column: 2; justify-self: start; } }
 
 @media (max-width: 1100px) and (min-width: 901px) { .categories { grid-template-columns: repeat(2, 1fr); } .category:nth-child(3) { border-left: none; padding-left: 0; } .category:nth-child(n+3) { border-top: 1px solid var(--line); } }
+
+/* ページ内リンクで移動先にフォーカスを移したときの枠線（キーボード操作時のみ表示） */
+[tabindex="-1"]:focus:not(:focus-visible) { outline: none; }
+/* 絞り込みで0件になったカテゴリーのリンク */
+.subnav a.is-empty { opacity: 0.4; }
 
 /* ---------- 共有トースト ---------- */
 .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 16px); z-index: 60; background: var(--ink); color: #fff; padding: 10px 18px; border-radius: 3px; font-size: 0.85rem; opacity: 0; pointer-events: none; transition: opacity 0.25s var(--ease), transform 0.25s var(--ease); }

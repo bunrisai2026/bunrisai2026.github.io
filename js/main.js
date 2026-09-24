@@ -243,6 +243,16 @@ function initEasedAnchorScroll() {
     requestAnimationFrame(step);
   }
 
+  // 移動先にフォーカスも移す。これをしないと「本文へ移動」などが
+  // 見た目だけ動いて、キーボード操作では元の位置から進んでしまう。
+  function focusTarget(el) {
+    if (!el.hasAttribute("tabindex")) {
+      el.setAttribute("tabindex", "-1");
+      el.addEventListener("blur", () => el.removeAttribute("tabindex"), { once: true });
+    }
+    try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (e) => {
       const id = link.getAttribute("href").slice(1);
@@ -250,6 +260,7 @@ function initEasedAnchorScroll() {
       if (!target) return;
       e.preventDefault();
       scrollToTarget(target);
+      focusTarget(target);
       history.pushState(null, "", `#${id}`);
     });
   });
@@ -325,6 +336,13 @@ function initExhibitFilter() {
   const radios = Array.from(document.querySelectorAll('input[name="grade"]'));
   if (rows.length === 0) return;
 
+  // カテゴリーリンク（ページ上部）と各一覧の対応
+  const navLinks = new Map();
+  document.querySelectorAll('.subnav a[href^="#"]').forEach((a) => {
+    const el = document.getElementById(a.getAttribute("href").slice(1));
+    if (el) navLinks.set(el, a);
+  });
+
   const normalize = (s) => String(s || "").normalize("NFKC").toLowerCase().replace(/\s+/g, "");
   // 検索対象: 企画名・団体名・場所・紹介文
   rows.forEach((row) => {
@@ -346,7 +364,11 @@ function initExhibitFilter() {
         row.hidden = !ok;
         if (ok) n += 1;
       });
-      if (sec.section) sec.section.hidden = n === 0;
+      if (sec.section) {
+        sec.section.hidden = n === 0;
+        const link = navLinks.get(sec.section);
+        if (link) link.classList.toggle("is-empty", n === 0);
+      }
       shown += n;
     });
     if (countEl) countEl.innerHTML = `<strong>${shown}</strong> 件を表示（全${rows.length}件）`;

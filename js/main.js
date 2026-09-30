@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   try { initScheduleTabs(); } catch (e) { console.error(e); }
   try { initExhibitFilter(); } catch (e) { console.error(e); }
   try { initCategoryCounts(); } catch (e) { console.error(e); }
+  try { initMapDialog(); } catch (e) { console.error(e); }
 });
 
 /* ---------- スマホメニュー ---------- */
@@ -419,4 +420,46 @@ function initCategoryCounts() {
       setText("aboutTotal", String(total));
     })
     .catch(() => { /* 取得できない場合はHTMLに書かれた件数のまま */ });
+}
+
+/* ---------- バス乗り場の案内図をその場で開く ----------
+   リンク自体は画像への普通のリンクなので、JSが動かない環境では
+   別タブで画像が開く。dialogが使える環境だけ、その場に重ねて表示する。 */
+function initMapDialog() {
+  const links = Array.from(document.querySelectorAll(".map-link"));
+  const dialog = document.getElementById("mapDialog");
+  if (links.length === 0 || !dialog || typeof dialog.showModal !== "function") return;
+
+  const img = document.getElementById("mapDialogImg");
+  const title = document.getElementById("mapDialogTitle");
+  const openLink = document.getElementById("mapDialogOpen");
+  const closeBtn = document.getElementById("mapDialogClose");
+  if (!img || !title || !openLink || !closeBtn) return;
+  let lastFocused = null;
+
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // 別タブで開く操作はそのまま
+      e.preventDefault();
+      lastFocused = link;
+      const src = link.getAttribute("href");
+      img.src = src;
+      img.alt = link.dataset.desc || link.dataset.title || "";
+      if (link.dataset.w && link.dataset.h) { img.width = link.dataset.w; img.height = link.dataset.h; }
+      title.textContent = link.dataset.title || "";
+      openLink.href = src;
+      dialog.showModal();
+      closeBtn.focus();
+    });
+  });
+
+  closeBtn.addEventListener("click", () => dialog.close());
+  // 画像の外側(背景)を押したら閉じる
+  dialog.addEventListener("click", (e) => { if (e.target === dialog) dialog.close(); });
+  // 閉じたら透明な画像に戻す。srcを空にすると読み込み失敗の扱いになるため使わない。
+  const BLANK = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+  dialog.addEventListener("close", () => {
+    img.src = BLANK;
+    if (lastFocused) { lastFocused.focus(); lastFocused = null; }
+  });
 }

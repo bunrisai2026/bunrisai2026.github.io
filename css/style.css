@@ -489,6 +489,12 @@ section[hidden] { display: none; }
   background: var(--ink); color: #fff; font-size: 0.82rem; font-weight: 700; white-space: nowrap;
 }
 .tour-slot:hover .tour-cta { background: var(--accent); }
+/* 受付を終了した回 */
+.tour-slot.is-closed { background: transparent; border-style: dashed; border-color: var(--line-strong); cursor: default; }
+.tour-slot.is-closed:hover { border-color: var(--line-strong); transform: none; }
+.tour-slot.is-closed .tour-time { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+.tour-slot.is-closed .tour-cta { background: transparent; color: var(--muted); border: 1px solid var(--line-strong); }
+.tour-allclosed { margin: 24px 0 0; padding: 14px 18px; border-left: 3px solid var(--accent); background: var(--paper); font-size: 0.92rem; color: var(--ink); }
 @media (max-width: 760px) { .tour-grid { grid-template-columns: 1fr; gap: 28px; } }
 @media (max-width: 380px) { .tour-slot { padding: 14px; gap: 10px; } .tour-time { font-size: 1.02rem; } .tour-cta { padding: 7px 12px; } }
 

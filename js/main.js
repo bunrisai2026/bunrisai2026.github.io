@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   try { initExhibitFilter(); } catch (e) { console.error(e); }
   try { initCategoryCounts(); } catch (e) { console.error(e); }
   try { initMapDialog(); } catch (e) { console.error(e); }
+  try { initTourDeadlines(); } catch (e) { console.error(e); }
 });
 
 /* ---------- スマホメニュー ---------- */
@@ -462,4 +463,46 @@ function initMapDialog() {
     img.src = BLANK;
     if (lastFocused) { lastFocused.focus(); lastFocused = null; }
   });
+}
+
+/* ---------- キャンパスツアー：締切を過ぎた回を受付終了にする ----------
+   HTMLの data-deadline（締切日時）を過ぎた回と、data-closed="true" を付けた回を
+   押せなくする。JSが動かない場合はリンクのまま残る。 */
+function initTourDeadlines() {
+  const slots = Array.from(document.querySelectorAll(".tour-slot"));
+  if (slots.length === 0) return;
+  const allClosedMsg = document.getElementById("tourAllClosed");
+
+  function closeSlot(slot) {
+    if (slot.classList.contains("is-closed")) return;
+    slot.classList.add("is-closed");
+    // aタグは href を外すと押せなくなり、キーボードでも飛ばされる
+    slot.dataset.href = slot.getAttribute("href") || "";
+    slot.removeAttribute("href");
+    slot.removeAttribute("target");
+    slot.setAttribute("aria-disabled", "true");
+    slot.setAttribute("tabindex", "-1"); // Tabキーの移動先からも外す
+    const cta = slot.querySelector(".tour-cta");
+    if (cta) cta.textContent = "受付終了";
+  }
+
+  function update() {
+    const now = Date.now();
+    let open = 0;
+    slots.forEach((slot) => {
+      const manual = slot.dataset.closed === "true";
+      const raw = slot.dataset.deadline;
+      const limit = raw ? Date.parse(raw) : NaN;
+      // 締切の書き方が間違っている場合は、閉じずにそのまま残す（申し込めなくなる方が困るため）
+      const expired = !isNaN(limit) && now >= limit;
+      if (manual || expired) closeSlot(slot); else open += 1;
+    });
+    if (allClosedMsg) allClosedMsg.hidden = open > 0;
+    return open;
+  }
+
+  if (update() > 0) {
+    // ページを開いたまま締切をまたいだときのために、1分ごとに見直す
+    const timer = setInterval(() => { if (update() === 0) clearInterval(timer); }, 60000);
+  }
 }

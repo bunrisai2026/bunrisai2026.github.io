@@ -465,6 +465,33 @@ section[hidden] { display: none; }
   .bus-scroll-hint { display: block; }
 }
 
+/* ---------- キャンパスツアーの申し込み ---------- */
+.tour-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.tour-grid > * { min-width: 0; }
+.tour-day-title {
+  margin: 0 0 16px; font-family: var(--font-mincho); font-size: 1.15rem; color: var(--ink);
+  padding-bottom: 12px; border-bottom: 1px solid var(--line-strong);
+}
+.tour-day-title small { display: block; font-family: var(--font-base); font-size: 0.8rem; color: var(--muted); font-weight: 400; margin-top: 4px; }
+.tour-slot {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 18px; margin-bottom: 10px;
+  background: var(--paper); border: 1px solid var(--line-strong); border-radius: 3px;
+  color: var(--ink); text-decoration: none;
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.tour-slot:hover { border-color: var(--accent); transform: translateX(2px); }
+.tour-slot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tour-time { font-family: var(--font-mincho); font-size: 1.15rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.tour-cta {
+  margin-left: auto; flex-shrink: 0;
+  padding: 7px 16px; border-radius: 999px;
+  background: var(--ink); color: #fff; font-size: 0.82rem; font-weight: 700; white-space: nowrap;
+}
+.tour-slot:hover .tour-cta { background: var(--accent); }
+@media (max-width: 760px) { .tour-grid { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 380px) { .tour-slot { padding: 14px; gap: 10px; } .tour-time { font-size: 1.02rem; } .tour-cta { padding: 7px 12px; } }
+
 /* ---------- バス乗り場の案内図（押すと開く） ---------- */
 .map-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 4px; }
 .map-groups > * { min-width: 0; }

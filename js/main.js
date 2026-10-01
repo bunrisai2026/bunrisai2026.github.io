@@ -410,7 +410,8 @@ function initCategoryCounts() {
       const doc = new DOMParser().parseFromString(html, "text/html");
       const pick = (id) => Array.from(doc.querySelectorAll(`#${id} .exhibit-row`));
       const cls = pick("class-entries"), club = pick("club-entries"), stage = pick("stage-entries"), booth = pick("booth-entries");
-      const total = cls.length + club.length + stage.length + booth.length;
+      const jh = pick("jh-entries");
+      const total = cls.length + club.length + stage.length + booth.length + jh.length;
       if (total === 0) return;
       setText("countClass", String(cls.length));
       setText("countClassSub", `1年 ${cls.filter((r) => hasGrade(r, "1")).length}件・2年 ${cls.filter((r) => hasGrade(r, "2")).length}件`);

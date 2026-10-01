@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="css/style.css?v=19">
+<link rel="stylesheet" href="css/style.css?v=20">
 </head>
 <body>
 
@@ -61,7 +61,7 @@
     <div class="container">
       <span class="section-kicker">文理祭2026</span>
       <h1 class="page-title">出し物一覧</h1>
-      <p class="page-lead">クラス企画・部活動や団体の展示・ステージ発表・模擬店、全88件をご案内します。企画名や団体名で検索したり、学年・部活で絞り込めます。</p>
+      <p class="page-lead">クラス企画・部活動や団体の展示・ステージ発表・模擬店・中学の企画をご案内します。企画名や団体名で検索したり、学年・部活で絞り込めます。</p>
     </div>
   </section>
 
@@ -71,6 +71,7 @@
       <a href="#club-entries">部活動・団体</a>
       <a href="#stage-entries">ステージ発表</a>
       <a href="#booth-entries">模擬店</a>
+      <a href="#jh-entries">中学の企画</a>
     </div>
   </nav>
 
@@ -87,9 +88,10 @@
           <label><input type="radio" name="grade" value="2"><span>2年</span></label>
           <label><input type="radio" name="grade" value="3"><span>3年</span></label>
           <label><input type="radio" name="grade" value="club"><span>部活・団体</span></label>
+          <label><input type="radio" name="grade" value="jh"><span>中学</span></label>
         </div>
       </form>
-      <p class="result-count" id="exhibitCount" aria-live="polite"><strong>88</strong> 件を表示</p>
+      <p class="result-count" id="exhibitCount" aria-live="polite"><strong>117</strong> 件を表示</p>
       <p class="exhibit-empty" id="exhibitEmpty" hidden>条件に合う企画が見つかりませんでした。検索語を変えるか、絞り込みを「すべて」に戻してください。</p>
       <p class="note">企画名・場所は委員会のパンフレット掲載データをもとに掲載しています。内容が変わった場合はこのページを更新します。</p>
     </div>
@@ -115,7 +117,7 @@
         </li>
         <li class="exhibit-row" data-name="おかえりなさいませ、大富豪様" data-group="2年AM2" data-grade="2" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>おかえりなさいませ、大富豪様</h3><p class="exhibit-row-meta">2年AM2<span class="exhibit-place">本館4階 A棟 H303</span></p><p class="exhibit-desc">ここではこれからカジノで、大富豪になる皆さんをメイド達が待っています。至高の時を、大富豪様</p></div>
+          <div class="exhibit-row-main"><h3>おかえりなさいませ、大富豪様</h3><p class="exhibit-row-meta">2年AM2<span class="exhibit-place">本館3階 A棟 H303</span></p><p class="exhibit-desc">ここではこれからカジノで、大富豪になる皆さんをメイド達が待っています。至高の時を、大富豪様</p></div>
           <span class="chip chip--grade">2年</span>
         </li>
         <li class="exhibit-row" data-name="たけのこ・きのこ大戦争" data-group="2年AM3" data-grade="2" data-cat="class">
@@ -230,7 +232,7 @@
         </li>
         <li class="exhibit-row" data-name="おかえり占いませ" data-group="1年C1" data-grade="1" data-cat="class">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>おかえり占いませ</h3><p class="exhibit-row-meta">1年C1<span class="exhibit-place">本館4階 D301</span></p><p class="exhibit-desc">可愛いメイドが占います</p></div>
+          <div class="exhibit-row-main"><h3>おかえり占いませ</h3><p class="exhibit-row-meta">1年C1<span class="exhibit-place">1号館3階 D301</span></p><p class="exhibit-desc">可愛いメイドが占います</p></div>
           <span class="chip chip--grade">1年</span>
         </li>
         <li class="exhibit-row" data-name="一発必中‼" data-group="1年D1" data-grade="1" data-cat="class">
@@ -343,7 +345,7 @@
         </li>
         <li class="exhibit-row" data-name="写真展・小物販売" data-group="写真部" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>写真展・小物販売</h3><p class="exhibit-row-meta">写真部<span class="exhibit-place">本館4階 C棟 H215</span></p><p class="exhibit-desc">教室にてパネルを使い写真部部員の作品を展示し、部員の写真を印刷したポストカードなどを販売します。</p></div>
+          <div class="exhibit-row-main"><h3>写真展・小物販売</h3><p class="exhibit-row-meta">写真部<span class="exhibit-place">本館2階 C棟 H215</span></p><p class="exhibit-desc">教室にてパネルを使い写真部部員の作品を展示し、部員の写真を印刷したポストカードなどを販売します。</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <li class="exhibit-row" data-name="茶席体験" data-group="茶道講習会" data-grade="club" data-cat="club">
@@ -376,9 +378,9 @@
           <div class="exhibit-row-main"><h3>撮影の裏側展</h3><p class="exhibit-row-meta">ガチプロメディアマネジメント<span class="exhibit-place">生物室</span></p><p class="exhibit-desc">文理内で収録された作品で使用された小道具やタレントさんたちのサイン色紙を展示しています！ぜひ見に来てください！</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
-        <li class="exhibit-row" data-name="ミニ学校説明会" data-group="入試課" data-grade="club" data-cat="club">
+        <li class="exhibit-row" data-name="中高入試 個別相談コーナー" data-group="入試課" data-grade="club" data-cat="club">
           <span class="exhibit-index" aria-hidden="true"></span>
-          <div class="exhibit-row-main"><h3>ミニ学校説明会</h3><p class="exhibit-row-meta">入試課<span class="exhibit-place">1号館1階 D101</span></p><p class="exhibit-desc">受験生・保護者の皆様の疑問や不安に個別でお答えします。</p></div>
+          <div class="exhibit-row-main"><h3>中高入試 個別相談コーナー</h3><p class="exhibit-row-meta">入試課<span class="exhibit-place">1号館1階 D101</span></p><p class="exhibit-desc">受験生・保護者の皆様の疑問や不安に個別でお答えします。開催時間は10/3（土）10:00〜15:00、10/4（日）9:30〜14:00です。学校案内・2027年度生徒募集要項などをお配りしています。事前予約は不要ですので、お気軽にお立ち寄りください。<br>【今後の説明会】中学説明会 10/17（土）・11/7（土）・12/5（土）／高校説明会 10/17（土）・11/1（日）・11/23（月）・12/12（土）／高校個別相談会 10/25（日）・11/23（月・祝）・12/12（土）・12/25（金）</p></div>
           <span class="chip chip--grade">部活・団体</span>
         </li>
         <li class="exhibit-row" data-name="制服バザー（高2・高3用 現行タイプ）" data-group="北斗星の会" data-grade="club" data-cat="club">
@@ -395,7 +397,7 @@
     <div class="container">
       <div class="section-head">
         <h2 class="section-title">ステージ発表</h2>
-        <p class="section-lead">中庭ステージ・サイエンスホール・大勇館でのパフォーマンスです。出演時刻は決まり次第掲載します。</p>
+        <p class="section-lead">中庭ステージ・サイエンスホール・大勇館でのパフォーマンスです。出演時刻は<a href="index.html#stage-schedule">トップページのタイムスケジュール</a>をご覧ください。</p>
       </div>
       <ul class="exhibit-list" data-list="stage">
         <!-- ▼ここからステージ発表（7件） -->
@@ -587,6 +589,163 @@
     </div>
   </section>
 
+  <section class="section" id="jh-entries">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">中学の企画</h2>
+        <p class="section-lead">中学のCA（課外活動）を中心とした展示・体験・発表です。</p>
+      </div>
+      <ul class="exhibit-list" data-list="jh">
+        <!-- ▼ここから中学の企画（29件） -->
+        <li class="exhibit-row" data-name="CA＆高校ハンドベル" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA＆高校ハンドベル</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">√HOT</span></p><p class="exhibit-desc">CAハンドベルは「Under the Sea」などの親しみある曲を演奏します！ぜひ√HOTに来てください！※出演時刻はトップページのタイムスケジュールをご覧ください。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA 合唱" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA 合唱</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">√HOT</span></p><p class="exhibit-desc">JPOPやミュージカル曲など、聴いてくださる方も歌いたくなるような曲を合唱します。ぜひお越しください。※出演時刻はトップページのタイムスケジュールをご覧ください。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA クラシックギター" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA クラシックギター</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">√HOT</span></p><p class="exhibit-desc">CAクラシックギター15名が短い時間で仕上げた渾身の曲です。全員で力を合わせて奏でる響きをお聴きください！※出演時刻はトップページのタイムスケジュールをご覧ください。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA フラワーデザイン" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA フラワーデザイン</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G202</span></p><p class="exhibit-desc">花で彩るラプンツェルとアナ雪の世界へ。フラワーアレンジを体験し、作品はそのままお持ち帰りいただけます。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA いけばな" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA いけばな</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G204</span></p><p class="exhibit-desc">CAのみんなで協力して、一花一花丁寧に生けました！豊かな花々が彩る世界をご堪能ください。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="ハノシゴト" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>ハノシゴト</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G205</span></p><p class="exhibit-desc">神奈川歯科大学・東京歯科衛生専門学校とコラボした企画です。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA はり絵" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA はり絵</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G251</span></p><p class="exhibit-desc">和紙を切ったり色紙に貼ったりして一つの作品を作ります。一人ひとりがいくつかの候補の中から選んで作ることができます。ゆったりとした雰囲気でマイペースに楽しい時間を過ごしています！</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA アメリカンフラワー" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA アメリカンフラワー</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G252</span></p><p class="exhibit-desc">アメリカンフラワーはワイヤーと専用の液で花びらを作り、組み合わせて花を作ります。文理祭では実際に花作りを体験できます！</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA トールペイント" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA トールペイント</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G301</span></p><p class="exhibit-desc">トールペイントで木や小物に絵を描き、世界に一つだけの作品を作ります。文理祭では体験もできます。ぜひお越しください！</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA 紙飛行機" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA 紙飛行機</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G302</span></p><p class="exhibit-desc">オリジナル紙飛行機を作って飛ばしましょう！世界一飛ぶ紙飛行機にも挑戦してみてください！</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA 写真" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA 写真</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G303</span></p><p class="exhibit-desc">CA写真は、今年から活動を開始した新しいCAです。三つのグループに分かれ、学年を超えて撮りたいものを撮っています。面白いものもありますので、ぜひご覧ください！</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA クローシェ編み" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA クローシェ編み</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G304</span></p><p class="exhibit-desc">1本の糸と編み棒で、簡単な花や実際に使える服など様々な作品を作り上げます。ケルシー先生の作品は圧巻です。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA 数学" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA 数学</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G305</span></p><p class="exhibit-desc">ただ計算をする時代はもう終わり！数学の知識を使った謎解きゲームを開催します。挑戦者、お待ちしております！</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA Creative Media" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA Creative Media</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G306</span></p><p class="exhibit-desc">仲間と協力して、楽しい動画作品を完成させよう！</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA 書道" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA 書道</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G307</span></p><p class="exhibit-desc">作品の展示をします。体験コーナーもあるので、書道経験のない人もある人も是非来てください。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA 美術" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA 美術</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G309</span></p><p class="exhibit-desc">CA美術では学校の中にある様々な場所に壁画を制作しています。昨年度も沢山の壁画をみんなでアイデアを出し合って、スポーツとアートを組み合わせた壁画等も製作してきました。今年の文理祭では、訪れた皆さんと一緒に家に持ち帰り飾ることができるデコレーションを作ります！ぜひ、足を運びに来てください！</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA スポーツ科学" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA スポーツ科学</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G310</span></p><p class="exhibit-desc">CAスポーツ科学では、誰でも楽しめるドッチボールを統計などデータから科学の力によって勝率をあげる方法を考えました。ぜひ見に来てください。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA 社会" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA 社会</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G351・G352</span></p><p class="exhibit-desc">チョコレートの歴史、校外学習の報告、ボッチャについてやってます。ボッチャは体験をすることができます。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="SAクラス" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>SAクラス</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">レインボーギャラリー</span></p><p class="exhibit-desc">中1は「自分を表す言葉」、中2は「スポーツの一瞬」をテーマに、自分らしい表現で作品を制作しました。スポーツとアートが出会う、SAクラスならではの展示をお楽しみください！<br>SAクラスとは、スポーツで培う協働力×アートで育つ創造性、2つの力を往復しながら深める探究クラス。身体を使った体験と表現活動を組み合わせた、文理独自の参加型の学びを特徴としています。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="ガチプロ フードコーディネート" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>ガチプロ フードコーディネート</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">家庭科室1</span></p><p class="exhibit-desc">「食」を通して地元の魅力を発信！</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA デジタルクリエイト" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA デジタルクリエイト</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">科学室Ⅰ</span></p><p class="exhibit-desc">今年は、マインクラフトでこの学校を再現しました。他にも、スクラッチを使ったプログラムなどを行っています！ぜひきてください！</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA 理科" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA 理科</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">科学室Ⅱ</span></p><p class="exhibit-desc">入間川で捕まえた魚を使って、入間川を再現しています。岩石の調査や科学実験もやります。ぜひ来てください。面白いですよ！</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA 合奏" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA 合奏</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">高校中庭</span></p><p class="exhibit-desc">CA合奏は吹奏楽の形態で演奏する活動をしています。初心者で始めたメンバーも多いですが、精一杯演奏します。※出演時刻はトップページのタイムスケジュールをご覧ください。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA アコースティックギター" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA アコースティックギター</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">多目的2</span></p><p class="exhibit-desc">CAアコースティックギターは、文化祭やCA発表会で演奏を披露しています。自主練などをして、メンバーたちは日々頑張っています！！※出演時刻はトップページのタイムスケジュールをご覧ください。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA Bunri Beats" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA Bunri Beats</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">中学中庭</span></p><p class="exhibit-desc">機材を用いてチームで作成したオリジナルの楽曲を披露し、激しいビートで文理祭を盛り上げます！※出演時刻はトップページのタイムスケジュールをご覧ください。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA 日本民踊" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA 日本民踊</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">北斗館</span></p><p class="exhibit-desc">和太鼓、日本舞踊、鳴子を文化祭や卒業公演で披露します。練習はハードですが、その分、達成感や思い出に残るCAです。※出演時刻はトップページのタイムスケジュールをご覧ください。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="CA 寄席" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>CA 寄席</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">北斗館</span></p><p class="exhibit-desc">CA寄席では、漫才や手品・落語などの「寄席」といわれるものを学び、練習しています。1学期は漫才と手品を中心的に学び、発表に向けて練習してきました。よしもと興業所属の芸人さんに漫才を教えていただき、芸を磨いてきました。ぜひ、ぼくたちの発表をおたのしみに！※出演時刻はトップページのタイムスケジュールをご覧ください。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="樹徳の会" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>樹徳の会</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">多目的1</span></p><p class="exhibit-desc">中学校の保護者によるイベントです。模擬店にて軽食を販売する他、休憩もできます。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+        <li class="exhibit-row" data-name="文理祭 中学本部" data-group="中学" data-grade="jh" data-cat="jh">
+          <span class="exhibit-index" aria-hidden="true"></span>
+          <div class="exhibit-row-main"><h3>文理祭 中学本部</h3><p class="exhibit-row-meta">中学<span class="exhibit-place">G201</span></p><p class="exhibit-desc">文理祭本部では、楽しい謎解きイベントの受付をしています。</p></div>
+          <span class="chip chip--grade">中学</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
 </main>
 
 <button id="backToTop" class="back-to-top" aria-label="ページの先頭へ戻る">↑</button>
@@ -612,7 +771,7 @@
       <div class="footer-col">
         <h3>お問い合わせ</h3>
         <ul>
-          <li>お問い合わせ先は確定次第、このページに掲載します。</li>
+          <li>当日のお問い合わせ・迷子・落とし物は、文理祭実行委員本部（本館1Fステージ裏）までお越しください。お近くの実行委員（実行委員Tシャツを着た生徒）にお声がけいただいても大丈夫です。</li>
         </ul>
       </div>
     </div>
@@ -625,7 +784,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/main.js?v=11"></script>
+<script src="js/main.js?v=12"></script>
 
 <!-- アクセス回数の測定（GoatCounter）。ページを開いた回数だけを数えます。 -->
 <script data-goatcounter="https://bunrisai2026.goatcounter.com/count"
